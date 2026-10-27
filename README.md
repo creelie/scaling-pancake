@@ -65,7 +65,9 @@ See `CITATION.cff`. The Zenodo DOI of each release is listed below.
 
 | Release | DOI |
 | --- | --- |
-| v1.0.0 | to be recorded |
+| v1.0.0 | [10.5281/zenodo.23701803](https://doi.org/10.5281/zenodo.23701803) |
+
+Concept DOI (all versions): [10.5281/zenodo.23701802](https://doi.org/10.5281/zenodo.23701802).
 
 ## Licence
 
