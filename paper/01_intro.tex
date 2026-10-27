@@ -32,9 +32,13 @@ On 25 October 2026 OpenAI released a proof of Sogge's local smoothing conjecture
 Euclidean wave equation in every dimension \cite{OAI26}, and deduced from it the
 Bochner--Riesz conjecture for every $n\ge 2$ and every $1\le p\le\infty$. Combined with the
 conditional theorems of Tao \cite{Tao98} and of Beltran, Roos and Seeger \cite{BRS25,BRS23},
-this settles the endpoint questions below. The deductions are short; the length of this paper
-comes from reproducing in full the two inputs that have not been refereed, so that every
-step is checked here. Consequences of another OpenAI release, for weighted counting and exact
+this gives the endpoint bounds below in every dimension. The implications themselves are not
+new: Tao showed that the weak-type endpoint follows from the Bochner--Riesz conjecture
+\cite{Tao98}, and Beltran, Roos and Seeger state the weighted range of Theorem C, conditionally on
+that conjecture, in the introduction to \cite{BRS25}. What this paper adds is a complete account,
+in one place, of the argument from local smoothing to the endpoint bounds: the two inputs that
+have not been refereed are reproduced in full, with credit, and the conditional theorems are
+checked against them. Consequences of another OpenAI release, for weighted counting and exact
 optimisation, are derived in the same manner in the paper archived as \cite{Bha26b}.
 
 \subsection{Results}
@@ -53,15 +57,19 @@ and $\|R^{\lambda(p)}_{a,t}f-f\|_{L^{p,\infty}}\to0$ as $t\to\infty$ for every $
 \begin{theoremB}[Sparse bounds]
 Let $n\ge2$, $a>0$, $1\le p<2n/(n+1)$ and
 \[
-q>q_{\rm opt}(p)=\frac{(n-1)p}{n+1-2p}.
+q_{\rm opt}(p)=\frac{(n-1)p}{n+1-2p}<q<p'.
 \]
 Then $R^{\lambda(p)}_{a,t}\in\Sp(p,q)$, with norm independent of $t$.
 \end{theoremB}
 
-For $\lambda=\lambda(p)$ the pairs $(1/p,1/q)$ of Theorem B fill the critical vertical side
-$P_1P_2$ of the trapezoid of exponents described in \cite[(1.5)]{BRS25}, except for its upper
-corner $P_2$, where $q=q_{\rm opt}(p)$. Sparse bounds fail outside the closed trapezoid
-\cite{BBL17}, so Theorem B is sharp except at the single point $P_2$, which remains open.
+The upper bound $q<p'$ only excludes trivial cases: for $1/p+1/q\le1$ every nonzero pair of
+compactly supported functions has infinite sparse form (Lemma \ref{lem:trivialsparse}). For
+$\lambda=\lambda(p)$ the pairs $(1/p,1/q)$ of Theorem B fill the critical vertical side $P_1P_2$ of
+the trapezoid of exponents described in \cite[(1.5)]{BRS25}, except for its upper corner $P_2$,
+where $q=q_{\rm opt}(p)$. Sparse bounds fail outside the closed trapezoid \cite{BBL17}, so on the
+critical side Theorem B is sharp except at $P_2$. The corner is known at the Stein--Tomas exponent
+$p=2(n+1)/(n+3)$ \cite[Theorem 1.5]{BRS25} and is open otherwise; Section \ref{sec:open} explains
+why the method stops short of it.
 
 \begin{theoremC}[Weights]
 Let $n\ge 2$, $a>0$, and let $w\in A_1$ belong to $RH_{\sigma}$ for some $\sigma>1$. Put
@@ -73,14 +81,24 @@ uniformly in $t$, and $R^{\lambda(p)}_{a,t}f\to f$ in $L^{p,\infty}(w)$ for ever
 \end{theoremC}
 
 Every $A_1$ weight lies in some $RH_\sigma$ with $\sigma>1$, so Theorem C gives a range
-$p>1$ for every $A_1$ weight, as in \cite[Theorem 1.1]{BRS25}. The difference lies in the
-size of the range. In \cite[\S9]{BRS25} the reverse H\"older exponent had to be capped at
-$(n+3)/2$, which limits the range to $p<2(n+1)/(n+3)$; here no cap is needed, and as
-$\sigma\to\infty$ the range fills the whole interval $1<p<2n/(n+1)$. The constant weight,
-which lies in $RH_\sigma$ for every $\sigma$, recovers Theorem A.
+$p>1$ for every $A_1$ weight, as in \cite[Theorem 1.1]{BRS25}. Unconditionally, \cite[\S9]{BRS25}
+caps the reverse H\"older exponent at $(n+3)/2$, which limits the range to $p<2(n+1)/(n+3)$; the
+uncapped range is stated there as a consequence of the Bochner--Riesz conjecture
+\cite[\S1.1]{BRS25}, and Theorem C is that statement. As $\sigma\to\infty$ the range fills the
+whole interval $1<p<2n/(n+1)$, and the constant weight recovers Theorem A. The range is also
+open at its right end: by the self-improvement of reverse H\"older inequalities, every
+$w\in A_1\cap RH_\sigma$ lies in $RH_\Sigma$ for an explicit $\Sigma>\sigma$, so the conclusion of
+Theorem C holds at $p=p_1(w)$ as well (Theorem \ref{thm:boundary}). For $w\in A_1$ alone it holds
+for
+\[
+1<p<1+\frac{n-1}{(n+1)\bigl(2^{n+1}\kappa_n[w]_{A_1}+1\bigr)},
+\]
+with $\kappa_n$ the ratio of the volume of a ball to that of its inscribed cube (Corollary
+\ref{cor:A1only}).
 
 For $n=2$ the Bochner--Riesz conjecture is due to Carleson and Sj\"olin \cite{CS72}, and Theorems A--C
-were proved in \cite{See96,BRS25}; the new content is $n\ge3$.
+were proved in \cite{See96,BRS25}. For $n\ge3$ they follow from \cite{OAI26} and the conditional
+theorems above.
 
 \subsection{What is borrowed and what is reproduced}
 Theorems A--C are obtained from three ingredients.
@@ -94,16 +112,18 @@ turns $\VBR(p,r)$ into sparse bounds, and the weighted theorem of Frey and Niera
 \cite[Theorem 1.4]{FN19}, which turns sparse bounds into weighted weak-type bounds.
 \end{enumerate}
 Items (iii) are refereed and are cited. Items (i) and (ii) are a preprint and an Oberwolfach
-preprint, and are reproduced here with complete proofs: Part I gives OpenAI's proof of the
+preprint, and their arguments are reproduced here in full, with credit: Part I gives OpenAI's proof of the
 critical annular estimate, of local smoothing and of the Bochner--Riesz conjecture, with the
 Dirichlet problem it uses in Appendix \ref{app:dirichlet}; Part II gives the
 $\varepsilon$-removal. The arguments are those of \cite{OAI26} and \cite{BRS23}; we follow
 them closely, specialise them to the round sphere, which is all that is needed, and supply
 some intermediate computations. Part III proves Theorems A--C.
 
-We searched arXiv, the OpenAI release repository and Zenodo up to
-27 October 2026 and found no statement of Theorems A--C for $n\ge3$. They are corollaries of
-\cite{OAI26} and the conditional theorems above, which is how we present them.
+Reproducing these arguments is not an independent proof of local smoothing: the analysis of
+Part I is that of \cite{OAI26}, and its correctness is what Theorems A--C rest on in dimensions
+$n\ge3$. The implications from the Bochner--Riesz conjecture to Theorems A--C are due to Tao and
+to Beltran, Roos and Seeger, as described above, and we present Theorems A--C as their
+consequences.
 
 \subsection{Organisation}
 Sections \ref{sec:current}--\ref{sec:euclid} form Part I. Section \ref{sec:current} builds a
@@ -112,7 +132,8 @@ Hessian and its cofactor; Section \ref{sec:energy} defines a determinant energy 
 fibres; Section \ref{sec:fiber} estimates it; Section \ref{sec:cylinder} compares two circles in
 the auxiliary time plane; Section \ref{sec:euclid} removes the period and proves local
 smoothing and the Bochner--Riesz conjecture. Section \ref{sec:vbr} is Part II. Section
-\ref{sec:endpoint} proves Theorems A--C, and Section \ref{sec:open} lists what remains open.
+\ref{sec:endpoint} proves Theorems A--C, Section \ref{sec:boundary} shows that the range of the
+weights is open at its right end, and Section \ref{sec:open} lists what remains open.
 Exact-arithmetic checks of the algebraic identities and of the exponent computations are
 available with the sources \cite{Bha26arch}; no statement depends on them.
 

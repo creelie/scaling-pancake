@@ -20,4 +20,9 @@
 [pass] integral identity behind the radial comparison
 [pass] limit of r_*(p, p0, p0) as p0 -> 2d/(d+1); q_opt; weighted exponent
 [pass] q_*(p, p0, p0) decreases to q_opt as p0 increases
-22 checks passed, 0 failed
+[pass] trivial sparse range: annuli are 1/2-sparse, exponent nonnegative
+[pass] self-improvement: absorption coefficient at most 1/2
+[pass] raised reverse Hoelder exponent contains p_1(w)
+[pass] A_1-only range: 1 - 1/(1+eta0) = 1/(2^(n+1)K+1)
+[pass] power weights: gamma = 0 gives Theorem A
+27 checks passed, 0 failed

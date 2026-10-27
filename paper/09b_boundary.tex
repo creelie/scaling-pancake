@@ -1,0 +1,128 @@
+\section{The weighted range at its right end}\label{sec:boundary}
+
+Theorem C is stated for $p<p_1(w)$, an open condition in $p$ for a fixed exponent $\sigma$. This
+section shows that the end point $p=p_1(w)$ is included as well, because the reverse H\"older
+exponent of an $A_1$ weight can always be raised. The argument is the classical self-improvement
+of reverse H\"older inequalities \cite{CF74}, written out with explicit constants; it uses
+nothing about Bochner--Riesz means beyond Theorem C, and adds nothing at the corner $P_2$ of
+Theorem B.
+
+In this section cubes have sides parallel to the axes. Let $\omega_n=|B(0,1)|$ and
+\[
+\kappa_n=\frac{\omega_n n^{n/2}}{2^n},\qquad \mu_n=\frac{2^n}{\omega_n},
+\]
+the ratio of the volume of a ball to that of the cube inscribed in it, and of a cube to that of
+the ball inscribed in it.
+
+\begin{lemma}\label{lem:gehring}
+Let $v$ be a weight and $K\ge1$ with $\fint_Qv\le K\operatorname*{ess\,inf}_Qv$ for every cube $Q$. Then
+for $0<\eta\le(2^{n+1}K)^{-1}$ and every cube $Q$,
+\[
+\fint_Qv^{1+\eta}\le2\Bigl(\fint_Qv\Bigr)^{1+\eta}.
+\]
+\end{lemma}
+
+\begin{proof}
+Fix $Q$ and put $b=\fint_Qv>0$. For $x\in Q$ let $M_Qv(x)$ be the supremum of $\fint_Pv$ over the
+dyadic subcubes $P$ of $Q$ containing $x$. Then $M_Qv\ge b$ on $Q$, and $v\le M_Qv$ almost
+everywhere on $Q$ by the Lebesgue differentiation theorem along dyadic cubes. For each dyadic
+subcube $P$ the hypothesis gives $\fint_Pv\le Kv(x)$ for almost every $x\in P$; as there are
+countably many such $P$, $M_Qv\le Kv$ almost everywhere on $Q$.
+
+For $\lambda\ge b$ let $\Omega_\lambda=\{x\in Q:M_Qv(x)>\lambda\}$. It is the disjoint union of the
+maximal dyadic subcubes $Q_j$ of $Q$ with $\fint_{Q_j}v>\lambda$. None of them is $Q$, since
+$\fint_Qv=b\le\lambda$, and by maximality the parent $\widehat Q_j$ of $Q_j$ has
+$\fint_{\widehat Q_j}v\le\lambda$. Hence
+\begin{equation}\label{eq:gehringlevel}
+v(\Omega_\lambda)=\sum_j\int_{Q_j}v\le\sum_j\int_{\widehat Q_j}v\le2^n\lambda\sum_j|Q_j|
+=2^n\lambda|\Omega_\lambda|.
+\end{equation}
+
+Let $L\ge b$, $F=\min\{M_Qv,L\}$ and $I=\int_QF^\eta v\le L^\eta v(Q)<\infty$. On $Q$ we have
+$F\ge b$, and for $b\le\lambda<L$ the set $\{F>\lambda\}$ is $\Omega_\lambda$. The layer-cake
+formula and \eqref{eq:gehringlevel} give
+\begin{align*}
+I&=\int_0^b\eta\lambda^{\eta-1}v(Q)\,d\lambda+\int_b^L\eta\lambda^{\eta-1}v(\Omega_\lambda)\,d\lambda
+\le b^\eta v(Q)+2^n\eta\int_0^\infty\lambda^\eta\bigl|\{x\in Q:F(x)>\lambda\}\bigr|\,d\lambda\\
+&=b^\eta v(Q)+\frac{2^n\eta}{1+\eta}\int_QF^{1+\eta}
+\le b^\eta v(Q)+2^nK\eta\, I,
+\end{align*}
+since $F^{1+\eta}=F^\eta F\le KF^\eta v$. As $2^nK\eta\le\frac12$ and $I$ is finite,
+$I\le2b^\eta v(Q)$. Letting $L\to\infty$, monotone convergence and $v\le M_Qv$ give
+$\int_Qv^{1+\eta}\le\int_Q(M_Qv)^\eta v\le2b^\eta v(Q)=2b^{1+\eta}|Q|$.
+\end{proof}
+
+\begin{proposition}\label{prop:selfimprove}
+Let $\sigma>1$, $w\in A_1\cap RH_\sigma$, $A=[w]_{A_1}$, $B=[w]_{RH_\sigma}$, and
+\[
+K=\kappa_n(AB)^\sigma,\qquad\eta=\frac1{2^{n+1}K},\qquad\Sigma=\sigma(1+\eta).
+\]
+Then $w\in RH_\Sigma$ and $[w]_{RH_\Sigma}\le(2\mu_nK^{1+\eta})^{1/\Sigma}B$.
+\end{proposition}
+
+\begin{proof}
+Put $v=w^\sigma$. For every ball $B'$, as shown after Theorem \ref{thm:fn},
+$\fint_{B'}v\le(AB)^\sigma\operatorname*{ess\,inf}_{B'}v$. If $Q$ is a cube and $B'$ the ball circumscribed
+about it, then $|B'|=\kappa_n|Q|$ and
+\[
+\fint_Qv\le\kappa_n\fint_{B'}v\le\kappa_n(AB)^\sigma\operatorname*{ess\,inf}_{B'}v
+\le K\operatorname*{ess\,inf}_Qv .
+\]
+Here $K\ge1$, since $A\ge1$, $B\ge1$ and $\kappa_n\ge1$, so Lemma \ref{lem:gehring} applies to $v$.
+Now let $B'$ be a ball and $Q$ the cube circumscribed about it, so $|Q|=\mu_n|B'|$. By the lemma
+and the bound just proved,
+\[
+\fint_{B'}v^{1+\eta}\le\mu_n\fint_Qv^{1+\eta}\le2\mu_n\Bigl(\fint_Qv\Bigr)^{1+\eta}
+\le2\mu_n\bigl(K\operatorname*{ess\,inf}_Qv\bigr)^{1+\eta}\le2\mu_nK^{1+\eta}\Bigl(\fint_{B'}v\Bigr)^{1+\eta},
+\]
+since $\operatorname*{ess\,inf}_Qv\le\operatorname*{ess\,inf}_{B'}v\le\fint_{B'}v$. With $v=w^\sigma$ and
+$\fint_{B'}w^\sigma\le B^\sigma(\fint_{B'}w)^\sigma$ this reads
+$\fint_{B'}w^\Sigma\le2\mu_nK^{1+\eta}B^\Sigma(\fint_{B'}w)^\Sigma$.
+\end{proof}
+
+\begin{theorem}\label{thm:boundary}
+Let $n\ge2$, $a>0$, $\sigma>1$ and $w\in A_1\cap RH_\sigma$, and let $\Sigma>\sigma$ be the exponent of
+Proposition \ref{prop:selfimprove}. Then the conclusions of Theorem C hold for
+\[
+1<p<1+\frac{n-1}{n+1}\Bigl(1-\frac1\Sigma\Bigr),
+\]
+and in particular at $p=p_1(w)=1+\frac{n-1}{n+1}(1-\frac1\sigma)$. Equivalently, with
+$\sigma_w=\sup\{s>1:w\in RH_s\}\in(1,\infty]$, they hold for
+$1<p<1+\frac{n-1}{n+1}(1-\frac1{\sigma_w})$, and $w\notin RH_{\sigma_w}$ when $\sigma_w<\infty$.
+\end{theorem}
+
+\begin{proof}
+By Proposition \ref{prop:selfimprove}, $w\in A_1\cap RH_\Sigma$, and Theorem C with $\Sigma$ in place
+of $\sigma$ gives the first assertion; since $s\mapsto1-\frac1s$ is increasing and $\Sigma>\sigma$,
+the range contains $p_1(w)$. The set of $s>1$ with $w\in RH_s$ is an interval by H\"older's
+inequality, nonempty by \cite{CF74}, and open by Proposition \ref{prop:selfimprove}; so its
+supremum $\sigma_w$ is not attained, and every $p<1+\frac{n-1}{n+1}(1-\frac1{\sigma_w})$ is below
+$p_1$ for some admissible exponent.
+\end{proof}
+
+\begin{corollary}\label{cor:A1only}
+Let $n\ge2$, $a>0$ and $w\in A_1$. The conclusions of Theorem C hold for
+\[
+1<p<1+\frac{n-1}{(n+1)\bigl(2^{n+1}\kappa_n[w]_{A_1}+1\bigr)} .
+\]
+\end{corollary}
+
+\begin{proof}
+The second half of the proof of Proposition \ref{prop:selfimprove}, applied to $v=w$ with
+$K=\kappa_n[w]_{A_1}$ in place of $\kappa_n(AB)^\sigma$, shows that $w\in RH_{1+\eta_0}$ with
+$\eta_0=(2^{n+1}\kappa_n[w]_{A_1})^{-1}$. Theorem C with
+$\sigma=1+\eta_0$ gives the range, since $1-\frac1{1+\eta_0}=\frac{\eta_0}{1+\eta_0}
+=\frac1{2^{n+1}\kappa_n[w]_{A_1}+1}$.
+\end{proof}
+
+\begin{example}\label{ex:powerweight}
+For $0\le\beta<n$ the weight $|x|^{-\beta}$ lies in $A_1$ \cite[\S7.1]{Gra14}. Let $0\le\gamma<n$ and
+$w(x)=|x|^{-\gamma}$. If $\gamma s<n$, then $w^s\in A_1$, so
+$\fint_Bw^s\le C\operatorname*{ess\,inf}_Bw^s\le C(\fint_Bw)^s$ for every ball and $w\in RH_s$; if
+$\gamma s\ge n$, then $w^s$ is not integrable near $0$ and $w\notin RH_s$. Thus $\sigma_w=n/\gamma$, and
+Theorem \ref{thm:boundary} gives the weak-type bound on $L^p(|x|^{-\gamma})$ for
+\[
+1<p<1+\frac{n-1}{n+1}\Bigl(1-\frac\gamma n\Bigr).
+\]
+For $\gamma=0$ this is Theorem A.
+\end{example}

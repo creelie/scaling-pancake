@@ -22,7 +22,7 @@ jobs:
           pip install sympy numpy
           cd code
           python3 -I check_algebra.py | tee check_run.txt
-          grep -q "22 checks passed, 0 failed" check_run.txt
+          grep -q "27 checks passed, 0 failed" check_run.txt
   lean:
     runs-on: ubuntu-latest
     steps:

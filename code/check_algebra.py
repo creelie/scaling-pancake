@@ -558,12 +558,58 @@ def check_numerology():
     report("q_*(p, p0, p0) decreases to q_opt as p0 increases", ok)
 
 
+def check_weights_boundary():
+    """Section 10: the trivial sparse range and the weighted range at its end."""
+    # Lemma lem:trivialsparse: the annuli of the concentric cubes have
+    # measure (1 - 2^-n)|Q_j| >= |Q_j|/2, and the exponent 1 - 1/p - 1/q is >= 0.
+    ok = all(1 - Fraction(1, 2 ** n) >= Fraction(1, 2) for n in range(1, 30))
+    for pn in range(1, 30):
+        for qn in range(1, 30):
+            p, q = 1 + Fraction(pn, 7), 1 + Fraction(qn, 7)
+            if 1 / p + 1 / q <= 1:
+                ok &= 1 - 1 / p - 1 / q >= 0
+    report("trivial sparse range: annuli are 1/2-sparse, exponent nonnegative", ok)
+
+    # Lemma lem:gehring: the coefficient 2^n K eta/(1+eta) is at most 1/2.
+    ok = True
+    for n in range(2, 9):
+        for K in [Fraction(1), Fraction(3, 2), Fraction(7), Fraction(100, 3)]:
+            for j in range(1, 6):
+                eta = Fraction(1, 2 ** (n + 1)) / K / j
+                ok &= 2 ** n * K * eta / (1 + eta) <= Fraction(1, 2)
+    report("self-improvement: absorption coefficient at most 1/2", ok)
+
+    # Theorem thm:boundary: Sigma > sigma moves the range strictly to the
+    # right and stays below 2n/(n+1); p_1(w) itself is then admissible.
+    ok = True
+    for n in range(2, 9):
+        for sn in range(1, 40):
+            sigma = 1 + Fraction(sn, 5)
+            for K in [Fraction(1), Fraction(5, 2), Fraction(40)]:
+                Sigma = sigma * (1 + Fraction(1, 2 ** (n + 1)) / K)
+                P = lambda s: 1 + Fraction(n - 1, n + 1) * (1 - 1 / s)
+                ok &= P(sigma) < P(Sigma) < Fraction(2 * n, n + 1)
+    report("raised reverse Hoelder exponent contains p_1(w)", ok)
+
+    # Corollary cor:A1only: 1 - 1/(1 + eta0) = 1/(2^(n+1) K + 1).
+    K, n = sp.symbols("K n", positive=True)
+    eta0 = 1 / (2 ** (n + 1) * K)
+    ok = sp.simplify(1 - 1 / (1 + eta0) - 1 / (2 ** (n + 1) * K + 1)) == 0
+    report("A_1-only range: 1 - 1/(1+eta0) = 1/(2^(n+1)K+1)", ok)
+
+    # Example ex:powerweight: at gamma = 0 the range is 1 < p < 2n/(n+1).
+    nn = sp.symbols("n", positive=True)
+    ok = sp.simplify(1 + (nn - 1) / (nn + 1) * (1 - 0 / nn) - 2 * nn / (nn + 1)) == 0
+    report("power weights: gamma = 0 gives Theorem A", ok)
+
+
 def main():
     check_moore()
     check_hessian_calculus()
     check_wave_current()
     check_energy_and_exponents()
     check_numerology()
+    check_weights_boundary()
     print(f"{PASSED} checks passed, {FAILED} failed")
 
 

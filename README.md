@@ -1,7 +1,7 @@
 # Weak-Type Endpoint Bounds for Bochner–Riesz Means in Every Dimension
 
 Author: Deep Bhattacharjee. LaTeX source and verification code for the paper
-of that title (54 pages, amsart). Release v1.0.0.
+of that title (57 pages, amsart). Release v1.1.0.
 
 ## What the paper proves
 
@@ -12,15 +12,21 @@ For n ≥ 2, a > 0 and t > 0 let R^λ_{a,t} be the Fourier multiplier with symbo
   R^{λ(p)}_{a,t} map L^p(R^n) to L^{p,∞}(R^n) uniformly in t, and
   R^{λ(p)}_{a,t} f → f in L^{p,∞} as t → ∞.
 - **Theorem B (sparse bounds).** For 1 ≤ p < 2n/(n+1) and
-  q > (n−1)p/(n+1−2p) the operators R^{λ(p)}_{a,t} have (p,q) sparse bounds
-  uniform in t. This covers the critical side of the trapezoid of Beltran,
-  Roos and Seeger except its upper corner, which stays open.
+  (n−1)p/(n+1−2p) < q < p′ the operators R^{λ(p)}_{a,t} have (p,q) sparse
+  bounds uniform in t. This covers the critical side of the trapezoid of
+  Beltran, Roos and Seeger except its upper corner, which is known only at
+  the Stein–Tomas exponent (their Theorem 1.5) and stays open otherwise. For
+  q ≥ p′ sparse bounds are trivial (Lemma 9.2).
 - **Theorem C (weights).** If w ∈ A_1 ∩ RH_σ with σ > 1, then for
   1 < p < 1 + (n−1)/(n+1) (1 − 1/σ) the operators map L^p(w) to L^{p,∞}(w)
-  uniformly in t, with convergence.
+  uniformly in t, with convergence. By the self-improvement of reverse
+  Hölder inequalities (Section 10) the range includes its right end point,
+  and for w ∈ A_1 alone it contains 1 < p < 1 + (n−1)/((n+1)(2^{n+1}κ_n[w]_{A_1}+1)).
 
-For n = 2 these were known (Seeger; Beltran, Roos and Seeger); the new content
-is n ≥ 3. The theorems are consequences of OpenAI's preprint *Local smoothing
+For n = 2 these were known (Seeger; Beltran, Roos and Seeger). For n ≥ 3 the
+implications were known conditionally (Tao for Theorem A; Beltran, Roos and
+Seeger state Theorem C conditionally on the Bochner–Riesz conjecture). The
+theorems are consequences of OpenAI's preprint *Local smoothing
 for the Euclidean wave equation* (25 October 2026), which proves Sogge's local
 smoothing conjecture and with it the Bochner–Riesz conjecture in every
 dimension, combined with the ε-removal of Tao in the vector-valued form of
@@ -32,9 +38,10 @@ Part I (Sections 2–7 and Appendix A) gives OpenAI's proof of the critical
 annular estimate, of local smoothing and of the Bochner–Riesz conjecture,
 including the Dirichlet problem it uses; Part II (Section 8) gives the
 ε-removal of the Oberwolfach preprint of Beltran, Roos and Seeger. Part III
-(Section 9) proves Theorems A–C, and Section 10 lists what remains open: the
-corner of the trapezoid, its top side, the sharp range of the weights, other
-convex domains and the maximal operator.
+(Sections 9 and 10) proves Theorems A–C and the end point of the weighted
+range, and Section 11 lists what remains open: the corner of the trapezoid
+(with the reasons these methods stop short of it), its top side, the sharp
+range of the weights, other convex domains and the maximal operator.
 
 ## Layout
 
@@ -45,7 +52,7 @@ convex domains and the maximal operator.
 - `code/check_algebra.py`: symbolic and numerical checks of the algebraic
   identities and exponent computations (Python with sympy and numpy). Its
   recorded output is `code/check_output.txt`; the last line is
-  `22 checks passed, 0 failed`.
+  `27 checks passed, 0 failed`.
 - `lean/BochnerRiesz.lean`: eighteen theorems in Lean 4 (core library only,
   toolchain in `lean/lean-toolchain`): the exponent arithmetic of Sections 8
   and 9 and the quaternion identities of Part I. Each theorem depends only on

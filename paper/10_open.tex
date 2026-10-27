@@ -2,24 +2,46 @@
 
 \subsection{The corner of the trapezoid}
 Theorem B covers the critical side $P_1P_2$ of the trapezoid of \cite[(1.5)]{BRS25} except the corner
-$P_2$, where $q=q_{\rm opt}(p)$. At $P_2$ the scale-by-scale estimates behind Theorem \ref{thm:brs} sum
-only with a loss: the exponent $r_*(p,p_\circ)$ reaches the Knapp line $r=\frac{n-1}{n+1}p'$ only in the
-limit \eqref{eq:rstarlimit}, and the hypothesis of Theorem \ref{thm:brs} asks for $r<r_*$. The method would
-need $\VBR(p,\frac{n-1}{n+1}p')$, the endpoint of the conjectured range of these inequalities, which is
-established in \cite{BRS25} only at $p=p_{\rm ST}$. For $p=p_{\rm ST}$ the corner is reached in
-\cite[Theorem 1.5]{BRS25}, through the $L^2$ restriction theorem; for $n=2$ the corner is also open
-except at $\lambda=\frac16$ \cite[\S1.2]{BRS25}.
+$P_2$, where $q=q_{\rm opt}(p)$. For $p=p_{\rm ST}$, that is $\lambda=\frac{n-1}{2n+2}$, the corner is
+reached in \cite[Theorem 1.5]{BRS25}, through the $L^2$ restriction theorem; for every other
+$p\in(1,\frac{2n}{n+1})$ it is open, in the plane as well \cite[\S1.2]{BRS25}. Three routes to it
+from the results of this paper fail, for the following reasons.
+
+\emph{The limit $q\to q_{\rm opt}(p)$.} Theorem \ref{thm:brs} gives $\Sp(p,q)$ for each $q>q_*$ with a
+constant that is not bounded as $q\to q_*$, and the sparse forms $\Lambda^*_{p,q}$ decrease as $q$
+decreases, so a family of bounds with growing constants gives nothing at $q_*$.
+
+\emph{A stronger Bochner--Riesz input.} For $p\le p_{\rm ST}$ the exponent $q_*(p,p_\circ)$ equals
+$q_{\rm opt}(p)$ for every admissible $p_\circ$ by \eqref{eq:qopt}, and the input is the Stein--Tomas
+theorem, which was available before \cite{OAI26}. So below $p_{\rm ST}$ the corner is lost in the
+summation over scales in the proof of Theorem \ref{thm:brs}, not in the input, and no improvement of
+the Bochner--Riesz bounds, including Theorem \ref{thm:BR}, reaches it. For $p>p_{\rm ST}$ the method
+needs in addition $\VBR(p,\frac{n-1}{n+1}p')$ at the Knapp line, the endpoint of the conjectured range
+of these inequalities; the exponent $r_*(p,p_\circ)$ of Corollary \ref{cor:vbr} reaches that line only in
+the limit \eqref{eq:rstarlimit}, and the restriction estimates of \cite{OAI26} are stated in the
+interior of their range only.
+
+\emph{Orthogonality.} At $p=p_{\rm ST}$ the corner has $q_{\rm opt}=2$, and the proof of
+\cite[Theorem 1.5]{BRS25} uses the orthogonality of the pieces of the decomposition in $L^2$. At
+other points of the critical side $q_{\rm opt}(p)\ne2$, and we know of no substitute.
+
+The self-improvement of Section \ref{sec:boundary} does not help either: it acts on the weight, after
+the sparse bound has been used, and leaves the unweighted corner unchanged. The corner is therefore a
+problem about sparse domination itself, and needs a new idea there.
 
 \subsection{The other sides}
 For $0<\lambda<\frac{n-1}2$, sparse bounds on the top side $P_2P_3$ of the trapezoid, away from the
-critical line, are open for $n\ge3$, and in the plane except at $\lambda=\frac16$. They are a
+critical line, are open in every dimension except at $\lambda=\frac{n-1}{2n+2}$, where
+\cite[Theorem 1.5]{BRS25} gives the whole closed trapezoid. They are a
 strengthening of off-diagonal $L^p\to L^r$ bounds for Bochner--Riesz means below the critical index,
 and Theorem \ref{thm:BR} does not reach them. By duality the side $P_3P_4$ is equivalent to the side
 $P_1P_2$, so Theorem B also gives it, except for the corner $P_3$.
 
 \subsection{The range of the weights}
 The exponent $p_1(w)=1+\frac{n-1}{n+1}(1-\frac1\sigma)$ of Theorem C is the one produced by Theorem
-\ref{thm:fn} from the sparse bounds of Theorem B. Whether it is the sharp range in terms of the reverse
+\ref{thm:fn} from the sparse bounds of Theorem B; by Theorem \ref{thm:boundary} the range is
+$1<p<1+\frac{n-1}{n+1}(1-\frac1{\sigma_w})$ in terms of the supremum $\sigma_w$ of the reverse
+H\"older exponents of $w$. Whether it is the sharp range in terms of the reverse
 H\"older exponent is not known, as already noted in \cite[\S1.1]{BRS25}; weighted weak-type bounds
 fail for $p>1$ for the power weights $|x|^\eps$, $\eps>0$ \cite[\S1.1]{BRS25}, so some restriction of
 this kind is necessary.

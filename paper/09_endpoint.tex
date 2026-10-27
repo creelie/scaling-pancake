@@ -31,6 +31,25 @@ Here $\ip{f}{g}=\int fg$. This is \cite[(1.2)--(1.4)]{BRS25}. The class $\Sp(p,q
 $\gamma$ \cite{LN19}, and we fix $\gamma=\frac12$. Since $\langle f\rangle_{Q,p}$ increases with $p$,
 $\Sp(p,q)\subset\Sp(\tilde p,\tilde q)$ when $p\le\tilde p$ and $q\le\tilde q$.
 
+Sparse bounds carry information only when $\frac1p+\frac1q>1$.
+
+\begin{lemma}\label{lem:trivialsparse}
+Let $1\le p,q<\infty$ with $\frac1p+\frac1q\le1$. If $f_1\in L^p$ and $f_2\in L^q$ are nonzero and
+have compact support, then $\Lambda^*_{p,q}(f_1,f_2)=\infty$. In particular \eqref{eq:sparse} holds for
+every linear operator $T$ and every $C>0$.
+\end{lemma}
+
+\begin{proof}
+Let $Q_0$ be a cube containing both supports, and $Q_j$ the cube with the same centre and $2^j$
+times the side, so $|Q_j|=2^{nj}|Q_0|$. For each $N$ the family $\{Q_0,\dots,Q_N\}$ is
+$\frac12$-sparse, with $E_{Q_0}=Q_0$ and $E_{Q_j}=Q_j\setminus Q_{j-1}$, since
+$|Q_j\setminus Q_{j-1}|=(1-2^{-n})|Q_j|$; every cube belongs to some dyadic lattice. The term of
+$Q_j$ is $|Q_j|^{1-1/p-1/q}\|f_1\|_p\|f_2\|_q\ge|Q_0|^{1-1/p-1/q}\|f_1\|_p\|f_2\|_q>0$, so
+$\Lambda^{\mathcal S}_{p,q}(f_1,f_2)\ge(N+1)|Q_0|^{1-1/p-1/q}\|f_1\|_p\|f_2\|_q$, which is unbounded
+in $N$. The right side of \eqref{eq:sparse} is therefore infinite unless $f_1=0$ or $f_2=0$, and
+in that case the left side vanishes.
+\end{proof}
+
 \begin{lemma}\label{lem:dilation}
 Let $T$ be a Fourier multiplier operator $m(D)$ with $m\in L^\infty$, and $T_t=m(D/t)$ for $t>0$.
 Then $\|T_t\|_{\Sp(p,q)}=\|T\|_{\Sp(p,q)}$.
@@ -87,7 +106,7 @@ $p_\circ-1\le\frac{n-1}{n+1}$, that is $p_\circ\le\frac{2n}{n+1}$, which holds.
 
 \subsection{Proof of Theorem B}\label{ssec:proofB}
 Figure \ref{fig:sparse} shows the exponents reached for $n=3$.
-Let $1\le p<\frac{2n}{n+1}$ and $q>q_{\rm opt}(p)$. By \eqref{eq:qopt} and \eqref{eq:qstarlimit} there
+Let $1\le p<\frac{2n}{n+1}$ and $q_{\rm opt}(p)<q<p'$. By \eqref{eq:qopt} and \eqref{eq:qstarlimit} there
 is $p_\circ$ with
 \[
 \max\{p,p_{\rm ST}\}<p_\circ<\tfrac{2n}{n+1},\qquad q>q_*(p,p_\circ):
@@ -107,7 +126,8 @@ $\|R^{\lambda(p)}_{a,t}\|_{\Sp(p,q)}=\|R^{\lambda(p)}_a\|_{\Sp(p,q)}$ for every 
 are the trapezoids $P_1P_2P_3P_4$ of \cite[(1.5)]{BRS25} at $\lambda=\frac14,\frac12,\frac34$. As
 $\lambda$ runs over $(0,\frac{n-1}2)$ the critical side $P_1P_2$ sweeps the blue surface, which
 Theorem B covers except for the red edge traced by the corner $P_2$, where $q=q_{\rm opt}(p)$; the
-green surface and the dashed edge are their duals $P_4P_3$ and $P_3$.}
+green surface and the dashed edge are their duals $P_4P_3$ and $P_3$. At $\lambda=\frac14=\frac{n-1}{2n+2}$
+the whole closed trapezoid, corner and top side included, is \cite[Theorem 1.5]{BRS25}.}
 \label{fig:sparse}
 \end{figure}
 
