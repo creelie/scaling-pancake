@@ -1,6 +1,6 @@
 {
   "title": "Source and verification code for the paper Weak-Type Endpoint Bounds for Bochner-Riesz Means in Every Dimension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "upload_type": "software",
   "creators": [
     {
@@ -9,7 +9,7 @@
       "affiliation": "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India"
     }
   ],
-  "description": "<p>LaTeX source, figures, check program and Lean 4 file of the paper <em>Weak-Type Endpoint Bounds for Bochner-Riesz Means in Every Dimension</em> by Deep Bhattacharjee.</p><p>At the critical index lambda(p) = n(1/p - 1/2) - 1/2, the Bochner-Riesz means (1 - |xi|^a/t^a)^lambda_+ in every dimension n >= 2 map L^p to weak L^p for 1 < p < 2n/(n+1), uniformly in t, and converge in weak L^p (Theorem A); they have (p,q) sparse bounds for q > (n-1)p/(n+1-2p), which is sharp except at the corner of the trapezoid of Beltran, Roos and Seeger (Theorem B); and they map L^p(w) to weak L^p(w) for every A_1 weight w in RH_sigma when 1 < p < 1 + (n-1)/(n+1)(1 - 1/sigma) (Theorem C). The new content is n >= 3. The proof reproduces, with credit and complete proofs, OpenAI's preprint 'Local smoothing for the Euclidean wave equation' (25 October 2026), which proves the local smoothing and Bochner-Riesz conjectures, and the epsilon-removal of Beltran, Roos and Seeger, and then applies their sparse domination theorem and the weighted theorem of Frey and Nieraeth.</p><p>The Python program checks the algebraic identities and exponent computations; the Lean file proves the exponent arithmetic and the quaternion identities. No statement of the paper depends on them.</p>",
+  "description": "<p>LaTeX source, figures, check program and Lean 4 file of the paper <em>Weak-Type Endpoint Bounds for Bochner-Riesz Means in Every Dimension</em> by Deep Bhattacharjee.</p><p>At the critical index lambda(p) = n(1/p - 1/2) - 1/2, the Bochner-Riesz means (1 - |xi|^a/t^a)^lambda_+ in every dimension n >= 2 map L^p to weak L^p for 1 &lt; p &lt; 2n/(n+1), uniformly in t, and converge in weak L^p (Theorem A); they have (p,q) sparse bounds for (n-1)p/(n+1-2p) &lt; q &lt; p', which is sharp on the critical side of the trapezoid of Beltran, Roos and Seeger except at its corner (Theorem B); and they map L^p(w) to weak L^p(w) for every A_1 weight w in RH_sigma when 1 &lt; p &lt; 1 + (n-1)/(n+1)(1 - 1/sigma) (Theorem C), a range that by the self-improvement of reverse Hoelder inequalities includes its right end point. For n >= 3 these follow from OpenAI's preprint 'Local smoothing for the Euclidean wave equation' (25 October 2026), which proves the local smoothing and Bochner-Riesz conjectures, through the conditional theorems of Tao and of Beltran, Roos and Seeger. The paper reproduces OpenAI's argument and the epsilon-removal of Beltran, Roos and Seeger in full, with credit, and then applies their sparse domination theorem and the weighted theorem of Frey and Nieraeth.</p><p>The Python program checks the algebraic identities and exponent computations; the Lean file proves the exponent arithmetic and the quaternion identities. No statement of the paper depends on them.</p>",
   "keywords": [
     "Bochner-Riesz means",
     "weak-type endpoint",

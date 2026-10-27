@@ -6,19 +6,20 @@ authors:
   - family-names: Bhattacharjee
     given-names: Deep
     orcid: "https://orcid.org/0000-0003-0466-750X"
-version: 1.0.0
+version: 1.1.0
 date-released: 2026-10-27
 license: MIT
-url: "https://github.com/creelie/scaling-pancake/releases/tag/v1.0.0"
+url: "https://github.com/creelie/scaling-pancake/releases/tag/v1.1.0"
 repository-code: "https://github.com/creelie/scaling-pancake"
 abstract: >-
   LaTeX source, figures, check program and Lean 4 file of the paper
   "Weak-Type Endpoint Bounds for Bochner-Riesz Means in Every Dimension".
   At the critical index the Bochner-Riesz means in every dimension n >= 2 are
   of weak type (p,p) for 1 < p < 2n/(n+1), uniformly in the radius, with
-  convergence in weak L^p; they have sparse bounds that are sharp except at
-  one corner, and weighted weak-type bounds for A_1 weights with a range of p
-  governed by the reverse Hoelder exponent. The proof reproduces, with credit,
+  convergence in weak L^p; they have sparse bounds that are sharp on the
+  critical side except at one corner, and weighted weak-type bounds for A_1
+  weights with a range of p governed by the reverse Hoelder exponent and
+  including its right end point. The proof reproduces, with credit,
   OpenAI's proof of the local smoothing conjecture (25 October 2026) and the
   epsilon-removal of Beltran, Roos and Seeger.
 keywords:
