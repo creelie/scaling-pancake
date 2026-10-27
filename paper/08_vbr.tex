@@ -1,0 +1,954 @@
+\section{Removal of the \texorpdfstring{$\varepsilon$}{epsilon}-loss}\label{sec:vbr}
+
+Theorem \ref{thm:BR} bounds the Bochner--Riesz means of every order $\lambda>\lambda(p)$, with constants
+that grow as $\lambda\downarrow\lambda(p)$. To reach the critical index we need a multi-scale form of
+these bounds without the loss, the inequalities $\VBR(p,r)$ below. That they follow from the
+non-endpoint bounds is Tao's $\varepsilon$-removal \cite{Tao98}; the off-diagonal form, with $r>p$, is
+due to Beltran, Roos and Seeger \cite{BRS23}. This section reproduces their argument for the round
+sphere $\rho(\xi)=|\xi|$, which is the only case needed here. We follow \cite{BRS23} step by step and
+write out the computations it leaves to the reader. The letter $\ell$ indexes the dyadic layers that
+\cite{BRS23} index by $n$, since $n$ is the dimension here.
+
+\subsection{Statement}\label{ssec:vbrstatement}
+A dyadic lattice $\D$ is a family of half-open cubes as in \cite[\S2]{LN19}: the subfamily $\D_j$ of
+cubes of side $2^j$ partitions $\R^n$ for every $j\in\Z$, and the cubes of $\D_{j-1}$ inside a cube of
+$\D_j$ are its $2^n$ halves. Then $\D_0=\{a+z+[0,1)^n:z\in\Z^n\}$ for some $a\in\R^n$, and for $j\ge0$
+every cube of $\D_j$ is a union of cubes of $\D_0$. For $M\ge1$ let $\Y_M$ be the set of $C^M$
+functions $\chi$ on $\R$ with support in a compact subset of $(\frac12,2)$ and
+$\sum_{\nu=0}^M\|\chi^{(\nu)}\|_\infty\le1$. Throughout this section we fix an integer $N\ge3n+1$, put
+$M_0=N+n+1$, and write $\Y=\Y_{M_0}$.
+
+\begin{definition}\label{def:vbr}
+Let $1\le p\le r<\infty$. The statement $\VBR(p,r)$ is: there are $M$ and $C$ such that for every
+dyadic lattice $\D$, all $\chi_j\in\Y_M$ ($j\ge1$) and all families $\{f_Q\}_{Q\in\D}$ of functions
+$f_Q\in L^p(\R^n)$ with $\supp f_Q\subset Q$,
+\begin{equation}\label{eq:vbr}
+\Bigl\|\sum_{j\ge1}2^{j\frac{n+1}2}\chi_j\bigl(2^j(1-|D|)\bigr)\sum_{Q\in\D_j}f_Q\Bigr\|_{L^r(\R^n)}
+\le C\Bigl(\sum_{Q\in\D}|Q|\,\|f_Q\|_{L^p(\R^n)}^r\Bigr)^{1/r}.
+\end{equation}
+\end{definition}
+
+This is \cite[Definition 2.2]{BRS25} and \cite[Definition 1.1]{BRS23} for the unit ball. It suffices to
+prove \eqref{eq:vbr} for families with finitely many nonzero members: for a general family with finite
+right-hand side, the partial sums of the left-hand side over increasing finite subfamilies then form a
+Cauchy sequence in $L^r$, since the difference of two partial sums is itself such a sum, and
+\eqref{eq:vbr} passes to the limit. Applied to a single cube, \eqref{eq:vbr} gives
+$\|\chi(2^j(1-|D|))\|_{L^p\to L^r}\lesssim 2^{j\lambda(r)}$, with $\lambda(r)=n(\frac1r-\frac12)-\frac12$ as in
+\eqref{eq:critical}; summing a decomposition of $(1-|\xi|)^{\lambda}_+$ into such bumps then bounds the
+Riesz means of every order $\lambda>\lambda(r)$, so $\VBR(p,r)$ is a multi-scale strengthening of these
+bounds.
+
+Write $p_{\rm ST}=\frac{2(n+1)}{n+3}$ for the Stein--Tomas exponent. For $p_{\rm ST}<p_\circ<\frac{2n}{n+1}$
+and $p_{\rm ST}\le p\le p_\circ$ define $r_*(p)=r_*(p,p_\circ)$ by
+\begin{equation}\label{eq:rstar}
+\frac1{r_*(p)}=\frac{\frac1{p_\circ}\bigl(\frac1{p_{\rm ST}}-\frac1p\bigr)+\frac12\bigl(\frac1p-\frac1{p_\circ}\bigr)}
+{\frac1{p_{\rm ST}}-\frac1{p_\circ}} .
+\end{equation}
+Thus $1/r_*$ is the affine function of $1/p$ equal to $\frac12$ at $p=p_{\rm ST}$ and to $\frac1{p_\circ}$
+at $p=p_\circ$: the pair $(\frac1p,\frac1{r_*(p)})$ runs along the segment from $(\frac1{p_{\rm ST}},\frac12)$
+to $(\frac1{p_\circ},\frac1{p_\circ})$. Since both endpoints satisfy $\frac1r\le\frac1p$ and $\frac1r\ge\frac12$,
+\begin{equation}\label{eq:rstarrange}
+p\le r_*(p)\le 2\qquad(p_{\rm ST}\le p\le p_\circ).
+\end{equation}
+As $p_\circ\to\frac{2n}{n+1}$ the denominator of \eqref{eq:rstar} tends to
+$\frac{n+3}{2(n+1)}-\frac{n+1}{2n}=\frac{n-1}{2n(n+1)}$ and the numerator to
+$\frac{n+1}{2n}\bigl(\frac{n+3}{2(n+1)}-\frac1p\bigr)+\frac12\bigl(\frac1p-\frac{n+1}{2n}\bigr)=\frac1{2n}\bigl(1-\frac1p\bigr)$,
+so
+\begin{equation}\label{eq:rstarlimit}
+\lim_{p_\circ\to\frac{2n}{n+1}}\frac1{r_*(p,p_\circ)}=\frac{n+1}{n-1}\Bigl(1-\frac1p\Bigr),\qquad
+\lim_{p_\circ\to\frac{2n}{n+1}}r_*(p,p_\circ)=\frac{n-1}{n+1}\,p' .
+\end{equation}
+This is the line $r=\frac{n-1}{n+1}p'$ of the Knapp examples, which bounds the range of $\VBR(p,r)$
+\cite[\S1]{BRS23}.
+
+The multiplier $(1-|\xi|)^\lambda_+$ is not smooth at the origin, which plays no role in the
+problem. We therefore work with a localised form. Fix $\tilde w\in C^\infty_c((\frac18,2))$ with $\tilde w=1$ on
+$[\frac14,\frac32]$ and set
+\begin{equation}\label{eq:Rlambda}
+R^\lambda=\tilde w(|D|)\,(1-|D|)^\lambda_+\qquad(\lambda>-1).
+\end{equation}
+
+\begin{theorem}[{\cite[Theorem 1.2]{BRS23}}]\label{thm:vbr}
+Let $n\ge2$ and $p_{\rm ST}<p_\circ<\frac{2n}{n+1}$, and suppose that $R^\lambda$ is bounded on
+$L^{p_\circ}(\R^n)$ for every $\lambda>\lambda(p_\circ)$. Then $\VBR(p,r)$ holds for
+$p_{\rm ST}\le p<p_\circ$ and $p\le r<r_*(p,p_\circ)$, with $M=M_0$.
+\end{theorem}
+
+In \cite{BRS23} the hypothesis is an $L^{p_\circ}\to L^{r_\circ}$ bound with $r_\circ\ge p_\circ$; we
+need only $r_\circ=p_\circ$, since the limit \eqref{eq:rstarlimit} already reaches the Knapp line.
+
+\begin{lemma}\label{lem:riesz}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $1\le p\le\infty$ and $(1-|D|^2)^\lambda_+$ is bounded on $L^p$, then so is $R^\lambda$. In
+particular, $R^\lambda$ is bounded on $L^p$ for $1\le p<\frac{2n}{n+1}$ and $\lambda>\lambda(p)$.
+\item For $\lambda>-\frac12$, $R^\lambda$ maps $L^{p_{\rm ST}}(\R^n)$ to $L^2(\R^n)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) On the support of $\tilde w(|\xi|)$ we have $(1-|\xi|)^\lambda_+=(1-|\xi|^2)^\lambda_+(1+|\xi|)^{-\lambda}$, so
+$R^\lambda=a(D)\,(1-|D|^2)^\lambda_+$ with $a(\xi)=\tilde w(|\xi|)(1+|\xi|)^{-\lambda}$. The function $a$ is smooth,
+since $\tilde w(|\xi|)$ vanishes near the origin, and has compact support; so its kernel is a Schwartz
+function and $a(D)$ is bounded on every $L^p$. The second statement is Theorem \ref{thm:BR} with $r=1$,
+since $\delta(p)=\lambda(p)$ for $p<\frac{2n}{n+1}$.
+
+(ii) By Plancherel's theorem and polar coordinates,
+\[
+\|R^\lambda f\|_2^2=(2\pi)^{-n}\int_0^1\tilde w(t)^2(1-t)^{2\lambda}t^{n-1}\int_{S^{n-1}}|\hat f(t\omega)|^2\,d\sigma(\omega)\,dt .
+\]
+For $\frac18\le t\le1$, $\hat f(t\,\cdot)$ is the Fourier transform of $t^{-n}f(\cdot/t)$, whose
+$L^{p_{\rm ST}}$ norm is $t^{-n/p_{\rm ST}'}\|f\|_{p_{\rm ST}}\le 8^n\|f\|_{p_{\rm ST}}$. The Stein--Tomas
+restriction theorem \cite[Ch.~IX, \S2.1]{Ste93} bounds the inner integral by $C\|f\|_{p_{\rm ST}}^2$, and
+$\int_0^1(1-t)^{2\lambda}\,dt<\infty$ for $\lambda>-\frac12$.
+\end{proof}
+
+\begin{corollary}\label{cor:vbr}
+Let $n\ge2$. For every $p_\circ\in(p_{\rm ST},\frac{2n}{n+1})$, $\VBR(p,r)$ holds for $p_{\rm ST}\le p<p_\circ$
+and $p\le r<r_*(p,p_\circ)$. Consequently $\VBR(p,r)$ holds whenever $p_{\rm ST}\le p<\frac{2n}{n+1}$ and
+$p\le r<\frac{n-1}{n+1}p'$.
+\end{corollary}
+
+\begin{proof}
+By Lemma \ref{lem:riesz}(i) the hypothesis of Theorem \ref{thm:vbr} holds for every
+$p_\circ<\frac{2n}{n+1}$, which gives the first statement. For the second, given $p<\frac{2n}{n+1}$ and
+$r<\frac{n-1}{n+1}p'$, the limit \eqref{eq:rstarlimit} provides $p_\circ\in(p,\frac{2n}{n+1})$ with
+$r<r_*(p,p_\circ)$.
+\end{proof}
+
+The rest of this section proves Theorem \ref{thm:vbr}; its hypothesis is assumed from now on, and
+implicit constants may depend on $n$, $p_\circ$, $N$ and the exponents at hand, but not on the
+lattice, the cubes, the functions or the bumps $\chi_j$.
+
+\subsection{Single-scale estimates}\label{ssec:singlescale}
+For $j\ge1$ and $\chi\in\Y$ let
+\begin{equation}\label{eq:mj}
+m_j(\xi)=h_j(|\xi|),\qquad h_j(\varrho)=\chi\bigl(2^j(1-\varrho)\bigr),
+\end{equation}
+so that $m_j$ is supported in $1-2^{1-j}<|\xi|<1-2^{-j-1}$. The two coarsest scales need no
+analysis.
+
+\begin{lemma}\label{lem:twoscales}
+Let $j\in\{1,2\}$, $1\le p\le r<\infty$, and $\chi\in\Y_M$ with $M\ge n+1$. Then the kernel $K_j$ of
+$m_j(D)$ satisfies $|K_j(x)|\le C(1+|x|)^{-n-1}$, and
+\[
+\Bigl\|m_j(D)\sum_{Q\in\D_j}f_Q\Bigr\|_r\le C\Bigl(\sum_{Q\in\D_j}\|f_Q\|_p^r\Bigr)^{1/r}
+\qquad(\supp f_Q\subset Q).
+\]
+\end{lemma}
+
+\begin{proof}
+Write $g(t)=\chi(2^j(1-t))$. For $j=2$, $g$ vanishes on $[0,\frac12]$, so $m_2$ is smooth and
+$|\partial^\alpha m_2|\le C$ for $|\alpha|\le M$. For $j=1$, extend $\chi$ by zero; it is then $C^M$
+on $\R$ and vanishes on $[2,\infty)$, so $g^{(i)}(0)=0$ for $i\le M$ and Taylor's formula gives
+$|g^{(i)}(t)|\le2^Mt^{M-i}$ for $0\le t\le1$ and $i\le M$. For $\xi\ne0$ and $1\le|\alpha|\le M$ the
+chain rule gives
+\begin{equation}\label{eq:faa}
+\partial^\alpha\bigl[g(|\xi|)\bigr]=\sum_{i=1}^{|\alpha|}g^{(i)}(|\xi|)\,P_{i,\alpha}(\xi),
+\end{equation}
+where $P_{i,\alpha}$ is a sum of products of $i$ derivatives of $|\xi|$ of total order $|\alpha|$; it is
+smooth on $\xi\ne0$, homogeneous of degree $i-|\alpha|$, and independent of $g$. Hence
+$|\partial^\alpha m_1(\xi)|\le C|\xi|^{M-|\alpha|}\le C$ on $0<|\xi|<1$. So $m_1$ is $C^{M-1}$ on $\R^n$,
+with derivatives of order $M-1$ that are Lipschitz, and its distributional derivatives of order $M$
+are bounded. In both cases $|x^\alpha K_j(x)|\le(2\pi)^{-n}\|\partial^\alpha m_j\|_{L^1}\le C$ for
+$|\alpha|\le M$, which gives the kernel bound since $M\ge n+1$.
+
+For the second assertion,
+\[
+|K_j*f_Q(x)|\le C(1+\dist(x,Q))^{-n-1}\|f_Q\|_1\le C'(1+\dist(x,Q))^{-n-1}\|f_Q\|_p ,
+\]
+because $|Q|\le4^n$. For $x$ in a cube $Q'\in\D_j$ this gives
+$\bigl|\sum_QK_j*f_Q(x)\bigr|\le C\sum_Q(1+|c_Q-c_{Q'}|)^{-n-1}\|f_Q\|_p$, with $c_Q$ the centre of $Q$.
+The right-hand side is the convolution, on the lattice of centres, of $(\|f_Q\|_p)_Q$ with a summable
+sequence, so its $\ell^r$ norm over $Q'$ is at most $C(\sum_Q\|f_Q\|_p^r)^{1/r}$. Integrating over each
+$Q'$, of measure at most $4^n$, gives the claim.
+\end{proof}
+
+From now on $j\ge3$, so that $m_j$ is supported in $\frac34<|\xi|<1$. By \eqref{eq:faa}, for
+$1\le|\alpha|\le M_0$,
+\begin{equation}\label{eq:dmj}
+\partial^\alpha m_j(\xi)=\sum_{k=1}^{|\alpha|}(-2^j)^k\,\chi^{(k)}\bigl(2^j(1-|\xi|)\bigr)\,P_{k,\alpha}(\xi),
+\qquad |\partial^\alpha m_j(\xi)|\le C\,2^{j|\alpha|} ,
+\end{equation}
+since $|P_{k,\alpha}|\le C$ on $\frac34\le|\xi|\le1$.
+
+\subsubsection*{Subordination}
+For $c>0$ and a continuous function $g$ on $\R$ whose support is bounded above, with enough decay at
+$-\infty$, let
+\[
+I^cg(\varrho)=\frac1{\Gamma(c)}\int_\varrho^\infty(s-\varrho)^{c-1}g(s)\,ds .
+\]
+For compactly supported $g$, Fubini's theorem and the Beta integral give $I^aI^cg=I^{a+c}g$; and
+$I^1(-g')=g$ for $g\in C^1_c$, so $I^k((-\tfrac{d}{d\varrho})^kg)=g$ for $g\in C^k_c$.
+
+\begin{lemma}[{\cite[(2.3) and Lemma 2.1]{BRS23}}]\label{lem:subord}
+Let $\lambda>-1$, let $k=\lfloor\lambda\rfloor+2$, so that $b=k-\lambda-1\in(0,1]$, and let $h\in C^k_c(\R)$.
+Put $H=I^b\bigl((-\tfrac{d}{d\varrho})^kh\bigr)$. Then
+\begin{equation}\label{eq:subord}
+h(\varrho)=\frac1{\Gamma(\lambda+1)}\int_\varrho^\infty(s-\varrho)^{\lambda}H(s)\,ds\qquad(\varrho\in\R).
+\end{equation}
+If $h=h_j$ with $j\ge3$ and $\|\chi\|_{C^k}\le1$, then $H(s)=0$ for $s\ge1-2^{-j-1}$,
+\begin{equation}\label{eq:Hbound}
+|H(s)|\le C\,\frac{2^{j(\lambda+1)}}{\bigl(1+2^j(1-s)\bigr)^{\lambda+2}}\quad(s<1),\qquad
+\int_{5/8}^1|H(s)|\,ds\le C\,2^{j\lambda}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The function $(-\frac d{d\varrho})^kh$ has compact support, so
+$I^{\lambda+1}H=I^{\lambda+1}I^b(-\tfrac{d}{d\varrho})^kh=I^k(-\tfrac{d}{d\varrho})^kh=h$, which is
+\eqref{eq:subord}. Now let $h=h_j$, supported in $[1-2^{1-j},1-2^{-j-1}]$, with
+$|h_j^{(k)}|\le2^{jk}$. If $b=1$ then $H=(-1)^{k-1}h_j^{(k-1)}$, which is supported in the same interval
+and bounded by $2^{j(k-1)}=2^{j(\lambda+1)}$; this gives \eqref{eq:Hbound}. Let $0<b<1$. Clearly $H(s)=0$ for
+$s\ge1-2^{-j-1}$. If $1-2^{2-j}\le s<1$, then
+\[
+|H(s)|\le\frac{2^{jk}}{\Gamma(b)}\int_s^1(u-s)^{b-1}\,du\le\frac{2^{jk}(1-s)^b}{\Gamma(b+1)}\le C\,2^{j(k-b)}=C\,2^{j(\lambda+1)} .
+\]
+If $s<1-2^{2-j}$, then $u-s\ge\frac12(1-s)$ on the support of $h_j$, and $h_j$ vanishes near $u=s$, so
+$k$ integrations by parts give
+\[
+|H(s)|=\frac1{\Gamma(b)}\Bigl|\int(b-1)\cdots(b-k)\,(u-s)^{b-1-k}h_j(u)\,du\Bigr|
+\le C\,2^{-j}\Bigl(\frac{1-s}2\Bigr)^{-\lambda-2}=C\,\frac{2^{j(\lambda+1)}}{(2^j(1-s))^{\lambda+2}} ,
+\]
+since $b-1-k=-\lambda-2$. This proves the pointwise bound. Integrating it over $[\frac58,1]$, the part
+$1-s\le2^{2-j}$ contributes $C2^{j(\lambda+1)}2^{2-j}$ and the rest
+$C2^{-j}\int_{2^{2-j}}^{\infty}t^{-\lambda-2}\,dt\le C2^{j\lambda}$, because $\lambda+1>0$.
+\end{proof}
+
+\subsubsection*{Spatial localisation}
+Fix a radial $\phi_0\in C^\infty_c(\R^n)$ with $\phi_0(x)=1$ for $|x|\le\frac12$ and $\phi_0(x)=0$ for
+$|x|\ge1$, and set
+\begin{equation}\label{eq:phijl}
+\phi_{j,0}(x)=\phi_0(2^{-j}x),\qquad \phi_{j,\ell}(x)=\phi_0(2^{-j-\ell}x)-\phi_0(2^{-j-\ell+1}x)\quad(\ell\ge1),
+\end{equation}
+so that $\sum_{\ell\ge0}\phi_{j,\ell}=1$, $\phi_{j,\ell}$ is supported in $|x|<2^{j+\ell}$, and for $\ell\ge1$ it
+vanishes on $|x|\le2^{j+\ell-2}$. Let
+\begin{equation}\label{eq:mjl}
+m_{j,\ell}=(2\pi)^{-n}\,m_j*\widehat{\phi_{j,\ell}} .
+\end{equation}
+Then $m_{j,\ell}(D)$ has kernel $K_j\phi_{j,\ell}$, where $K_j$ is the kernel of $m_j(D)$; so this kernel
+is supported in $|x|<2^{j+\ell}$, $m_j=\sum_\ell m_{j,\ell}$, and $m_{j,\ell}$ is radial. Since
+$\phi_{j,\ell}=\phi_{0,1}(2^{1-j-\ell}\,\cdot)$ for $\ell\ge1$,
+\begin{equation}\label{eq:phihat}
+|\widehat{\phi_{j,\ell}}(\eta)|\le C_K\,2^{(j+\ell)n}(1+2^{j+\ell}|\eta|)^{-K},\qquad
+\int|\eta|^N|\widehat{\phi_{j,\ell}}(\eta)|\,d\eta\le C\,2^{-(j+\ell)N},
+\end{equation}
+for every $K$, and $\int\eta^\beta\widehat{\phi_{j,\ell}}(\eta)\,d\eta=(2\pi)^n(i\partial)^\beta\phi_{j,\ell}(0)=0$
+for every multi-index $\beta$ when $\ell\ge1$. Taylor's formula for $m_j(\xi-\eta)$ about $\xi$, to
+order $N$, therefore gives for $\ell\ge1$
+\begin{equation}\label{eq:taylor}
+m_{j,\ell}(\xi)=(2\pi)^{-n}\sum_{|\alpha|=N}\frac N{\alpha!}\int\!\!\int_0^1(1-s)^{N-1}(-\eta)^\alpha\,
+\partial^\alpha m_j(\xi-s\eta)\,ds\;\widehat{\phi_{j,\ell}}(\eta)\,d\eta .
+\end{equation}
+
+\begin{lemma}[{\cite[(2.13)]{BRS23}}]\label{lem:mjlpoint}
+For $j\ge3$, $\ell\ge0$ and every $N_1$,
+\[
+|m_{j,\ell}(\xi)|\le C_{N_1}\,2^{-\ell N}\bigl(1+2^j\bigl||\xi|-1\bigr|\bigr)^{-N_1}.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $t=||\xi|-1|$. Let $\ell\ge1$. By \eqref{eq:dmj} and \eqref{eq:phihat}, \eqref{eq:taylor} gives
+$|m_{j,\ell}(\xi)|\le C2^{jN}2^{-(j+\ell)N}=C2^{-\ell N}$. If $t\ge2^{2-j}$, the integrand of \eqref{eq:taylor}
+vanishes unless $||\xi-s\eta|-1|<2^{1-j}$, which forces $|\eta|\ge s|\eta|\ge t-2^{1-j}\ge t/2$; by
+\eqref{eq:phihat} with $K=N+n+N_1$,
+\[
+|m_{j,\ell}(\xi)|\le C2^{jN}\int_{|\eta|\ge t/2}|\eta|^N2^{(j+\ell)n}(1+2^{j+\ell}|\eta|)^{-K}\,d\eta
+\le C2^{-\ell N}(1+2^{j+\ell}t)^{-N_1}.
+\]
+For $\ell=0$, $|m_{j,0}(\xi)|\le C\int_{||\xi-\eta|-1|<2^{1-j}}2^{jn}(1+2^j|\eta|)^{-K}d\eta$, which is bounded,
+and is at most $C(1+2^jt)^{-N_1}$ when $t\ge2^{2-j}$ by the same argument.
+\end{proof}
+
+\begin{lemma}[{\cite[Lemma 2.2]{BRS23}}]\label{lem:single}
+Let $1\le p\le r<\infty$ and $-1<\lambda<n-1$, and suppose that $R^\lambda$ maps $L^p$ to $L^r$. Let
+$j\ge3$ and $\ell\ge0$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $\chi\in C^{n+1}$ is supported in $(\frac12,2)$ with $\|\chi\|_{C^{n+1}}\le1$, then
+$\|m_j(D)\|_{L^p\to L^r}\le C2^{j\lambda}$.
+\item If $\chi\in\Y$, then $\|m_{j,\ell}(D)\|_{L^p\to L^r}\le C2^{-\ell N}2^{j\lambda}$.
+\item If $\chi\in\Y$ and $p\le q\le r$, then
+$\|m_{j,\ell}(D)\|_{L^p\to L^q}\le C2^{-\ell(N-n)}2^{j(\lambda+n(\frac1q-\frac1r))}$ and
+$\|m_j(D)\|_{L^p\to L^q}\le C2^{j(\lambda+n(\frac1q-\frac1r))}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Fix a radial $\theta_1\in C^\infty_c$ supported in $\frac58<|\xi|<\frac54$ and equal to one on
+$\frac34\le|\xi|\le1$. By \eqref{eq:subord} with $\varrho=|\xi|$, and since $H_j$ vanishes on $[1,\infty)$,
+\[
+m_j(\xi)=\theta_1(\xi)m_j(\xi)=\frac1{\Gamma(\lambda+1)}\int_0^1s^\lambda H_j(s)\,\theta_1(\xi)\Bigl(1-\frac{|\xi|}s\Bigr)^\lambda_+ds .
+\]
+The integrand vanishes for $s<\frac58$. For $\frac58\le s<1$, on the support of $\theta_1(\xi)(1-|\xi|/s)_+$
+we have $\frac58<|\xi|/s<1$, where $\tilde w(|\xi|/s)=1$; so the multiplier there is $\theta_1(\xi)$ times the
+dilate by $s$ of the symbol of $R^\lambda$, whose $L^p\to L^r$ norm is $s^{n(\frac1p-\frac1r)}\|R^\lambda\|_{L^p\to L^r}$.
+By Minkowski's inequality and \eqref{eq:Hbound} (note $k\le n+1$),
+$\|m_j(D)\|_{L^p\to L^r}\le C\int_{5/8}^1|H_j(s)|\,ds\le C2^{j\lambda}$.
+
+(ii) For $\ell=0$, \eqref{eq:mjl} writes $m_{j,0}$ as an average of the translates $m_j(\cdot-\eta)$
+against the weight $(2\pi)^{-n}|\widehat{\phi_{j,0}}|$, of bounded $L^1$ norm; translating a multiplier
+conjugates it by a modulation, which does not change its norm. For $\ell\ge1$ use \eqref{eq:taylor}
+and \eqref{eq:dmj}. Let $\theta\in C^\infty_c(\{\frac12<|\xi|<\frac32\})$ be equal to one on
+$\frac34\le|\xi|\le1$. Then $\partial^\alpha m_j=\sum_k(-2^j)^k\,(\theta P_{k,\alpha})(\xi)\,\chi^{(k)}(2^j(1-|\xi|))$, where
+$\theta P_{k,\alpha}$ is a fixed smooth compactly supported multiplier, bounded on $L^r$, and
+$\chi^{(k)}\in C^{M_0-k}$ with $M_0-k\ge n+1$. By (i), $\|\partial^\alpha m_j(D-s\eta)\|_{L^p\to L^r}\le C2^{jN}2^{j\lambda}$ for
+$|\alpha|=N$, and \eqref{eq:phihat} gives $\|m_{j,\ell}(D)\|_{L^p\to L^r}\le C2^{jN+j\lambda}2^{-(j+\ell)N}$.
+
+(iii) Let $\mathcal G$ be the grid of cubes of side $2^{j+\ell}$. For a cube $Q\in\mathcal G$ the
+function $m_{j,\ell}(D)[f1_Q]$ is supported in the concentric cube $3Q$, and these cubes overlap at most
+$3^n$ times. By H\"older's inequality on $3Q$ and (ii),
+\begin{align*}
+\|m_{j,\ell}(D)f\|_q&\le C\Bigl(\sum_{Q\in\mathcal G}\bigl(|3Q|^{\frac1q-\frac1r}\|m_{j,\ell}(D)[f1_Q]\|_r\bigr)^q\Bigr)^{1/q}\\
+&\le C2^{(j+\ell)n(\frac1q-\frac1r)}2^{-\ell N}2^{j\lambda}\Bigl(\sum_Q\|f1_Q\|_p^q\Bigr)^{1/q},
+\end{align*}
+and $(\sum_Q\|f1_Q\|_p^q)^{1/q}\le\|f\|_p$ since $q\ge p$. Summing over $\ell$ gives the bound for $m_j$,
+because $N>n$.
+\end{proof}
+
+\begin{corollary}[{\cite[Corollary 2.3]{BRS23}}]\label{cor:single}
+Let $p_{\rm ST}\le p_1<p_\circ$ and $p_1\le r\le r_*(p_1)$. For every $\varepsilon>0$, $j\ge3$, $\ell\ge0$ and
+$\chi\in\Y$,
+\[
+\|m_{j,\ell}(D)\|_{L^{p_1}\to L^r}\le C_\varepsilon2^{-\ell(N-n)}2^{j(\lambda(r)+\varepsilon)},\qquad
+\|m_j(D)\|_{L^{p_1}\to L^r}\le C_\varepsilon2^{j(\lambda(r)+\varepsilon)} ,
+\]
+and $R^\lambda$ maps $L^{p_1}$ to $L^r$ for every $\lambda>\lambda(r)$.
+\end{corollary}
+
+\begin{proof}
+By Lemma \ref{lem:single}(ii), the hypothesis of Theorem \ref{thm:vbr} with $\lambda=\lambda(p_\circ)+\varepsilon$
+(which is less than $n-1$), and Lemma \ref{lem:riesz}(ii) with $\lambda=-\frac12+\varepsilon$,
+\[
+\|m_{j,\ell}(D)\|_{L^{p_\circ}\to L^{p_\circ}}\le C_\varepsilon2^{-\ell N}2^{j(\lambda(p_\circ)+\varepsilon)},\qquad
+\|m_{j,\ell}(D)\|_{L^{p_{\rm ST}}\to L^2}\le C_\varepsilon2^{-\ell N}2^{j(\lambda(2)+\varepsilon)},
+\]
+where $\lambda(2)=-\frac12$. Write $\frac1{p_1}=\frac\vartheta{p_\circ}+\frac{1-\vartheta}{p_{\rm ST}}$ with
+$\vartheta\in(0,1]$; then $\frac1{r_*(p_1)}=\frac\vartheta{p_\circ}+\frac{1-\vartheta}2$ by \eqref{eq:rstar}, and since
+$\lambda(r)$ is an affine function of $\frac1r$, $\vartheta\lambda(p_\circ)+(1-\vartheta)\lambda(2)=\lambda(r_*(p_1))$. The
+Riesz--Thorin theorem gives the first bound for $r=r_*(p_1)$, with $2^{-\ell N}$. For
+$p_1\le r<r_*(p_1)$ apply the H\"older argument of Lemma \ref{lem:single}(iii) to this bound, noting that
+$\lambda(r_*(p_1))+n(\frac1r-\frac1{r_*(p_1)})=\lambda(r)$; summing in $\ell$ bounds $m_j(D)$.
+
+For the last statement choose $\chi_0\in C^\infty_c((\frac12,2))$ with $\sum_{j\in\Z}\chi_0(2^js)=1$ for $s>0$.
+For $j\ge3$, $(1-\varrho)^\lambda\chi_0(2^j(1-\varrho))=2^{-j\lambda}\tilde\chi(2^j(1-\varrho))$ with
+$\tilde\chi(s)=s^\lambda\chi_0(s)$, a fixed multiple of an element of $\Y$, and these terms live in
+$\frac34<\varrho<1$, where $\tilde w=1$. By the first part their multiplier norms are at most
+$C2^{-j(\lambda-\lambda(r)-\varepsilon)}$, which is summable for $\varepsilon<\lambda-\lambda(r)$. The remaining part of the
+symbol of $R^\lambda$, $\tilde w(|\xi|)(1-|\xi|)^\lambda_+\bigl(1-\sum_{j\ge3}\chi_0(2^j(1-|\xi|))\bigr)$, is smooth
+and supported in $\frac18<|\xi|<\frac78$, so its kernel is a Schwartz function and it maps $L^{p_1}$ to
+$L^r$ by Young's inequality.
+\end{proof}
+
+\begin{lemma}[{\cite[Lemma 2.5]{BRS23}}]\label{lem:kappa}
+For $j\ge3$ and $\ell\ge0$ let $\kappa_{j,\ell}=\F^{-1}\bigl[|m_{j,\ell}|^2\bigr]$. Then
+\[
+\sup_{x\in\R^n}(1+|x|)^{\frac{n-1}2}|\kappa_{j,\ell}(x)|\le C\,2^{-2\ell N}2^{-j}.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $m_{j,\ell}$ is radial, $|m_{j,\ell}(\xi)|^2=G(|\xi|)$, and in polar coordinates
+\[
+\kappa_{j,\ell}(x)=(2\pi)^{-n}\int_0^\infty G(t)\,t^{n-1}\,\hat\sigma(tx)\,dt,\qquad
+\hat\sigma(y)=\int_{S^{n-1}}e^{i\ip y\omega}\,d\sigma(\omega).
+\]
+The Fourier transform of the surface measure satisfies $|\hat\sigma(y)|\le C(1+|y|)^{-\frac{n-1}2}$
+\cite[Ch.~VIII, \S3.1]{Ste93}; it is a constant multiple of $|y|^{-\frac{n-2}2}J_{\frac{n-2}2}(|y|)$. Hence
+\[
+|\kappa_{j,\ell}(x)|\le C\min\Bigl\{\int_0^\infty|G(t)|t^{n-1}\,dt,\;|x|^{-\frac{n-1}2}\int_0^\infty|G(t)|t^{\frac{n-1}2}\,dt\Bigr\}.
+\]
+By Lemma \ref{lem:mjlpoint} with $N_1=n$, $|G(t)|\le C2^{-2\ell N}(1+2^j|t-1|)^{-2n}$, and both integrals are
+at most $C2^{-2\ell N}2^{-j}$.
+\end{proof}
+
+Lemma \ref{lem:kappa} replaces the stationary phase argument of \cite{BRS23}, which is needed there for
+general convex domains; for the sphere the radial symmetry reduces it to the decay of $\hat\sigma$.
+
+\subsection{Square functions over separated cubes}\label{ssec:separated}
+The gain over the trivial $L^2$ bound comes from cubes that are far apart, as in Tao's work
+\cite{Tao98}. Fix $\psi\in C^\infty_c(\R^n)$ with $\psi\ge0$, $\psi\ne0$ and support in
+$|\xi|\le\frac1{4\sqrt n}$, let $\check\psi=\F^{-1}\psi$, and put
+\[
+\eta=\frac{|\check\psi|^2}{c_0},\qquad c_0=\bigl(\cos(\tfrac12)\,\check\psi(0)\bigr)^2 .
+\]
+Then $\eta\ge0$ is a Schwartz function, $\hat\eta=c_0^{-1}(2\pi)^{-n}\psi*\psi(-\,\cdot)$ is supported in
+$|\xi|\le\frac1{2\sqrt n}$, and $\eta(x)\ge1$ for $|x|_\infty\le2$: for such $x$ and $\xi\in\supp\psi$ we have
+$|\ip x\xi|\le2\sqrt n\cdot\frac1{4\sqrt n}=\frac12$, so
+$\Re\check\psi(x)=(2\pi)^{-n}\int\psi(\xi)\cos\ip x\xi\,d\xi\ge\cos(\frac12)\check\psi(0)>0$. For a cube $B$ of
+side $R\ge1$ and centre $x_B$ let
+\begin{equation}\label{eq:etaB}
+\eta_B(x)=\eta\Bigl(\frac{x-x_B}R\Bigr),\qquad \widehat{\eta_B}(\xi)=R^ne^{-i\ip{x_B}\xi}\hat\eta(R\xi),
+\end{equation}
+so that $\widehat{\eta_B}$ is supported in $|\xi|\le\frac1{2R}$, $\eta_B\ge1$ on the concentric cube of side
+$4R$, and $\|\eta_B\|_1=R^n\|\eta\|_1$.
+
+\begin{definition}\label{def:separated}
+Let $R\ge1$ and $S\ge3R$. A family $\cB$ of cubes of side $R$ is \emph{$S$-separated} if
+$|x_B-x_{B'}|\ge S$ for all $B\ne B'$ in $\cB$.
+\end{definition}
+
+With $\phi_0$ as in \eqref{eq:phijl} let
+\begin{equation}\label{eq:etaBl}
+\eta_{B,0}(x)=\phi_0\Bigl(\frac{x-x_B}R\Bigr)\eta_B(x),\qquad
+\eta_{B,\ell}(x)=\Bigl[\phi_0\Bigl(\frac{x-x_B}{2^\ell R}\Bigr)-\phi_0\Bigl(\frac{x-x_B}{2^{\ell-1}R}\Bigr)\Bigr]\eta_B(x)
+\quad(\ell\ge1).
+\end{equation}
+Then $\eta_B=\sum_{\ell\ge0}\eta_{B,\ell}$, $\eta_{B,\ell}$ is supported in the ball $|x-x_B|\le2^\ell R$, and
+since $\eta_{B,\ell}$ vanishes on $|x-x_B|\le2^{\ell-2}R$ for $\ell\ge1$ and $\eta$ is a Schwartz function,
+\begin{equation}\label{eq:etaBlsup}
+\|\eta_{B,\ell}\|_\infty\le C_K2^{-\ell K}\qquad\text{for every }K .
+\end{equation}
+
+We need one elementary bound on the measure of thin shells. Here and below $B(c,\rho)$ is the ball
+of centre $c$ and radius $\rho$.
+
+\begin{lemma}\label{lem:shellmeasure}
+Let $K\ge n+1$ and $j\ge0$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item For $c\in\R^n$ and $\rho>0$,
+$\displaystyle\int_{B(c,\rho)}\bigl(1+2^j\bigl||w|-1\bigr|\bigr)^{-K}dw\le C\,2^{-j}\min\{\rho,1\}^{n-1}$.
+\item For $0<\rho\le1$ and $\xi\in\R^n$,
+$\displaystyle\int\rho^{-n}\Bigl(1+\frac{|v|}\rho\Bigr)^{-K}\bigl(1+2^j\bigl||\xi-v|-1\bigr|\bigr)^{-K}dv
+\le C\min\{1,2^{-j}\rho^{-1}\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) In polar coordinates the integral over all of $\R^n$ is
+$|S^{n-1}|\int_0^\infty(1+2^j|s-1|)^{-K}s^{n-1}ds\le C2^{-j}$, which settles $\rho\ge1$. Let $\rho<1$ and
+$V(t)=|\{w\in B(c,\rho):||w|-1|\le t\}|$. If $t\ge\frac12$ then $V(t)\le C\rho^n\le2Ct\rho^{n-1}$. If
+$t<\frac12$, then $V(t)=\int_{1-t}^{1+t}\sigma_s(B(c,\rho))\,ds$, where $\sigma_s$ is the surface measure of
+the sphere of radius $s\in[\frac12,\frac32]$; a ball of radius $\rho$ meets such a sphere in a set of
+diameter at most $2\rho$, of measure at most $C\rho^{n-1}$, so $V(t)\le Ct\rho^{n-1}$. Splitting the
+integral according to $||w|-1|\le2^{-j}$ and $2^{i-1-j}<||w|-1|\le2^{i-j}$, $i\ge1$, it is at most
+$\sum_{i\ge0}2^{-(i-1)K}V(2^{i-j})\le C\rho^{n-1}2^{-j}\sum_i2^{i-(i-1)K}$.
+
+(ii) The integral is at most $\int\rho^{-n}(1+|v|/\rho)^{-K}dv=C$. Apply (i), with centre $\xi$ and $w=\xi-v$,
+on $|v|\le\rho$ and on the shells $2^{i-1}\rho<|v|\le2^i\rho$, $i\ge1$: the contribution of the $i$-th
+piece is at most $C\rho^{-n}2^{-(i-1)K}2^{-j}(2^i\rho)^{n-1}$, and the sum over $i$ is
+$C2^{-j}\rho^{-1}$.
+\end{proof}
+
+\begin{lemma}[{\cite[Lemma 3.3]{BRS23}}]\label{lem:TT}
+Let $j\ge3$, $\ell_1,\ell_2\ge0$, $R\ge1$, $S\ge3R$, and let $\cB$ be a finite $S$-separated family of cubes
+of side $R$. For every $N_2>0$,
+\[
+\Bigl\|m_{j,\ell_1}(D)\sum_{B\in\cB}\eta_{B,\ell_2}f_B\Bigr\|_2\le C\,2^{-\ell_1N}2^{-\ell_2N_2}(2^{-j}R)^{1/2}
+\Bigl(1+S^{-\frac{n-1}2}R^{n-1}\#\cB\Bigr)^{1/2}\Bigl(\sum_{B\in\cB}\|f_B\|_2^2\Bigr)^{1/2}
+\]
+for all $f_B\in L^2(\R^n)$, where $C$ depends on $N_2$.
+\end{lemma}
+
+\begin{proof}
+Let $m=m_{j,\ell_1}$ and $\kappa=\kappa_{j,\ell_1}=\F^{-1}[|m|^2]$. First assume the stronger separation
+\begin{equation}\label{eq:strongsep}
+|x_B-x_{B'}|\ge S+2^{\ell_2+1}R\qquad(B\ne B'\text{ in }\cB).
+\end{equation}
+Since $\eta_{B,\ell_2}$ is real, the square of the left-hand side is
+$\sum_{B,B'}\ip{T_{B,B'}f_B}{f_{B'}}$, where $T_{B,B'}f=\eta_{B',\ell_2}\,|m|^2(D)[\eta_{B,\ell_2}f]$ has kernel
+$\eta_{B',\ell_2}(x)\kappa(x-y)\eta_{B,\ell_2}(y)$.
+
+\emph{Diagonal terms.} If $x,y\in\supp\eta_{B,\ell_2}$, then $|x-y|\le2^{\ell_2+1}R$, so
+$\phi_0((x-y)/(2^{\ell_2+2}R))=1$ and the kernel of $T_{B,B}$ is
+$\eta_{B,\ell_2}(x)\,\F^{-1}[a](x-y)\,\eta_{B,\ell_2}(y)$ with
+\[
+a(\xi)=(2\pi)^{-n}\int|m(\xi-v)|^2(2^{\ell_2+2}R)^n\hat\phi_0(2^{\ell_2+2}Rv)\,dv .
+\]
+Thus $\|T_{B,B}\|_{L^2\to L^2}\le\|\eta_{B,\ell_2}\|_\infty^2\|a\|_\infty$. By Lemma \ref{lem:mjlpoint} with
+$N_1=n+1$, $|m(\xi-v)|^2\le C2^{-2\ell_1N}(1+2^j||\xi-v|-1|)^{-n-1}$, and $|\hat\phi_0(u)|\le C(1+|u|)^{-n-1}$; so
+Lemma \ref{lem:shellmeasure}(ii) with $\rho=(2^{\ell_2+2}R)^{-1}$ gives
+$\|a\|_\infty\le C2^{-2\ell_1N}\min\{1,2^{\ell_2+2-j}R\}$. With \eqref{eq:etaBlsup},
+\[
+\sum_{B}|\ip{T_{B,B}f_B}{f_B}|\le C_K2^{-2\ell_1N}2^{-\ell_2(2K-1)}2^{-j}R\sum_B\|f_B\|_2^2 .
+\]
+
+\emph{Off-diagonal terms.} If $B\ne B'$, $x\in\supp\eta_{B',\ell_2}$ and $y\in\supp\eta_{B,\ell_2}$, then
+$|x-y|\ge|x_B-x_{B'}|-2^{\ell_2+1}R\ge S$ by \eqref{eq:strongsep}, so Lemma \ref{lem:kappa} and
+\eqref{eq:etaBlsup} bound the kernel of $T_{B,B'}$ by
+$C_K2^{-2\ell_1N}2^{-j}S^{-\frac{n-1}2}2^{-2\ell_2K}$ times the indicator of a product of two balls of radius
+$2^{\ell_2}R$. By Schur's test
+$\|T_{B,B'}\|\le C_K2^{-2\ell_1N}2^{-j}S^{-\frac{n-1}2}2^{-\ell_2(2K-n)}R^n$, and by the Cauchy--Schwarz
+inequality
+\begin{align*}
+\sum_{B\ne B'}|\ip{T_{B,B'}f_B}{f_{B'}}|&\le\max_{B\ne B'}\|T_{B,B'}\|\Bigl(\sum_B\|f_B\|_2\Bigr)^2\\
+&\le C_K2^{-2\ell_1N}2^{-\ell_2(2K-n)}2^{-j}R\,S^{-\frac{n-1}2}R^{n-1}\#\cB\sum_B\|f_B\|_2^2 .
+\end{align*}
+Adding the two bounds proves the lemma under \eqref{eq:strongsep}, with $2^{-\ell_2(2K-n)}$ in place of
+$2^{-2\ell_2N_2}$.
+
+\emph{Colouring.} In general, let $T'=S+2^{\ell_2+1}R$ and partition $\R^n$ into the half-open cubes of a grid
+of side $a=S/\sqrt n$. Two points of one such cube are at distance less than $S$, so each cube contains at
+most one centre $x_B$. Colour the cubes of the grid by their integer coordinates modulo
+$k_0=\lceil T'/a\rceil+1$. Points of two different cubes of the same colour are at distance more than
+$(k_0-1)a\ge T'$, so each colour class of $\cB$ satisfies \eqref{eq:strongsep}; and since $R\le S/3$, the number
+of colours is $k_0^n\le(\sqrt n(1+2^{\ell_2})+2)^n\le C2^{\ell_2n}$. Applying the bound already proved to each
+class, with $\#\cB$ in place of the size of the class, and using the Cauchy--Schwarz inequality over the
+classes, we lose a factor $C2^{\ell_2n/2}$. Choosing $K$ with $2K-n\ge2N_2+n$ proves the lemma.
+\end{proof}
+
+\begin{proposition}[{\cite[Proposition 3.2]{BRS23}}]\label{prop:sep}
+Let $j\ge3$ and $1\le R\le2^j$. For each $Q\in\D_j$ let $S_Q\ge3R$ and let $\cB_Q$ be a finite $S_Q$-separated
+family of cubes of side $R$ meeting $Q$. Put $\Lambda=\sup_Q(1+S_Q^{-\frac{n-1}2}R^{n-1}\#\cB_Q)^{1/2}$. Then
+\begin{align}
+\Bigl\|m_j(D)\sum_{Q\in\D_j}\sum_{B\in\cB_Q}\eta_Bf_{Q,B}\Bigr\|_2
+&\le C(2^{-j}R)^{1/2}\Lambda\Bigl(\sum_Q\sum_B\|f_{Q,B}\|_2^2\Bigr)^{1/2},\label{eq:sepL2}\\
+\Bigl\|m_j(D)\sum_{Q\in\D_j}\sum_{B\in\cB_Q}\eta_Bf_{Q,B}\Bigr\|_1
+&\le C2^{j\frac{n-1}2}R^{1/2}\Lambda\sum_Q\Bigl(\sum_B\|f_{Q,B}\|_2^2\Bigr)^{1/2}\label{eq:sepL1}
+\end{align}
+for all families of functions $f_{Q,B}\in L^2(\R^n)$ with finitely many nonzero members.
+\end{proposition}
+
+\begin{proof}
+Write the operator as $\sum_{\ell_1,\ell_2\ge0}m_{j,\ell_1}(D)\sum_Q\sum_B\eta_{B,\ell_2}f_{Q,B}$ and fix
+$\ell_1,\ell_2$. Let $g_Q=m_{j,\ell_1}(D)\sum_{B\in\cB_Q}\eta_{B,\ell_2}f_{Q,B}$. Every $B\in\cB_Q$ meets $Q$ and has
+side $R\le2^j$, so its centre lies within $\frac{\sqrt n}2R\le\sqrt n2^{j+\ell_1}$ of $Q$; the kernel of
+$m_{j,\ell_1}(D)$ is supported in $|x|<2^{j+\ell_1}$. Hence $g_Q$ is supported in the set of points at
+distance at most $U_0=2^{\ell_2}R+(1+\sqrt n)2^{j+\ell_1}$ from $Q$, and $U_0\le3\sqrt nU$ with
+$U=\max\{2^{j+\ell_1},2^{\ell_2}R\}$.
+
+The cubes of $\D_j$ are $Q_k=a_j+2^j(k+[0,1)^n)$, $k\in\Z^n$, for some $a_j\in\R^n$. Colour $Q_k$ by $k$
+modulo $k_0=\lceil 2U_02^{-j}\rceil+2$. Two different cubes of the same colour are at distance at least
+$(k_0-1)2^j>2U_0$, so within a colour class the $g_Q$ have disjoint supports and
+$\|\sum_Qg_Q\|_2^2=\sum_Q\|g_Q\|_2^2$. Lemma \ref{lem:TT} bounds each $\|g_Q\|_2$. The number of classes is
+$k_0^n\le C(2^{-j}U)^n\le C2^{(\ell_1+\ell_2)n}$, because $R\le2^j$; the Cauchy--Schwarz inequality over the
+classes gives
+\begin{equation}\label{eq:sepfixed}
+\Bigl\|\sum_Qg_Q\Bigr\|_2\le C2^{-\ell_1(N-\frac n2)}2^{-\ell_2(N_2-\frac n2)}(2^{-j}R)^{1/2}\Lambda
+\Bigl(\sum_Q\sum_B\|f_{Q,B}\|_2^2\Bigr)^{1/2} .
+\end{equation}
+With $N_2=2n+1$ the sum over $\ell_1,\ell_2$ converges, since $N\ge3n+1$; this proves \eqref{eq:sepL2}.
+
+For \eqref{eq:sepL1}, partition $\R^n$ into the cubes $\square$ of a grid of side $s_0=\sqrt n2^j+2U_0\le CU$.
+The set of points within $U_0$ of a cube $Q\in\D_j$ has diameter at most $s_0$ and therefore meets at
+most $2^n$ cubes $\square$. Let $\cQ(\square)$ be the set of $Q$ for which it meets $\square$. By the
+Cauchy--Schwarz inequality on $\square$ and \eqref{eq:sepfixed} applied to the subfamily $\cQ(\square)$,
+\begin{align*}
+\Bigl\|\sum_Qg_Q\Bigr\|_1&\le\sum_\square|\square|^{\frac12}\Bigl\|\sum_{Q\in\cQ(\square)}g_Q\Bigr\|_2\\
+&\le C U^{\frac n2}2^{-\ell_1(N-\frac n2)}2^{-\ell_2(N_2-\frac n2)}(2^{-j}R)^{\frac12}\Lambda
+\sum_\square\sum_{Q\in\cQ(\square)}\Bigl(\sum_B\|f_{Q,B}\|_2^2\Bigr)^{\frac12} .
+\end{align*}
+Each $Q$ occurs for at most $2^n$ cubes $\square$, and $U^{n/2}\le2^{jn/2}2^{(\ell_1+\ell_2)n/2}$. Since
+$2^{jn/2}(2^{-j}R)^{1/2}=2^{j\frac{n-1}2}R^{1/2}$, summing over $\ell_1,\ell_2$ proves \eqref{eq:sepL1}.
+\end{proof}
+
+\subsection{Discretisation}\label{ssec:disc}
+For $z\in\Z^n$ let $q_z$ be the cube of $\D_0$ containing $z$, and $2q_z$ the concentric cube of side two.
+A cube $Q\in\D_j$ with $j\ge0$ is a union of cubes of $\D_0$, and $q_z\subset Q$ exactly when $z\in Q$. In
+this subsection the bumps $\chi_j\in\Y$ ($j\ge3$) are fixed, and $m_j$ is defined by \eqref{eq:mj} with
+$\chi=\chi_j$.
+
+\begin{theorem}[{\cite[Theorem 4.1]{BRS23}}]\label{thm:disc}
+Let $p_{\rm ST}\le p<p_\circ$ and $p\le r<r_*(p)$. Then
+\begin{equation}\label{eq:disc}
+\Bigl\|\sum_{j\ge3}2^{j\frac{n+1}2}m_j(D)\sum_{Q\in\D_j}\sum_{z\in Q\cap\Z^n}\gamma(Q,z)F_{Q,z}\Bigr\|_r
+\le C\Bigl(\sum_{Q\in\D}|Q|\Bigl(\sum_z|\gamma(Q,z)|^p\Bigr)^{r/p}\Bigr)^{1/r}
+\end{equation}
+for all finitely supported $\gamma:\D\times\Z^n\to\C$ and all measurable $F_{Q,z}$ with
+$\supp F_{Q,z}\subset2q_z$ and $|F_{Q,z}|\le1$.
+\end{theorem}
+
+In \cite[(4.1)]{BRS23} the support condition reads $\supp F_{Q,z}\subset2q_z\cap Q$; the functions built in
+the proof below are supported in $2q_z$ but not always in $Q$, and the argument uses only
+$\supp F_{Q,z}\subset2q_z$.
+
+\begin{proof}[Proof of Theorem \ref{thm:vbr}, assuming Theorem \ref{thm:disc}]
+By the remark after Definition \ref{def:vbr} we may assume that only finitely many $f_Q$ are nonzero.
+The terms with $j=1,2$ are bounded by Lemma \ref{lem:twoscales}, since $|Q|\ge1$. For $j\ge3$ let $u$ be a
+Schwartz function with $\hat u$ compactly supported and $\hat u(\xi)=1$ for $|\xi|\le2$, so that
+$m_j=m_j\hat u$. Choose a real even $\varphi\in C^\infty_c(\R^n)$ with $\int\varphi=1$, and $\epsilon>0$ so
+small that $|\hat\varphi(\epsilon\xi)-1|\le\frac12$ on $\supp\hat u$ and $\supp\varphi(\cdot/\epsilon)\subset\{|x|<\frac12\}$;
+then $\Phi=\epsilon^{-n}\varphi(\cdot/\epsilon)$ is supported in $|x|<\frac12$ and $\hat\Phi\ge\frac12$ on $\supp\hat u$.
+The function $v=\F^{-1}[\hat u/\hat\Phi]$ is a Schwartz function and $m_j(D)g=v*m_j(D)[\Phi*g]$, so it
+suffices to bound the left-hand side of \eqref{eq:vbr}, restricted to $j\ge3$, with $f_Q$ replaced by
+$\Phi*f_Q$.
+
+For $Q\in\D_j$ and $z\in Q\cap\Z^n$ let $\gamma(Q,z)=\|f_Q1_{q_z}\|_p$, and let
+$F_{Q,z}=\Phi*[f_Q1_{q_z}]/(\|\Phi\|_{p'}\gamma(Q,z))$ if $\gamma(Q,z)\ne0$ and $F_{Q,z}=0$ otherwise. Then
+$\supp F_{Q,z}\subset q_z+B(0,\frac12)\subset2q_z$, $|F_{Q,z}|\le1$ by H\"older's inequality, and
+\[
+\Phi*f_Q=\sum_{z\in Q\cap\Z^n}\Phi*[f_Q1_{q_z}]=\|\Phi\|_{p'}\sum_{z\in Q\cap\Z^n}\gamma(Q,z)F_{Q,z},\qquad
+\sum_z\gamma(Q,z)^p=\|f_Q\|_p^p .
+\]
+Theorem \ref{thm:disc} now gives \eqref{eq:vbr}.
+\end{proof}
+
+Theorem \ref{thm:disc} is reduced to characteristic functions of finite sets.
+
+\begin{proposition}[{\cite[Proposition 4.2]{BRS23}}]\label{prop:disc}
+Let $p_{\rm ST}\le p_1<p_\circ$, $1\le r<r_*(p_1)$, $0<\delta\le1$ and $M\ge2$. Then
+\begin{equation}\label{eq:propdisc}
+\Bigl\|\sum_{j\ge3}\sum_{\substack{Q\in\D_j\\ \#E_Q\le M}}\sum_{z\in E_Q}2^{j\frac{n+1}2}\beta_Q\,m_j(D)F_{Q,z}\Bigr\|_r
+\le C_\delta M^\delta\Bigl(\sum_{Q\in\D}|Q|\,|\beta_Q|^r(\#E_Q)^{r/p_1}\Bigr)^{1/r}
+\end{equation}
+for all finite sets $E_Q\subset Q\cap\Z^n$, empty for all but finitely many $Q$, all $\beta_Q\in\C$ and all
+$F_{Q,z}$ as in Theorem \ref{thm:disc}.
+\end{proposition}
+
+In \cite{BRS23} the exponent $r$ is tied to an exponent $p<p_1$; only $r<r_*(p_1)$ is used, and the
+statement above records this.
+
+\begin{proof}[Proof of Theorem \ref{thm:disc}, assuming Proposition \ref{prop:disc}]
+The exponent $r_*(p)$ decreases continuously in $p$, since $\frac1{r_*}$ is an increasing affine function of
+$-\frac1p$. Choose $p_1\in(p,p_\circ)$ with $r<r_*(p_1)$ and let $\delta=\frac12(\frac1p-\frac1{p_1})$. Write
+$\gamma_Q=\gamma(Q,\cdot)$; we may assume $\gamma_Q\ne0$ for the finitely many $Q$ concerned. For $k\ge0$ let
+\[
+E^k_Q=\bigl\{z\in Q\cap\Z^n:2^{-(k+1)/p}\|\gamma_Q\|_{\ell^p}<|\gamma(Q,z)|\le2^{-k/p}\|\gamma_Q\|_{\ell^p}\bigr\},
+\qquad\beta^k_Q=2^{-k/p}\|\gamma_Q\|_{\ell^p} .
+\]
+These sets partition the support of $\gamma_Q$, and $\#E^k_Q\le2^{k+1}$ by Chebyshev's inequality. The
+functions $F^k_{Q,z}=\gamma(Q,z)F_{Q,z}/\beta^k_Q$, $z\in E^k_Q$, satisfy the hypotheses of Theorem
+\ref{thm:disc}. Proposition \ref{prop:disc} with $M=2^{k+1}$ and the triangle inequality bound the
+left-hand side of \eqref{eq:disc} by
+\[
+C_\delta\sum_{k\ge0}2^{(k+1)\delta}\Bigl(\sum_Q|Q|\,2^{-kr/p}\|\gamma_Q\|_{\ell^p}^r2^{(k+1)r/p_1}\Bigr)^{1/r}
+\le C\sum_{k\ge0}2^{-k\delta}\Bigl(\sum_Q|Q|\,\|\gamma_Q\|_{\ell^p}^r\Bigr)^{1/r},
+\]
+because $\delta-\frac1p+\frac1{p_1}=-\delta$.
+\end{proof}
+
+\subsection{A stopping time}\label{ssec:stopping}
+The following is a discrete form of Tao's stopping time argument \cite[Lemma 4.3]{Tao98}. For $L\ge0$ the
+cubes of $\D_L$ are $a_L+2^L(k+[0,1)^n)$, $k\in\Z^n$, for some $a_L\in\R^n$: a dyadic lattice is a nested
+family, and two cubes of $\D_L$ lie in the standard subdivision of a common ancestor. For
+$\nu\in\{0,1\}^n$ let $\D_{L,\nu}$ consist of the cubes with $k\equiv\nu$ modulo $2$. Two different cubes of
+$\D_{L,\nu}$ differ by at least $2$ in some coordinate of $k$, so their distance is at least $2^L$. For
+$z\in\Z^n$ let $B(z,L)$ denote the cube of $\D_L$ containing $z$.
+
+\begin{lemma}[{\cite[Lemma 5.1]{BRS23}}]\label{lem:stopping}
+Let $E\subset\Z^n$ be finite and nonempty, $V\ge1$ an integer, and $0=L_0<L_1<\dots<L_V$ integers. For
+$0\le k\le V-1$ there are index sets $\mathcal A_k$ with $\#\mathcal A_k\le2^n(\#E)^{1/V}$ and families
+$\cB_{k,\alpha}$, $\alpha\in\mathcal A_k$, of cubes of $\D_{L_k}$, such that two different cubes of $\cB_{k,\alpha}$ are at
+distance at least $2^{L_{k+1}}$, and nonempty sets $E_{k,B}\subset E\cap B$ ($B\in\cB_{k,\alpha}$) with
+\[
+E=\bigsqcup_{k=0}^{V-1}\ \bigsqcup_{\alpha\in\mathcal A_k}\ \bigsqcup_{B\in\cB_{k,\alpha}}E_{k,B}
+\qquad\text{(a disjoint union).}
+\]
+\end{lemma}
+
+\begin{proof}
+For $z\in E$ let $\kappa(z)$ be the least integer $\kappa\in[1,V]$ with
+$\#(E\cap B(z,L_\kappa))\le(\#E)^{\kappa/V}$; it exists because $\kappa=V$ qualifies. Let
+$E_k=\{z\in E:\kappa(z)=k+1\}$, so that $E=\bigsqcup_{k<V}E_k$. For $z\in E_k$,
+\begin{equation}\label{eq:stopping}
+\#(E\cap B(z,L_k))\ge(\#E)^{k/V},\qquad\#(E\cap B(z,L_{k+1}))\le(\#E)^{(k+1)/V}:
+\end{equation}
+the second is the definition of $\kappa$; the first follows from the minimality of $\kappa(z)$ if $k\ge1$, and
+from $z\in E\cap B(z,0)$ if $k=0$.
+
+Let $\D_{L_k}(E_k)$ be the set of cubes of $\D_{L_k}$ that contain a point of $E_k$, and for $\nu\in\{0,1\}^n$
+let $\D_{L_{k+1},\nu}(E_k)$ be the set of cubes of $\D_{L_{k+1},\nu}$ that contain a point of $E_k$. A cube
+$B'\in\D_{L_{k+1},\nu}(E_k)$ is $B(z,L_{k+1})$ for some $z\in E_k$; enumerate the cubes of $\D_{L_k}(E_k)$
+inside it as $B_1(B'),\dots,B_{n(B')}(B')$. Each contains at least $(\#E)^{k/V}$ points of $E$ by
+\eqref{eq:stopping}, they are disjoint, and $B'$ contains at most $(\#E)^{(k+1)/V}$ points of $E$; so
+$n(B')\le(\#E)^{1/V}$. For $1\le i\le(\#E)^{1/V}$ let
+$\cB_{k,(\nu,i)}=\{B_i(B'):B'\in\D_{L_{k+1},\nu}(E_k),\ n(B')\ge i\}$, and let $\mathcal A_k$ be the set of pairs
+$(\nu,i)$ for which it is nonempty. Different cubes of $\cB_{k,(\nu,i)}$ lie in different cubes of
+$\D_{L_{k+1},\nu}$, so they are at distance at least $2^{L_{k+1}}$. Every cube of $\D_{L_k}(E_k)$ is
+$B_i(B')$ for exactly one $\nu$, $i$ and $B'$, so $E_{k,B}=E_k\cap B$ gives the decomposition.
+\end{proof}
+
+\subsection{A restriction estimate}\label{ssec:restriction}
+At very large scales the proof uses a Fourier restriction bound with a small loss, which follows from the
+non-endpoint Bochner--Riesz bounds by an argument of Tao \cite[Theorem 1.1]{Tao99}; this is
+\cite[Proposition 6.1]{BRS23}. For the sphere the dual function $\rho^*$ of \cite{BRS23} is $|x|$ and
+$\nabla\rho^*(x)=x/|x|$. Write $\mu=\lambda+\frac{n+1}2$ and $e_n=(0,\dots,0,1)$.
+
+\begin{lemma}\label{lem:kernelasym}
+Let $\lambda>-1$. Fix $\theta\in C^\infty(S^{n-1})$ supported in $|\omega-e_n|<\frac12$ with $\theta=1$ on
+$|\omega-e_n|\le\frac14$, and $\tilde w_2\in C^\infty_c((\frac1{16},4))$ with $\tilde w_2=1$ on $[\frac18,2]$. Let $K$ be
+the kernel of $w(D)R^\lambda$, where $w(\xi)=\tilde w_2(|\xi|)\theta(\xi/|\xi|)$, and let
+$\Gamma=\{x\ne0:|x/|x|-e_n|\le\frac18\}$. For every $J\ge1$ there are smooth functions $c_0,\dots,c_{J-1}$ on
+$\Gamma\cap S^{n-1}$, with $c_0$ a nonzero constant, and a constant $C_J$, such that for $x\in\Gamma$ with
+$|x|\ge16$
+\[
+K(x)=e^{i|x|}|x|^{-\mu}\Bigl(\sum_{k<J}c_k\bigl(\tfrac x{|x|}\bigr)|x|^{-k}+E_J(x)\Bigr),\qquad |E_J(x)|\le C_J|x|^{-J}.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\tilde w_2\tilde w=\tilde w$, polar coordinates give
+\[
+K(x)=(2\pi)^{-n}\int_0^1\tilde w(t)(1-t)^\lambda t^{n-1}\,\hat\Theta(tx)\,dt,\qquad
+\hat\Theta(y)=\int_{S^{n-1}}\theta(\omega)e^{i\ip y\omega}d\sigma(\omega).
+\]
+
+\emph{The angular integral.} Parametrise the cap $|\omega-e_n|<\frac12$ by $\omega=\Omega(u)=(u,s(u))$,
+$s(u)=(1-|u|^2)^{1/2}$, $|u|<\frac12$; then $d\sigma=s(u)^{-1}du$ and, for $y=|y|\vartheta$,
+$\hat\Theta(y)=\int a(u)e^{i|y|f_\vartheta(u)}du$ with $a=(\theta\circ\Omega)/s$ and
+$f_\vartheta(u)=\ip{\vartheta'}u+\vartheta_ns(u)$, where $\vartheta=(\vartheta',\vartheta_n)$. Let $|\vartheta-e_n|\le\frac18$. The
+map $G(u)=u/s(u)=-\nabla s(u)$ has symmetric derivative $s^{-1}I+s^{-3}uu^{\mathsf T}\ge I$, so
+$|G(u)-G(v)|\ge|u-v|$. Since $\nabla f_\vartheta(u)=\vartheta_n(G(\vartheta')-G(u))$, the only critical point of $f_\vartheta$ is
+$u_\vartheta=\vartheta'$, where $\Omega(u_\vartheta)=\vartheta$ and $f_\vartheta=1$, and
+$|\nabla f_\vartheta(u)|\ge\frac12|u-u_\vartheta|$ on $|u|<\frac12$. At $u_\vartheta$,
+$\nabla^2f_\vartheta=-I-\vartheta_n^{-2}\vartheta'\vartheta'^{\mathsf T}$, which is negative definite with
+$|\det\nabla^2f_\vartheta|=\vartheta_n^{-2}$. The method of stationary phase \cite[Theorem 7.7.5]{Hor}, whose
+constants are uniform for $\vartheta$ in this compact set, gives for $|y|\ge1$
+\begin{gather*}
+\hat\Theta(y)=e^{i|y|}|y|^{-\frac{n-1}2}\Bigl(\sum_{k<J}d_k(\vartheta)|y|^{-k}+O(|y|^{-J})\Bigr),\\
+d_0=(2\pi)^{\frac{n-1}2}e^{-i\pi\frac{n-1}4}\,\vartheta_n\,a(u_\vartheta)=(2\pi)^{\frac{n-1}2}e^{-i\pi\frac{n-1}4},
+\end{gather*}
+with $d_k$ smooth in $\vartheta$; here $\theta(\vartheta)=1$ because $|\vartheta-e_n|\le\frac18$.
+
+\emph{The radial integral.} Let $x\in\Gamma$ with $|x|\ge16$. For $t\in\supp\tilde w\cap(0,1)$ we have $t\ge\frac18$,
+so $|tx|\ge2$ and $tx/|tx|=x/|x|$. Inserting the expansion, and bounding the remainder by
+$C|x|^{-\frac{n-1}2-J}\int_0^1(1-t)^\lambda dt$,
+\[
+K(x)=(2\pi)^{-n}\sum_{k<J}d_k\bigl(\tfrac x{|x|}\bigr)|x|^{-\frac{n-1}2-k}\int_0^1(1-t)^\lambda h_k(t)e^{it|x|}dt
++O\bigl(|x|^{-\frac{n-1}2-J}\bigr),
+\]
+where $h_k(t)=\tilde w(t)t^{\frac{n-1}2-k}$ is smooth and vanishes for $t\le\frac18$. With $t=1-v$ the integral
+is $e^{i|x|}\int_0^\infty v^\lambda\varphi_k(v)e^{-iv|x|}dv$, where $\varphi_k(v)=h_k(1-v)$ for $v\le1$ and
+$\varphi_k(v)=0$ for $v\ge1$ is smooth with compact support in $[0,\frac78]$. By Erd\'elyi's lemma
+\cite[\S2.8]{Erd56},
+\begin{multline*}
+\int_0^\infty v^\lambda\varphi_k(v)e^{-ivs}dv\\
+=\sum_{m<J}\frac{\varphi_k^{(m)}(0)}{m!}\,\Gamma(\lambda+m+1)\,
+e^{-i\frac\pi2(\lambda+m+1)}s^{-\lambda-m-1}+O(s^{-\lambda-1-J})\qquad(s\to\infty).
+\end{multline*}
+Collecting terms gives the expansion, with
+$c_0=(2\pi)^{-n}d_0\,\Gamma(\lambda+1)e^{-i\frac\pi2(\lambda+1)}\varphi_0(0)$ and $\varphi_0(0)=\tilde w(1)=1$.
+\end{proof}
+
+\begin{proposition}\label{prop:TA}
+Let $1\le p\le r<\infty$ and $\alpha>0$, and suppose that $R^{\lambda(r)+\alpha}$ maps $L^p(\R^n)$ to $L^r(\R^n)$.
+Let $\eta\in C^\infty_c(\{\frac14<|x|<4\})$ and $T_Af(x)=\int e^{iA|x-y|}\eta(x-y)f(y)\,dy$. Then
+$\|T_A\|_{L^p\to L^r}\le CA^{\alpha-n/p'}$ for $A\ge1$.
+\end{proposition}
+
+\begin{proof}
+For $A$ in a bounded range the bound follows from Young's inequality, so let $A$ be large. Cover
+$\supp\eta$ by finitely many balls $B(x_\nu,\frac1{64})$ with $\frac14\le|x_\nu|\le4$ and write
+$\eta=\sum_\nu\eta_\nu$ with $\eta_\nu\in C^\infty_c(B(x_\nu,\frac1{64}))$. For $x$ in that ball,
+$|x/|x|-x_\nu/|x_\nu||\le2|x-x_\nu|/|x_\nu|\le\frac18$. Since the operator norms are invariant under
+rotations, we may assume $x_\nu/|x_\nu|=e_n$, so that $\supp\eta_\nu\subset\Gamma\cap\{\frac14<|x|<4\}$. Let $K$ be as
+in Lemma \ref{lem:kernelasym} with $\lambda=\lambda(r)+\alpha$; then $\mu=\frac nr+\alpha$. Take $J=n$ and write
+$B_J(z)=\sum_{k<J}c_k(z/|z|)|z|^{-k}$. On $\supp\eta_\nu$ the functions $x\mapsto B_J(Ax)$, $A\ge64$, have
+derivatives of order at most $n+1$ bounded uniformly in $A$, and $|B_J(Ax)-c_0|\le C/A$; choose $A_0\ge64$
+with $|B_J(Ax)|\ge|c_0|/2$ there for $A\ge A_0$. For such $A$, by Lemma \ref{lem:kernelasym},
+\[
+e^{iA|x|}\eta_\nu(x)=A^\mu u_A(x)K(Ax)-e^{iA|x|}\eta_\nu(x)\frac{E_J(Ax)}{B_J(Ax)},\qquad
+u_A(x)=\frac{\eta_\nu(x)|x|^\mu}{B_J(Ax)} .
+\]
+The functions $u_A$ are bounded in $C^{n+1}$ with supports in a fixed compact set, so
+$\|\hat u_A\|_1\le C$. The convolution operator with kernel $u_A(z/A)K(z)
+=(2\pi)^{-n}\int\hat u_A(\zeta)e^{i\ip z{\zeta/A}}K(z)\,d\zeta$ is an average of the operators with kernels
+$e^{i\ip z{\zeta'}}K(z)$, which are conjugates of $w(D)R^\lambda$ by modulations; so its $L^p\to L^r$ norm is
+at most $C\|w(D)R^\lambda\|_{L^p\to L^r}$, which is finite by hypothesis. Rescaling, the kernel
+$A^\mu u_A(x)K(Ax)=A^{\mu-n}\,A^n[u_A(\cdot/A)K](Ax)$ gives an operator of norm at most
+$CA^{\mu-n+\frac np-\frac nr}=CA^{\alpha-\frac n{p'}}$. The second kernel is bounded by $CA^{-n}$ and supported in
+$|x|\le4$, so by Young's inequality its operator has norm at most $CA^{-n}\le CA^{\alpha-n/p'}$.
+\end{proof}
+
+\begin{proposition}[{\cite[Proposition 6.1]{BRS23}}]\label{prop:restr}
+Let $1\le p\le r<\infty$ and $\alpha>0$, and suppose that $R^{\lambda(r)+\alpha}$ maps $L^p(\R^n)$ to $L^r(\R^n)$.
+Then for $R\ge2$ and every $f\in L^p(\R^n)$ supported in a cube of side $R$,
+\[
+\Bigl(\int_{S^{n-1}}|\hat f(\omega)|^rd\sigma(\omega)\Bigr)^{1/r}\le C\,R^{2\alpha}\|f\|_p .
+\]
+\end{proposition}
+
+\begin{proof}
+A translation of $f$ does not change $|\hat f|$, so let $\supp f\subset[-\frac R2,\frac R2]^n$. Let
+$R_0=4\pi\sqrt n$; a cube of side $R<R_0$ lies in one of side $R_0$, so it suffices to take $R\ge R_0$. By
+homogeneity $\int_{1\le|x|\le2}|\hat f(x/|x|)|^rdx=\frac{2^n-1}n\int_{S^{n-1}}|\hat f|^rd\sigma$. Let
+$g(y)=R^{2n}f(R^2y)$, which is supported in $|y|_\infty\le\frac1{2R}$, so that
+$\hat f(x/|x|)=\int e^{-iR^2\ip y{x/|x|}}g(y)\,dy$ and $\|g\|_p=R^{2n/p'}\|f\|_p$.
+
+For $|x|\ge\frac12$ and $|y|\le\frac14$, Taylor's formula for $s\mapsto|x-sy|$ gives
+\[
+\ip y{\tfrac x{|x|}}=|x|-|x-y|+\ip y{H(x,y)y},\qquad H(x,y)=\int_0^1(1-s)\nabla^2|\cdot|(x-sy)\,ds .
+\]
+Fix $\zeta_1\in C^\infty_c(\{\frac12<|x|<3\})$ with $\zeta_1=1$ on $1\le|x|\le2$, and
+$\zeta_2\in C^\infty_c((-\pi,\pi)^n)$ with $\zeta_2=1$ on $[-1,1]^n$, and let
+$\Psi_R(x,w)=\zeta_1(x)\zeta_2(w)e^{-i\ip w{H(x,w/R)w}}$. For $R\ge R_0$ and $(x,w)$ in the support,
+$|w/R|\le\frac14$ and $|x-sw/R|\ge\frac14$, so $\Psi_R$ is smooth, supported in $(-\pi,\pi)^{2n}$, with
+derivatives bounded uniformly in $R$. Its Fourier series
+$\Psi_R(x,w)=\sum_{k_1,k_2\in\Z^n}c_{k_1,k_2}(R)e^{i\ip{k_1}x+i\ip{k_2}w}$ on $[-\pi,\pi]^{2n}$ therefore satisfies
+$|c_{k_1,k_2}(R)|\le C(1+|k_1|+|k_2|)^{-2n-1}$. For $1\le|x|\le2$ and $y\in\supp g$, with $w=Ry$ we have
+$|w|_\infty\le\frac12$, $\Psi_R(x,w)=e^{-iR^2\ip y{H(x,y)y}}$, and
+\[
+\hat f\bigl(\tfrac x{|x|}\bigr)=e^{-iR^2|x|}\sum_{k_1,k_2}c_{k_1,k_2}(R)e^{i\ip{k_1}x}\int e^{iR^2|x-y|}e^{iR\ip{k_2}y}g(y)\,dy .
+\]
+Let $\eta\in C^\infty_c(\{\frac14<|x|<4\})$ be equal to one on $\frac12\le|x|\le3$; then $\eta(x-y)=1$ in the last
+integral, which is therefore $T_{R^2}[e^{iR\ip{k_2}\cdot}g](x)$. By Minkowski's inequality and Proposition
+\ref{prop:TA} with $A=R^2$,
+\[
+\Bigl(\int_{1\le|x|\le2}|\hat f(x/|x|)|^rdx\Bigr)^{1/r}\le C\sum_{k_1,k_2}|c_{k_1,k_2}(R)|\,R^{2\alpha-\frac{2n}{p'}}\|g\|_p
+\le CR^{2\alpha}\|f\|_p . \qedhere
+\]
+\end{proof}
+
+\subsection{Large scales}\label{ssec:largescales}
+The next lemma is the multi-scale estimate that the separation of cubes produces.
+
+\begin{lemma}[{\cite[Lemma 7.1]{BRS23}}]\label{lem:largej}
+Let $L\ge0$ be an integer. For finitely many $j\ge\max\{2L,3\}$ let $\cQ_j$ be a finite set of cubes of $\D_j$,
+and for $Q\in\cQ_j$ let $\cB_Q$ be a family of cubes of $\D_L$ contained in $Q$ which is $S_Q$-separated for
+some $S_Q\ge\max\{3\cdot2^L,2^{2L}(\#\cB_Q)^{\frac2{n-1}}\}$. Then for $1\le q_2\le q_1\le2$,
+\begin{equation}\label{eq:largej}
+\Bigl\|\sum_j\sum_{Q\in\cQ_j}\sum_{B\in\cB_Q}2^{j\frac{n+1}2}\F^{-1}\bigl[m_j(\widehat{\eta_B}*G_{Q,B})\bigr]\Bigr\|_{q_2}
+\le C\,2^{L/q_1}\Bigl(\sum_j\sum_{Q\in\cQ_j}|Q|\Bigl(\sum_{B\in\D_L}\|G_{Q,B}\|_{q_1}^{q_1}\Bigr)^{q_2/q_1}\Bigr)^{1/q_2}
+\end{equation}
+for all $G_{Q,B}\in L^1\cap L^2(\R^n)$, where $G_{Q,B}=0$ for $B\notin\cB_Q$.
+\end{lemma}
+
+\begin{proof}
+Since $\F[\eta_Bf]=(2\pi)^{-n}\widehat{\eta_B}*\hat f$, we have
+$\F^{-1}[m_j(\widehat{\eta_B}*G)]=(2\pi)^nm_j(D)[\eta_B\F^{-1}G]$. In Proposition \ref{prop:sep}, with $R=2^L\le2^j$,
+the hypothesis on $S_Q$ gives $S_Q^{-\frac{n-1}2}R^{n-1}\#\cB_Q\le1$, so $\Lambda\le\sqrt2$.
+
+(i) $q_1=q_2=2$. By \eqref{eq:sepL2} and Plancherel's theorem, the $j$-th term of the left-hand side has $L^2$
+norm at most $C2^{j\frac{n+1}2}(2^{L-j})^{1/2}(\sum_Q\sum_B\|G_{Q,B}\|_2^2)^{1/2}
+=C2^{L/2}(\sum_{Q\in\cQ_j}|Q|\sum_B\|G_{Q,B}\|_2^2)^{1/2}$. The Fourier transform of the $j$-th term is
+supported in $\supp m_j$, and a point lies in at most two of these sets, so the squares of the norms add up
+to within a factor $2$.
+
+(ii) $q_1=2$, $q_2=1$. By \eqref{eq:sepL1}, the $j$-th term has $L^1$ norm at most
+\[
+C2^{j\frac{n+1}2}2^{j\frac{n-1}2}2^{L/2}\sum_Q\Bigl(\sum_B\|G_{Q,B}\|_2^2\Bigr)^{1/2}
+=C2^{L/2}\sum_Q|Q|\Bigl(\sum_B\|G_{Q,B}\|_2^2\Bigr)^{1/2};
+\]
+sum over $j$.
+
+(iii) $q_1=q_2=1$. We show that for $B\in\D_L$ and $j\ge\max\{2L,3\}$
+\begin{equation}\label{eq:L1piece}
+\bigl\|\F^{-1}[m_j(\widehat{\eta_B}*G)]\bigr\|_1\le C\,2^L2^{j\frac{n-1}2}\|G\|_1 ,
+\end{equation}
+which gives \eqref{eq:largej} after multiplying by $2^{j\frac{n+1}2}$, since $|Q|=2^{jn}$. We use the
+decomposition of C\'ordoba \cite{Cor79}. Let $\Omega_j$ be a maximal $2^{-j/2}$-separated subset of $S^{n-1}$, so
+$\#\Omega_j\le C2^{j\frac{n-1}2}$. With $\phi_0$ as in \eqref{eq:phijl}, the functions
+$\tilde\psi_\tau(\omega)=\phi_0(2^{j/2-1}(\omega-\tau))$, $\tau\in\Omega_j$, have bounded overlap and their sum is at least
+one on $S^{n-1}$; so $\psi_\tau=\tilde\psi_\tau/\sum_{\tau'}\tilde\psi_{\tau'}$ is a partition of unity on $S^{n-1}$ with
+$\supp\psi_\tau\subset\{|\omega-\tau|\le2^{1-j/2}\}$ and $|\nabla_\omega^k\psi_\tau|\le C_k2^{jk/2}$. Let
+$m_j^\tau(\xi)=m_j(\xi)\psi_\tau(\xi/|\xi|)$.
+
+We claim $\|\F^{-1}m_j^\tau\|_1\le C$. Rotate so that $\tau=e_n$. On $\supp m_j^\tau$ we have $\frac34<|\xi|<1$,
+$|\xi'|\le2^{1-j/2}$ and $0\le1-\xi_n\le(1-|\xi|)+|\xi'|^2/(|\xi|+\xi_n)\le2^{3-j}$. Let
+$\tilde m(t,s)=m_j^\tau(2^{-j/2}t,1-2^{-j}s)$ for $(t,s)\in\R^{n-1}\times\R$; it is supported in $|t|\le2$,
+$0\le s\le8$. We check that $|\partial_\xi^\gamma m_j^\tau|\le C2^{j(\gamma_n+|\gamma'|/2)}$ for $|\gamma|\le n+1$, which gives
+$|\partial^\gamma\tilde m|\le C$. For the factor $\psi_\tau(\xi/|\xi|)$ this holds because $\xi\mapsto\xi/|\xi|$ has bounded
+derivatives. For $\chi(g(\xi))$ with $g(\xi)=2^j(1-|\xi|)$, the chain rule writes $\partial^\gamma[\chi(g)]$ as a sum of
+terms $\chi^{(k)}(g)\prod_{i\le k}\partial^{\gamma_i}g$ with $\sum\gamma_i=\gamma$. On the support,
+$\partial_{\xi_l}g=-2^j\xi_l/|\xi|$ is $O(2^{j/2})$ for $l<n$ and $O(2^j)$ for $l=n$, and $\partial^{\gamma_i}g=O(2^j)$
+when $|\gamma_i|\ge2$; in each case $|\partial^{\gamma_i}g|\le C2^{j((\gamma_i)_n+|\gamma_i'|/2)}$. The product rule and
+$\chi\in C^{M_0}$ with $M_0\ge n+1$ give the claim, hence $|\F^{-1}\tilde m(y)|\le C(1+|y|)^{-n-1}$. The kernel
+$\F^{-1}m_j^\tau$ arises from $\F^{-1}\tilde m$ by an affine change of variables and a modulation, which preserve
+the $L^1$ norm.
+
+Now $\widehat{\eta_B}$ is supported in $|\xi|\le\frac1{2R}$, $R=2^L\le2^{j/2}$. For $\omega\in\R^n$ let
+$\mathcal A_j(\omega)$ be the set of $\tau$ with $\supp m_j^\tau\cap B(\omega,\frac1{2R})\ne\emptyset$. If $R<8$ then
+$\#\mathcal A_j(\omega)\le C2^{j\frac{n-1}2}\le C'(2^{j/2}/R)^{n-1}$. If $R\ge8$, two points $\xi_1,\xi_2$ of
+$B(\omega,\frac1{2R})$ with $|\xi_i|\ge\frac34$ satisfy $|\xi_1/|\xi_1|-\xi_2/|\xi_2||\le2|\xi_1-\xi_2|/|\xi_1|\le3/R$, so
+every $\tau\in\mathcal A_j(\omega)$ lies within $3/R+2^{1-j/2}\le5/R$ of a fixed point of $S^{n-1}$; as the points of
+$\Omega_j$ are $2^{-j/2}$-separated, again $\#\mathcal A_j(\omega)\le C(2^{j/2}/R)^{n-1}$. Since
+$\F^{-1}[\widehat{\eta_B}(\cdot-\omega)]=e^{i\ip\omega\cdot}\eta_B$ has $L^1$ norm $R^n\|\eta\|_1$,
+\[
+\bigl\|\F^{-1}[m_j\,\widehat{\eta_B}(\cdot-\omega)]\bigr\|_1\le\sum_{\tau\in\mathcal A_j(\omega)}\|\F^{-1}m_j^\tau\|_1\,R^n\|\eta\|_1
+\le CR\,2^{j\frac{n-1}2} .
+\]
+Writing $\F^{-1}[m_j(\widehat{\eta_B}*G)]=\int G(\omega)\F^{-1}[m_j\widehat{\eta_B}(\cdot-\omega)]\,d\omega$ proves
+\eqref{eq:L1piece}.
+
+\emph{Interpolation.} The left-hand side of \eqref{eq:largej} is a linear function of
+$G=(G_{Q,B})$, and the right-hand side is $2^{L/q_1}$ times the norm of $G$ in the mixed-norm space
+$L^{q_2}(X;L^{q_1}(Y))$, where $X$ is the set of pairs $(j,Q)$ with the measure giving mass $|Q|$ to $(j,Q)$,
+and $Y=\D_L\times\R^n$ with counting measure times Lebesgue measure. These spaces form a complex
+interpolation scale \cite{BP61}. Cases (i)--(iii) are the vertices $(\frac12,\frac12)$, $(\frac12,1)$, $(1,1)$ of the
+triangle $\{(\frac1{q_1},\frac1{q_2}):\frac12\le\frac1{q_1}\le\frac1{q_2}\le1\}$, and $2^{L/q_1}$ is the exponential of an
+affine function of $\frac1{q_1}$; so \eqref{eq:largej} holds on the whole triangle.
+\end{proof}
+
+\subsection{Proof of Proposition \ref{prop:disc}}\label{ssec:proofdisc}
+Fix $p_1$, $r$, $\delta$ and $M$ as in Proposition \ref{prop:disc}, let $r_1=\max\{r,p_1\}$, so that
+$p_1\le r_1\le r_*(p_1)\le2$ by \eqref{eq:rstarrange}, and let
+\[
+V=\lceil2/\delta\rceil,\qquad H=V^{2V+1}.
+\]
+Then $V\ge2$. By Corollary \ref{cor:single} with $(p_1,r_1)$: for every $\varepsilon>0$,
+\begin{equation}\label{eq:singlep1}
+\|m_{j,\ell}(D)\|_{L^{p_1}\to L^{r_1}}\le C_\varepsilon2^{-\ell(N-n)}2^{j(\lambda(r_1)+\varepsilon)}\qquad(j\ge3,\ \ell\ge0),
+\end{equation}
+and $R^\lambda$ maps $L^{p_1}$ to $L^{r_1}$ for every $\lambda>\lambda(r_1)$. Write $g_Q=\beta_Q\sum_{z\in E_Q}F_{Q,z}$ and
+$\mathbf N=(\sum_Q|Q|\,|\beta_Q|^r(\#E_Q)^{r/p_1})^{1/r}$; only cubes with $1\le\#E_Q\le M$ occur. The support of
+$g_Q$ lies in $Q^+=Q+[-\frac12,\frac12]^n$, and $|g_Q|\le|\beta_Q|\sum_{z\in E_Q}1_{2q_z}$, where at most $3^n$ of the cubes
+$2q_z$ contain a given point; hence $\|g_Q\|_{p_1}\le C|\beta_Q|(\#E_Q)^{1/p_1}$.
+
+\subsubsection*{Small scales, $2^j\le(2M)^H$}
+Fix such a $j\ge3$ and let $\ell\ge0$. For $Q'\in\D_{j+\ell}$ let $h_{Q'}=\sum_{Q\in\D_j,\,Q\subset Q'}g_Q$. The kernel of
+$m_{j,\ell}(D)$ is supported in $|x|<2^{j+\ell}$, so $m_{j,\ell}(D)h_{Q'}$ is supported in the concentric cube $5Q'$,
+and these cubes overlap at most $5^n$ times. The sets $Q^+$, $Q\in\D_j$, overlap at most $2^n$ times. By
+H\"older's inequality on $5Q'$ and \eqref{eq:singlep1},
+\[
+\|m_{j,\ell}(D)h_{Q'}\|_r\le C_\varepsilon2^{(j+\ell)n(\frac1r-\frac1{r_1})}2^{-\ell(N-n)}2^{j(\lambda(r_1)+\varepsilon)}
+\Bigl(\sum_{Q\subset Q'}|\beta_Q|^{p_1}\#E_Q\Bigr)^{1/p_1} .
+\]
+A cube $Q'$ contains $2^{\ell n}$ cubes of $\D_j$, so by H\"older's inequality if $r\ge p_1$, and by
+$\ell^r\subset\ell^{p_1}$ if $r<p_1$,
+$(\sum_{Q\subset Q'}|\beta_Q|^{p_1}\#E_Q)^{1/p_1}\le2^{\ell n\max\{0,\frac1{p_1}-\frac1r\}}(\sum_{Q\subset Q'}|\beta_Q|^r(\#E_Q)^{r/p_1})^{1/r}$.
+Since $\frac{n+1}2+\frac nr-\frac n{r_1}+\lambda(r_1)=\frac nr$ and $|Q|=2^{jn}$, summing the $r$-th powers over $Q'$ and
+then over $\ell$ gives
+\[
+\Bigl\|2^{j\frac{n+1}2}m_j(D)\sum_{Q\in\D_j}g_Q\Bigr\|_r\le C_\varepsilon2^{j\varepsilon}\sum_{\ell\ge0}2^{-\ell(N-3n)}\,\mathbf N
+\le C_\varepsilon2^{j\varepsilon}\mathbf N,
+\]
+because $N\ge3n+1$. Take $\varepsilon=\delta/(2H)$, so that $2^{j\varepsilon}\le(2M)^{\delta/2}$. There are at most
+$H\log_2(2M)$ such $j$, and $H\log_2(2M)(2M)^{\delta/2}\le C_\delta M^\delta$.
+
+\subsubsection*{Large scales, $2^j>(2M)^H$}
+Let $a=\frac2{n-1}\log_2M$, $L_0=0$ and $L_{k+1}=\lfloor2L_k+a\rfloor+1$. Then $L_{k+1}>2L_k+a\ge L_k$, and by induction
+$L_k\le(2^k-1)(1+a)$, so, as $n\ge2$,
+\begin{equation}\label{eq:Lkbound}
+2^{L_k}\le(2M^{\frac2{n-1}})^{2^k-1}\le(2M)^{2^{k+1}}\le(2M)^{2^V}\qquad(k\le V-1).
+\end{equation}
+Moreover $2^V\le\frac12V^{2V}$ for $V\ge2$ and $\frac1V\le\frac\delta2$, so $2^V/H\le\frac1{2V}\le\frac\delta4$, and for these $j$,
+$2^{L_k}\le(2M)^{2^V}<2^{j2^V/H}\le2^{j\delta/4}$; in particular $L_k\le j/4$.
+
+For each $Q$ with $E_Q\ne\emptyset$ apply Lemma \ref{lem:stopping} to $E_Q$ with this $V$ and these $L_k$, obtaining
+$\mathcal A^k_Q$, $\cB^{k,\alpha}_Q$ and $E^k_{Q,B}$, with $\#\mathcal A^k_Q\le2^nM^{1/V}\le2^nM^{\delta/2}$. A cube
+$B\in\cB^{k,\alpha}_Q$ belongs to $\D_{L_k}$ and contains a point of $Q$, and $L_k\le j$, so $B\subset Q$. Two different
+cubes of $\cB^{k,\alpha}_Q$ lie in different cubes of some $\D_{L_{k+1},\nu}$, so they are at distance at least
+$2^{L_{k+1}}$ and their centres differ by at least $2^{L_{k+1}}+2^{L_k}\ge3\cdot2^{L_k}$ in one coordinate. Since the
+sets $E^k_{Q,B}$ are nonempty and disjoint, $\#\cB^{k,\alpha}_Q\le M$, so
+$2^{L_{k+1}}>2^{2L_k}M^{\frac2{n-1}}\ge2^{2L_k}(\#\cB^{k,\alpha}_Q)^{\frac2{n-1}}$. Hence $\cB^{k,\alpha}_Q$ is $S_Q$-separated with
+$S_Q=\max\{3\cdot2^{L_k},2^{2L_k}(\#\cB^{k,\alpha}_Q)^{\frac2{n-1}}\}$.
+
+Enumerate $\mathcal A^k_Q=\{\alpha_1,\dots,\alpha_{n(k,Q)}\}$. The decomposition of Lemma \ref{lem:stopping} and the
+triangle inequality bound the left-hand side of \eqref{eq:propdisc}, restricted to these $j$, by
+\[
+\sum_{k<V}\ \sum_{i\le2^nM^{\delta/2}}\Bigl\|\sum_{j}\sum_{Q:\,n(k,Q)\ge i}\ \sum_{B\in\cB^{k,\alpha_i}_Q}\ \sum_{z\in E^k_{Q,B}}
+2^{j\frac{n+1}2}\beta_Qm_j(D)F_{Q,z}\Bigr\|_r .
+\]
+Since $V2^nM^{\delta/2}\le C_\delta M^{\delta/2}$, it suffices to show that for each $k<V$, each subcollection of cubes
+$Q$ and each choice $Q\mapsto\cB_Q=\cB^{k,\alpha(Q)}_Q$ with $\alpha(Q)\in\mathcal A^k_Q$,
+\begin{equation}\label{eq:largeclaim}
+\Bigl\|\sum_j\sum_Q\sum_{B\in\cB_Q}\sum_{z\in E^k_{Q,B}}2^{j\frac{n+1}2}\beta_Qm_j(D)F_{Q,z}\Bigr\|_r\le C_\delta M^{\delta/2}\,\mathbf N .
+\end{equation}
+
+Let $L=L_k$. For $B\in\cB_Q$ let $f_{Q,B}=\beta_Q\eta_B^{-1}\sum_{z\in E^k_{Q,B}}F_{Q,z}$ on the union of the cubes
+$2q_z$, $z\in E^k_{Q,B}$, and $f_{Q,B}=0$ elsewhere. These cubes lie in $B^+=B+[-\frac12,\frac12]^n$, a cube of side
+$2^L+1$ on which $\eta_B\ge1$, since $|x-x_B|_\infty\le2^{L-1}+\frac12\le2^{L+1}$ there. Hence
+$\eta_Bf_{Q,B}=\beta_Q\sum_zF_{Q,z}$ and, as above, $\|f_{Q,B}\|_{p_1}\le C|\beta_Q|(\#E^k_{Q,B})^{1/p_1}$. Let
+$A_L=\{\xi:||\xi|-1|\le2^{2-L}\}$ and $G_{Q,B}=1_{A_L}\widehat{f_{Q,B}}$. If $\zeta\in\supp m_j$ and $|\zeta-\xi|\le2^{-L}$, then
+$||\xi|-1|\le||\zeta|-1|+|\zeta-\xi|<2^{1-j}+2^{-L}\le2^{2-L}$ because $j\ge L$; so
+$m_j(\widehat{\eta_B}*\widehat{f_{Q,B}})=m_j(\widehat{\eta_B}*G_{Q,B})$ and
+\[
+\sum_{z\in E^k_{Q,B}}\beta_Qm_j(D)F_{Q,z}=m_j(D)[\eta_Bf_{Q,B}]=(2\pi)^{-n}\F^{-1}\bigl[m_j(\widehat{\eta_B}*G_{Q,B})\bigr].
+\]
+Since $j\ge4L$ and $j\ge3$, Lemma \ref{lem:largej} with $(q_1,q_2)=(r_1,r)$ bounds the left-hand side of
+\eqref{eq:largeclaim} by
+\begin{equation}\label{eq:afterlargej}
+C2^{L/r_1}\Bigl(\sum_j\sum_Q|Q|\Bigl(\sum_{B\in\cB_Q}\int_{A_L}|\widehat{f_{Q,B}}|^{r_1}\Bigr)^{r/r_1}\Bigr)^{1/r}.
+\end{equation}
+
+Let $\alpha=\delta2^{-V-2}$. We claim that $\int_{A_L}|\hat f|^{r_1}\le C_\delta2^{-L}2^{2\alpha r_1L}\|f\|_{p_1}^{r_1}$ for $f$ supported
+in a cube of side $2^L+1$. If $L\le2$, then $|A_L|\le C$ and $|\hat f|\le\|f\|_1\le C\|f\|_{p_1}$. If $L\ge3$, then
+$A_L\subset\{\frac12\le|\xi|\le\frac32\}$, and for $\frac12\le t\le\frac32$ the function $\hat f(t\,\cdot)$ is the Fourier transform of
+$f_t=t^{-n}f(\cdot/t)$, which is supported in a cube of side between $2$ and $2^{L+1}$ and has
+$\|f_t\|_{p_1}\le2^n\|f\|_{p_1}$. Proposition \ref{prop:restr} with $(p,r)=(p_1,r_1)$, whose hypothesis holds by
+Corollary \ref{cor:single}, and integration in polar coordinates over $|t-1|\le2^{2-L}$ prove the claim.
+
+By the claim, \eqref{eq:afterlargej} is at most
+$C_\delta2^{2\alpha L}(\sum_j\sum_Q|Q|\,|\beta_Q|^r(\sum_B(\#E^k_{Q,B})^{r_1/p_1})^{r/r_1})^{1/r}$. By \eqref{eq:Lkbound},
+$2^{2\alpha L}\le(2M)^{2^{V+1}\alpha}=(2M)^{\delta/2}$. Since $r_1\ge p_1$,
+$(\sum_B(\#E^k_{Q,B})^{r_1/p_1})^{p_1/r_1}\le\sum_B\#E^k_{Q,B}\le\#E_Q$. This proves \eqref{eq:largeclaim}, and with the small
+scales, Proposition \ref{prop:disc}. This completes the proof of Theorem \ref{thm:vbr}. \qed

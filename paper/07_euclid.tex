@@ -1,0 +1,173 @@
+\section{Euclidean space, local smoothing and Bochner--Riesz means}\label{sec:euclid}
+
+The aperture in Proposition \ref{prop:torus} is fixed, so a finite partition of the sphere gives
+the critical estimate on a whole annulus with the same power of the logarithm. We remove the
+spatial period, interpolate, sum the dyadic annuli, and then deduce the Bochner--Riesz
+conjecture. Throughout, $I=[1,2]$.
+
+\subsection{Removing the period}\label{ssec:period}
+\begin{proof}[Proof of Theorem \ref{thm:annular}]
+Write $h=N^{-1}$ and $P_h=\varphi(hD)$, with $\varphi$ supported in a fixed compact annulus
+$c_0\le|\eta|\le C_0$. Choose a smooth finite partition $\varphi=\sum_\nu\varphi_\nu$ subordinate to
+caps of aperture $\gamma$ about finitely many directions. On the torus $\T^n=\R^n/(100\Z)^n$ the
+multiplier $\varphi_\nu(hD)$ has as kernel the periodisation of the Euclidean kernel
+$h^{-n}\check\varphi_\nu(\cdot/h)$, and periodisation does not increase the $L^1$ norm, so
+$\|\varphi_\nu(hD)f\|_{L^{\pc}(\T^n)}\le C\|f\|_{L^{\pc}(\T^n)}$. Applying Proposition \ref{prop:torus}
+to each $\varphi_\nu(hD)f$, in the frame of its cap, and summing over $\nu$ gives
+\begin{equation}\label{eq:torusall}
+\|U(T)P_hf\|_{L^{\pc}(I\times\T^n)}\lesssim[\log(2/h)]^{2/\pc}\|f\|_{L^{\pc}(\T^n)},\qquad0<h\le1/2 .
+\end{equation}
+The Euclidean kernel of $U(T)P_h$ is
+\[
+K_h(T,X)=(2\pi h)^{-n}\int e^{i(X\cdot\eta-T|\eta|)/h}\varphi(\eta)\,d\eta .
+\]
+For $T\in I$ and $|X|\ge3$ the gradient of the phase before division by $h$, $X-T\eta/|\eta|$, has
+length at least $|X|-2\ge|X|/3$. Integrating by parts along this gradient gains a factor $h/|X|$
+each time, since the amplitude is supported away from $\eta=0$ and all phase derivatives of order
+at least two are bounded there. With $M+n$ integrations,
+\begin{equation}\label{eq:Kdecay}
+|K_h(T,X)|\le C_Mh^M(1+|X|)^{-M}\qquad(T\in I,\ |X|\ge3).
+\end{equation}
+
+Tile $\R^n$ by unit cubes $Q$ and let $10Q$ be the concentric cube of side ten. If $X\in Q$ and
+$Y\notin10Q$ then $|X-Y|\ge9/2$, so on $Q$ the contribution of $f1_{(10Q)^c}$ is bounded pointwise by
+$C_Mh^M\bigl((1+|\cdot|)^{-M}*|f|\bigr)(X)$. This single function bounds the far contributions on every
+cube, and for $M>n$ Young's inequality bounds its $L^{\pc}(I\times\R^n)$ norm by $O(h^M)\|f\|_{\pc}$.
+
+Translate the centre of $Q$ to the origin and periodise $f_Q=f1_{10Q}$ on the torus of side $100$;
+its torus norm is $\|f\|_{L^{\pc}(10Q)}$. The periodic wave kernel is the periodisation of $K_h$. On
+$Q$ its nonzero translates see only arguments $X-Y+100k$ with $Y\in10Q$ and $k\in\Z^n\setminus\{0\}$;
+since $|X_j-Y_j|\le11/2$, each coordinate satisfies $|X_j-Y_j+100k_j|\ge\frac{189}2|k_j|$, so these
+arguments have length at least $\frac{189}2|k|$. Summing \eqref{eq:Kdecay} over $k$ bounds the
+difference between the periodic and Euclidean outputs on $Q$ by $C_Mh^M\|f_Q\|_1\le C_Mh^M\|f\|_{L^{\pc}(10Q)}$.
+Hence \eqref{eq:torusall} gives
+\[
+\|U(T)P_hf_Q\|_{L^{\pc}(I\times Q)}\lesssim[\log(2/h)]^{2/\pc}\|f\|_{L^{\pc}(10Q)} .
+\]
+Take $\pc$-th powers and sum over $Q$. The cubes $10Q$ have bounded overlap, so together with the
+far contributions this proves Theorem \ref{thm:annular}, since $\log(2/h)\asymp\log(2+N)$ for
+$N\ge2$.
+\end{proof}
+
+\subsection{Interpolation and summation}\label{ssec:interp}
+By Plancherel the norm of $U(T)P_h$ from $L^2(\R^n)$ to $L^2(I\times\R^n)$ is at most
+$\|\varphi\|_\infty$, since $|I|=1$. From $L^\infty$ to $L^\infty$ its norm is $O(h^{-d/2})$. To see
+this, partition the annulus into $O(h^{-d/2})$ caps of aperture $c\sqrt h$ with bounded overlap. In
+coordinates $\eta=(\sqrt h\,z,\rho)$, $z\in\R^d$, about the axis of a cap, its cut-off is supported in
+a fixed compact set with $\rho$ bounded below and has uniformly bounded derivatives; such cut-offs
+are obtained by dividing rescaled angular bumps by their sum, and the overlapping centres have
+bounded offsets in these coordinates. The linear phase $T\rho/h$ corresponds to a translation in
+the axis direction, and what remains of the phase is
+\[
+\frac Th\Bigl(\sqrt{\rho^2+h|z|^2}-\rho\Bigr)=\frac{T|z|^2}{\sqrt{\rho^2+h|z|^2}+\rho},
+\]
+which has uniformly bounded derivatives on the support. In these coordinates the kernel of a
+cap equals $(2\pi)^{-n}h^{-n+d/2}\check b(X'/\sqrt h,X_n/h)$, up to that translation, for a smooth
+$b$ with bounded support and derivatives, so its $L^1$ norm is
+$(2\pi)^{-n}h^{-n+d/2+d/2+1}\|\check b\|_1=O(1)$. Summing over the caps gives the bound.
+
+Set $\beta(p)=\min\{d(1-2/p),2/p\}$. Riesz--Thorin interpolation \cite[Ch.~1]{Gra14} of Theorem
+\ref{thm:annular} with these two bounds gives
+\begin{equation}\label{eq:interp}
+\|U(T)P_hf\|_{L^p(I\times\R^n)}\lesssim_ph^{-s_+(p)}[\log(2/h)]^{\beta(p)}\|f\|_{L^p(\R^n)},\qquad2\le p\le\infty .
+\end{equation}
+Indeed, for $2\le p\le\pc$ write $\frac12-\frac1p=\theta(\frac12-\frac1{\pc})=\frac\theta{2n}$; the power of the
+logarithm is $2\theta/\pc=n(1-\frac2p)\frac{d}{n}=d(1-\frac2p)$. For $\pc\le p\le\infty$ write $\frac1p=\frac{1-\theta}{\pc}$;
+the power of the logarithm is $2(1-\theta)/\pc=2/p$ and that of $h^{-1}$ is
+$\frac d2(1-\frac{\pc}p)=\frac d2-\frac np$. The two expressions for $\beta$ agree at $p=\pc$, and the minimum
+selects the correct one on each side.
+
+\begin{proof}[Proof of Theorem \ref{thm:ls}]
+Let $\varphi$ define a smooth dyadic partition $\chi_0(\xi)+\sum_{j\ge1}\varphi(2^{-j}\xi)=1$, and set
+$g=J^{s_+(p)+\eps}f$. With $h=2^{-j}$, \eqref{eq:interp} bounds the $j$th piece by
+$C2^{-j\eps}(1+j)^{\beta(p)}\|g\|_p$: a smooth enlargement of $\varphi(2^{-j}\cdot)$ times
+$2^{j(s_+(p)+\eps)}J^{-s_+(p)-\eps}$ is a multiplier whose kernel is uniformly integrable. These
+bounds are summable in $j$. On the low frequencies the symbol $\chi_0(\xi)e^{-iT|\xi|}J(\xi)^{-s_+(p)-\eps}$
+satisfies the Mihlin conditions uniformly in $T\in I$, so it is bounded on $L^p$ for $1<p<\infty$
+\cite[Ch.~6]{Gra14}. At $p=2$ Plancherel gives the estimate without loss.
+\end{proof}
+
+A finer summation gives the estimate at the exact exponent $s_+(p)$ with logarithmic factors
+\cite[Corollary 7.1]{OAI26}; it is not needed here.
+
+\subsection{Bochner--Riesz means}\label{ssec:br}
+The Bochner--Riesz mean $B^\alpha_r$ has multiplier $(1-|\xi|^2/r^2)^\alpha_+$; write
+$B^\alpha_*f=\sup_{r>0}|B^\alpha_rf|$. A smooth cut-off to a shell of relative width $\delta$ is an
+average of waves over times of order $\delta^{-1}$, which is how local smoothing controls these
+means. Sogge observed the implication for a single radius \cite[(4.5)--(4.6)]{Sog91}, and Beltran,
+Hickman and Sogge give the fixed-radius and maximal reductions \cite[Propositions 39 and 40]{BHS21}.
+
+\begin{theorem}[Bochner--Riesz means \cite{OAI26}]\label{thm:BR}
+Let $n\ge2$, $1\le p\le\infty$, and $\delta(p)=\max\{0,n|1/p-1/2|-1/2\}$. If $\alpha>\delta(p)$, then
+\begin{equation}\label{eq:BRall}
+\sup_{r>0}\|B^\alpha_rf\|_{L^p(\R^n)}\le C_{n,p,\alpha}\|f\|_{L^p(\R^n)} ,
+\end{equation}
+and $B^\alpha_rf\to f$ in $L^p$ as $r\to\infty$ when $p<\infty$. If $2\le p<\infty$ and
+$\alpha>s_+(p)$, then $\|B^\alpha_*f\|_p\le C_{n,p,\alpha}\|f\|_p$.
+\end{theorem}
+
+For $1\le p<2n/(n+1)$ we have $\delta(p)=\lambda(p)$ of \eqref{eq:critical}. We first rescale Theorem
+\ref{thm:ls} to a unit frequency annulus and a long time interval: for $2\le p<\infty$,
+$\sigma>s_+(p)$ and $\hat g$ supported in a fixed annulus $c\le|\xi|\le C$,
+\begin{equation}\label{eq:longtime}
+\|U(t)g\|_{L^p(\R^n\times\{R\le|t|\le2R\})}\lesssim R^{1/p+\sigma}\|g\|_p,\qquad R\ge1 .
+\end{equation}
+Indeed $g(R\,\cdot)$ has frequencies of order $R$ and $U(t)[g(R\,\cdot)](x)=(U(Rt)g)(Rx)$. Changing
+variables in space and time contributes $R^{(n+1)/p}$, Theorem \ref{thm:ls} with the Sobolev
+multiplier on that annulus contributes $O(R^\sigma)$, and the input norm contributes $R^{-n/p}$.
+Complex conjugation gives the negative times, since $\overline{U(t)g}=U(-t)\bar g$. For $|t|\le1$ the
+unit annular wave multiplier has a uniformly integrable kernel.
+
+\begin{lemma}[Maximal estimate for a thin shell \cite{OAI26}]\label{lem:shell}
+For $0<\delta\le1/8$ and $\psi\in C_c^\infty((1/2,2))$ let
+$A_{\delta,r}f=\psi\bigl((1-|D|/r)/\delta\bigr)f$. For $2\le p<\infty$ and $\sigma>s_+(p)$,
+\[
+\Bigl\|\sup_{r>0}|A_{\delta,r}f|\Bigr\|_p\lesssim\delta^{-\sigma}\|f\|_p ,
+\]
+uniformly for $\psi$ in bounded subsets of $C_c^\infty((1/2,2))$.
+\end{lemma}
+
+\begin{proof}
+For $1\le r\le2$ the shell lies in $1/2<|\xi|<2$. Choose a smooth annular symbol $\chi$ equal to one
+there, let $Q_k=\chi(2^{-k}D)$ and $g=Q_0f$. Writing $\psi$ by Fourier inversion and substituting
+$\tau=\delta rt$,
+\[
+A_{\delta,r}f(x)=\frac{\delta r}{2\pi}\int_\R e^{itr}\,\hat\psi(\delta rt)\,U(t)g(x)\,dt .
+\]
+Taking the supremum over $r\in[1,2]$ bounds this by $C_M\delta\int(1+\delta|t|)^{-M}|U(t)g(x)|\,dt$. On a
+dyadic interval $R\le|t|\le2R$, H\"older's inequality in time and \eqref{eq:longtime} bound the $L^p_x$
+norm of this contribution by $C_M\delta(1+\delta R)^{-M}R^{1-1/p}R^{1/p+\sigma}\|g\|_p$. For $M>1+\sigma$ the
+sum over dyadic $R\ge1$ is $O(\delta^{-\sigma}\|g\|_p)$, as one sees by splitting at $R=\delta^{-1}$; the
+interval $|t|\le1$ contributes $O(\delta\|g\|_p)$.
+
+For $r=2^ks$ with $1\le s\le2$ set $g_k(y)=(Q_kf)(2^{-k}y)$. Then $A_{\delta,r}f(2^{-k}y)=A_{\delta,s}g_k(y)$,
+and the factor $2^{-kn/p}$ in the output norm cancels $2^{kn/p}$ in $\|g_k\|_p$. So the $L^p$ norm of the
+supremum over this octave is at most $C\delta^{-\sigma}\|Q_kf\|_p$. The supremum over all octaves is at
+most their pointwise $\ell^p$ norm, and since $p\ge2$, Littlewood--Paley theory gives
+$(\sum_k\|Q_kf\|_p^p)^{1/p}\le\|(\sum_k|Q_kf|^2)^{1/2}\|_p\lesssim\|f\|_p$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:BR}]
+Take $2\le p<\infty$ and $s_+(p)<\sigma<\alpha$. Choose $\eta\in C_c^\infty((1/2,2))$ with
+$\sum_{j\in\Z}\eta(2^jv)=1$ for $v>0$, and apply this partition to $v=1-\rho$ on $0\le\rho<1$. For
+$\delta=2^{-j}\le1/8$ the corresponding term is
+\[
+\eta\bigl(2^j(1-\rho)\bigr)(1-\rho^2)^\alpha=\delta^\alpha\psi_\delta\bigl((1-\rho)/\delta\bigr),\qquad
+\psi_\delta(u)=\eta(u)u^\alpha(2-\delta u)^\alpha ,
+\]
+because $1-\rho^2=(1-\rho)(1+\rho)$ and $1+\rho=2-\delta u$. These profiles have uniformly bounded
+smooth seminorms. The remaining terms, $0\le j\le2$, add up to a smooth radial multiplier of compact
+support which vanishes near $\rho=1$ and equals $(1-\rho^2)^\alpha$ near $\rho=0$; the supremum of its
+dilations is bounded by a constant times the Hardy--Littlewood maximal function, since its kernel
+has a radially decreasing integrable majorant. Lemma \ref{lem:shell} bounds the other terms of
+$B^\alpha_*$ by $C\sum_{j\ge3}2^{-j(\alpha-\sigma)}\|f\|_p$. This proves the maximal estimate.
+
+For $2\le p<\infty$, $\delta(p)=s_+(p)$, so the maximal estimate implies \eqref{eq:BRall}. Each $B^\alpha_r$
+is self-adjoint and $\delta(p)=\delta(p')$, so duality gives \eqref{eq:BRall} for $1<p<2$. At $p=1$ and
+$p=\infty$ the hypothesis is $\alpha>(n-1)/2$; the unit-radius kernel is a constant multiple of
+$|x|^{-n/2-\alpha}J_{n/2+\alpha}(|x|)$ \cite[Ch.~IX]{Ste93}, bounded at the origin and
+$O(|x|^{-(n+1)/2-\alpha})$ at infinity, hence integrable, and its dilates $r^nK(rx)$ have a common $L^1$
+norm. Finally, for Schwartz functions with compactly supported Fourier transform the multipliers
+converge to one in all derivatives on the support as $r\to\infty$, so the means converge in the
+Schwartz topology; density and \eqref{eq:BRall} give convergence in $L^p$ for $p<\infty$.
+\end{proof}

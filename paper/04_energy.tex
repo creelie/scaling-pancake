@@ -1,0 +1,304 @@
+\section{The determinant energy and its boundary flux}\label{sec:energy}
+
+The time component of the current is a sum of squares. After regularisation it serves as the
+density of a Dirichlet potential on each spatial fibre, and a lower bound for the density on a
+ball forces a definite depth at its centre. To compare these depths at different times we need
+a scalar energy of the three real coordinates $z=(T,\tau)\in\R\times\Ck$ whose Laplacian is
+bounded above by the flux of the wave through the side of the fibre.
+
+Keep the annular wave on the torus from Section \ref{ssec:cap}, normalised by $\|f\|_2=1$. Put
+$w_0=1/10$ and assume that the aperture satisfies $\gamma<w_0/4$. Write $s=|\tau|$ and $a=Kh$,
+where $K\ge1$ is fixed and $h$ is so small that $4a\le1$. All constructions of this section take
+place on $a<s<4$.
+
+\subsection{The geometry of the fibres}\label{ssec:fibres}
+At fixed $z$ let $X$ run over the spatial torus, and let the imaginary spatial variables
+$(P,Z)\in\Ck^d\times\Ck$ vary in the domain
+\begin{equation}\label{eq:fibre}
+\Omega_z:\quad r=\frac{|W|^2}{w_0^2}+100|Q|^2-1<0,\qquad Q=\Phi/a .
+\end{equation}
+The shape of the fibre reflects two properties of the current of Proposition
+\ref{prop:current}: it is tangent to the level sets of $\Phi$, and the Gaussian of a mode of
+slope $v$ is centred at $W=v$. Only the $W$ part of the wall normal can therefore carry wave
+flux. In the coordinates $(W,Q)$ all fibres are the same ellipsoid. The definitions
+$Y=(\tau+Z)/\sqrt2$, $W=P/Y$ and $\Phi=(Z-\tau)/\sqrt2+P\cdot P/(2Y)$ give the inverse map
+\begin{equation}\label{eq:inverse}
+Y=\frac{\sqrt2(\tau+aQ)}{1+W\cdot W/2},\qquad P=WY,\qquad Z=\sqrt2\,Y-\tau .
+\end{equation}
+Indeed, substituting $P=WY$ and $Z=\sqrt2Y-\tau$ into $\Phi$ gives
+$\Phi=Y(1+W\cdot W/2)/\sqrt2-\sqrt2\tau$, so $aQ=\Phi$ is solved by \eqref{eq:inverse}. On
+the closed fibre, $|W|\le w_0$ keeps the denominator within $1/200$ of one, and $|Q|\le1/10$
+gives $|aQ|\le a/10\le s/10$; hence $y=|Y|\asymp s$. The chart and its inverse are holomorphic
+on neighbourhoods of the closed fibres and depend smoothly on $\tau$. On the total domain
+\[
+\Omega=\{(z,X,P,Z):a<s<4,\ (X,P,Z)\in\Omega_z\}
+\]
+$H$ and $G$ denote the full Hessian and gradient of Lemma \ref{lem:hessian}, with the time
+index $T$ carrying the triple $(T,\tau)$ and the $n$ spatial indices carrying $(X,P,Z)$; their
+spatial parts at fixed $z$ are $\Hfib$ and $\Gfib$. Fibre integrals use the volume
+$d\zeta=dX\,dP\,dZ$ in the original coordinates.
+
+\begin{lemma}[Fibre geometry \cite{OAI26}]\label{lem:fibre}
+The spatial Hessian $\Hfib(r)$ is positive definite. The full $H(r)$ is positive semidefinite,
+with a one-dimensional quaternionic kernel contained both in $G(r)^\perp$ and in
+$\ker H(|\Phi|^2)$. On the closed fibres, uniformly for $a<s<4$,
+\begin{gather}
+\Hfib(r)\ge cs^{-2}I,\qquad\Gfib(r)\Gfib(r)^*\le\Hfib(r),\label{eq:fibre1}\\
+dP\,dZ\asymp a^2s^{2d}\,dW\,dQ,\qquad\det\Hfib(r)\asymp a^{-2}s^{-2d}.\label{eq:fibre2}
+\end{gather}
+The spatial Hessian $\Hfib(|\Phi|^2)$ has rank one, with nonzero eigenvalue comparable to one,
+and $|G(|W|^2)|\lesssim s^{-1}$.
+\end{lemma}
+
+\begin{proof}
+Set $F=(W/w_0,10Q)\in\Ck^n$, a holomorphic function of $(\tau,P,Z)$, and let $J$ be its complex
+Jacobian in these $n+1$ variables, with spatial $n\times n$ block $J_{\rm fib}$. Since
+$r=|F|^2-1$ does not depend on the real parts $(T,X)$, Lemma \ref{lem:hessian} gives
+\[
+H(r)=4J^*J,\qquad G(r)=2J^*F\,\ii .
+\]
+At fixed $\tau$ the map $(P,Z)\mapsto(W,Q)$ is the inverse of the chart \eqref{eq:inverse}, so
+$J_{\rm fib}$ is invertible and $\Hfib(r)=4J_{\rm fib}^*J_{\rm fib}>0$. In the full space we may vary
+$\tau$ while keeping $(W,Q)$ fixed; this direction spans $\ker J$ over $\Ck$. Writing a
+quaternionic column as $\alpha+\beta\jj$ with $\alpha,\beta\in\Ck^{n+1}$ we get
+$J(\alpha+\beta\jj)=J\alpha+(J\beta)\jj$, so the quaternionic kernel of $H(r)$, which equals that of
+$J$ because $v^*H(r)v=4|Jv|^2$, is the quaternionic span of this line. It is orthogonal to
+$G(r)$, which lies in the image of $J^*$, and it lies in $\ker H(|\Phi|^2)$, since the last
+row of $J$ is $10a^{-1}\partial\Phi$ and $H(|\Phi|^2)=4(\partial\Phi)^*\partial\Phi$.
+
+By \eqref{eq:inverse},
+\[
+\partial_WY=-\frac{\sqrt2(\tau+aQ)W}{(1+W\cdot W/2)^2},\quad
+\partial_QY=\frac{\sqrt2a}{1+W\cdot W/2},\quad
+\partial_WP=Y\,I+W\otimes\partial_WY,\quad\partial_QP=W\partial_QY,
+\]
+and $dZ=\sqrt2\,dY$; so the derivatives of $(P,Z)$ in $W$ are $O(s)$ and those in $Q$ are $O(a)$.
+Hence $\|J_{\rm fib}^{-1}\|\lesssim s$ and $\Hfib(r)\ge4\|J_{\rm fib}^{-1}\|^{-2}I\ge cs^{-2}I$. Moreover
+$\Gfib(r)\Gfib(r)^*=4J_{\rm fib}^*FF^*J_{\rm fib}\le4|F|^2J_{\rm fib}^*J_{\rm fib}\le\Hfib(r)$, because
+$|F|\le1$ on the closed fibre. This proves \eqref{eq:fibre1}.
+
+For \eqref{eq:fibre2} take the exterior product of the differentials at fixed $\tau$:
+$dP_i=Y\,dW_i+W_i\,dY$ and $dZ=\sqrt2\,dY$ give
+\[
+dP_1\wedge\dots\wedge dP_d\wedge dZ=\sqrt2\,Y^d\,dW_1\wedge\dots\wedge dW_d\wedge dY
+=\frac{2aY^d}{1+W\cdot W/2}\,dW_1\wedge\dots\wedge dW_d\wedge dQ .
+\]
+The real volume Jacobian of a holomorphic map is the squared modulus of its complex
+determinant, which gives the volume formula. For the determinant, $4J_{\rm fib}^*J_{\rm fib}$ is a
+complex Hermitian matrix, whose Moore determinant is its ordinary determinant
+$4^n|\det_{\C}J_{\rm fib}|^2$; and $\det_{\C}J_{\rm fib}$ is a constant multiple of
+$(1+W\cdot W/2)/(2aY^d)$. Finally $\partial_P\Phi=P/Y=W$ is bounded and
+$\partial_Z\Phi=(1-W\cdot W/2)/\sqrt2$ is bounded away from zero, so
+$\Hfib(|\Phi|^2)=4(\partial_{\rm fib}\Phi)^*\partial_{\rm fib}\Phi$ has rank one with eigenvalue
+$4|\partial_{\rm fib}\Phi|^2\asymp1$; and the first derivatives $\partial_PW=Y^{-1}$,
+$\partial_YW=-W/Y$ of $W=P/Y$ are $O(s^{-1})$, which bounds $G(|W|^2)$.
+\end{proof}
+
+\subsection{The Dirichlet potential}\label{ssec:potential}
+The time density can vanish. We first smooth the current in $X$ and cut it off in the passive
+coordinate $Q$. To make the time density strictly positive we then add a conserved current
+whose image is the null line of $H(r)$; it has no flux through the wall. For $\ell>0$ let
+$J_\ell$ be the periodisation on the spatial torus of the probability kernel
+$c_n\ell^{-n}(1+|X/\ell|^2)^{-n-2}$. Choose a smooth $0\le g\le1$ on $\Ck$, equal to one on
+$|Q|\le1/100$ and zero on $|Q|\ge1/20$, and define
+\begin{equation}\label{eq:regular}
+A_{\rm w}=g(Q)\,(J_h*_XA^0),\qquad A=A_{\rm w}+h^{50n}C(H(r)),\qquad\mu=A_{TT}.
+\end{equation}
+The convolution acts only in the real spatial variable $X$, and commutes with the derivatives,
+so $J_h*_XA^0$ is again positive semidefinite with conserved columns. Since $\partial\Phi$ is
+independent of $X$, the averaged current still satisfies $(\partial\Phi)(J_h*_XA^0)=0$. By the last
+statement of Lemma \ref{lem:hessian}, $G(g(Q))=(\partial\Phi)^*q$ for a quaternion-valued $q$, so
+$(J_h*_XA^0)G(g(Q))=0$, and by the remark after \eqref{eq:rowid} the cut-off current keeps
+conserved columns. By Lemmas \ref{lem:moore} and \ref{lem:cofdiv} the cofactor $C(H(r))$ is
+positive semidefinite with conserved columns. Since $H(r)\ge0$ has a one-dimensional kernel,
+$C(H(r))$ vanishes on the image of $H(r)$, so its image is the kernel line; this line is
+perpendicular to $G(r)$ and lies in $\ker H(|\Phi|^2)$. Its $TT$ entry is, by
+\eqref{eq:compress}, the determinant of the compression of $H(r)$ to the spatial
+coordinates, $\det\Hfib(r)>0$. Therefore
+\begin{equation}\label{eq:Apos}
+A\ge0,\qquad\mu>0,\qquad A:H(|\Phi|^2)=0,
+\end{equation}
+the last because $A^0:H(|\Phi|^2)=4\Re\bigl((\partial\Phi)A^0(\partial\Phi)^*\bigr)=0$ and the
+regulariser is supported on $\ker H(|\Phi|^2)$.
+
+Put $B_0=\lambda|\Phi|^2$, $B=H(B_0)$ and $B_{\rm fib}=\Hfib(B_0)$, with $\lambda=h^{-30n}$. By
+\eqref{eq:Apos}, $A:B=0$. The spatial block $B_{\rm fib}$ has one nonzero eigenvalue
+$\beta\asymp\lambda$. The factor $h^{50n}$ keeps the added density below the wave estimates of
+Section \ref{sec:fiber}, and $\lambda$ is large enough that
+\begin{equation}\label{eq:lambda}
+\mu^{1/d}\le\lambda
+\end{equation}
+for all sufficiently small $h$. Indeed, on the fibres $y\asymp s\ge a\ge h$, so each Gaussian
+amplitude factor in \eqref{eq:chi} is at most $(\kappa/y)^{d/2}\lesssim h^{-d}$. The columns $V^v$
+are bounded and $\sum|c_{\kappa,v}|\lesssim h^{-n/2}$ by Section \ref{ssec:cap}, so
+$\|A^0\|\lesssim h^{-n-2d}$; the regulariser adds only $O(h^{50n}a^{-2}s^{-2d})$ to $\mu$ by
+\eqref{eq:fibre2}. Thus $\mu^{1/d}\lesssim h^{-(n+2d)/d}\le h^{-4}$, as $n\le2d$.
+
+On each spatial fibre there is a unique smooth real $u$ with
+\begin{equation}\label{eq:dirichlet}
+D_u=\Hfib(B_0+u)>0,\qquad\det D_u=\lambda\mu,\qquad u|_{\partial\Omega_z}=0 .
+\end{equation}
+Indeed, $\Hfib(r)$ is positive definite, $B_{\rm fib}\ge0$ has zero determinant because $n\ge2$,
+and $\lambda\mu>0$; these are the hypotheses of Theorem \ref{thm:dirichlet} with $m=n$, the lattice
+$(100\Z)^n$ in the real slots, and $V$ the image of $\{r<0\}$ in $\Ck^n$. The chart
+\eqref{eq:inverse} and the parameter statement of that theorem give smooth dependence on $z$
+up to the lateral boundary, and its barriers \eqref{eq:barrier} give $u\le0$. To see how the
+equation measures depth, add $\alpha I$ to the spatial background: then
+$\det(B_{\rm fib}+\alpha I)=(\beta+\alpha)\alpha^d$, so for $0<\alpha\le\lambda$ a density $\lambda\mu$
+corresponds to an isotropic comparison quadratic of curvature $\alpha\asymp\mu^{1/d}$. Section
+\ref{sec:fiber} uses such quadratics on balls.
+
+\subsection{Cancelling the full determinant}\label{ssec:cancel}
+The quantity that measures the depth of the potential against its density is
+\[
+X_0(z)=\int_{\Omega_z}(-u)\,\mu\,d\zeta .
+\]
+Since the real columns of $A$ are divergence free, Green's formula for $\Delta_zX_0$ has the
+interior term $-\int_{\Omega_z}A:H(u)\,d\zeta$. In a related estimate for real positive tensors,
+Serre uses the determinant of a Schur complement to isolate a diagonal entry of a second tensor
+\cite[Proposition 2.2]{Ser23}. Here only the spatial block of $H(B_0+u)$ is known to be
+positive, and we separate off its scalar Schur complement:
+\begin{equation}\label{eq:sigma0}
+H(B_0+u)=\begin{pmatrix}\ell&c^*\\c&D_u\end{pmatrix}=\sigma_0e_Te_T^*+\Sigma,\quad
+\sigma_0=\ell-c^*D_u^{-1}c,\quad
+\Sigma=\begin{pmatrix}c^*D_u^{-1}c&c^*\\c&D_u\end{pmatrix}\ge0 ,
+\end{equation}
+where $e_T$ is the time coordinate vector and $\Sigma\ge0$ by \eqref{eq:schur}. In the
+contraction with $A$ the background $A:B$ vanishes; in the determinant, \eqref{eq:schur} and
+$\det D_u=\lambda\mu$ give $\det H(B_0+u)=\lambda\mu\sigma_0$. Therefore
+\begin{equation}\label{eq:AHu}
+A:H(u)=A:\Sigma+\mu\sigma_0=A:\Sigma+\lambda^{-1}\det H(B_0+u).
+\end{equation}
+The full determinant has no prescribed sign, so we look for a second fibre integral whose
+Laplacian cancels it. Write $D_v=\Hfib(B_0+v)$. Along the segment $B_0+\theta u$ the cofactor of
+the full Hessian has $TT$ entry $\det D_{\theta u}$, and its contraction with $H(u)$ is the
+$\theta$-derivative of the full determinant. This suggests integrating the spatial determinant
+along the segment. For a smooth real $v$ on $\Omega_z$ with $D_v>0$ and zero boundary values set
+\begin{equation}\label{eq:energy}
+E_z(v)=\frac1\lambda\int_{\Omega_z}v\int_0^1\det D_{\theta v}\,d\theta\,d\zeta,\qquad
+J_z(v)=E_z(v)-\int_{\Omega_z}v\,\mu\,d\zeta .
+\end{equation}
+The segment integral is the quaternionic counterpart of the Aubin--Mabuchi energy: Mabuchi's
+functional integrates the variation of a K\"ahler potential against its complex Monge--Amp\`ere
+measure \cite[(2.2.1)]{Mab86}. Here the determinant is a polynomial, so the integrand is smooth
+up to the singular endpoint $D_0=B_{\rm fib}$. Define
+\[
+\F(z)=J_z(u)=E_z(u)+X_0(z).
+\]
+
+\begin{proposition}[Energy balance \cite{OAI26}]\label{prop:balance}
+The energy $\F$ is smooth on $a<|\tau|<4$. Let $\rho$ be the boundary value of $u/r$, which
+extends smoothly from the interior. In the three variables $z=(T,\tau)$,
+\begin{equation}\label{eq:balance}
+\Delta_z\F(z)+\int_{\Omega_z}A:\Sigma\,d\zeta=\int\rho\,G(r)^*A_{\rm w}G(r)\,\delta(r)\,d\zeta .
+\end{equation}
+\end{proposition}
+
+The normal seen by the current is that of the moving wall in the total space, so $G(r)$ is the
+full gradient. The integral on the right is over one fibre: $\delta(r)\,d\zeta=dS_{\rm fib}/|\nabla_{\rm fib}r|$,
+and the spatial gradient does not vanish by the ellipsoid chart. Since $A:\Sigma\ge0$, the
+boundary integral bounds $\Delta_z\F$ from above.
+
+\begin{proof}
+Denote the right side of \eqref{eq:balance} by $\cB(z)$. The balance is the sum of
+\begin{align}
+\Delta_zX_0&=\cB(z)-\int_{\Omega_z}A:\Sigma\,d\zeta-\lambda^{-1}\int_{\Omega_z}\det H(B_0+u)\,d\zeta,
+\label{eq:lapX}\\
+\Delta_z[E_z(u)]&=\lambda^{-1}\int_{\Omega_z}\det H(B_0+u)\,d\zeta .\label{eq:lapE}
+\end{align}
+For a fixed complex product domain, \AA hag et al.\ identified the Laplacian of the slice energy,
+up to normalisation, with the integral of the full Monge--Amp\`ere measure over the fibre
+\cite[Theorem 3.1]{ACKPZ09}. Here the fibre moves, so \eqref{eq:lapE} requires a boundary
+calculation. Both identities follow by testing with a smooth $\eta=\eta(z)$ compactly supported
+in the parameter domain. The only entry of $H(\eta)$ is $H_{TT}(\eta)=\Delta_z\eta$, by Lemma
+\ref{lem:hessian}. For a Hermitian field $M$ with divergence-free real columns, Green's formula
+\eqref{eq:green} on the total domain, with $v=\eta$, gives
+\begin{equation}\label{eq:testeta}
+\int_\Omega u\,M_{TT}\,\Delta_z\eta=\int_\Omega\eta\,M:H(u)-\int_{\partial_{\rm lat}\Omega}\eta\,(\nu^*M\nu)\,\partial_nu\,dS .
+\end{equation}
+Here $\partial_{\rm lat}\Omega$ is the side $r=0$, volume on $\Omega$ is $dz\,d\zeta$, and the term
+containing $u\nabla\eta$ vanishes because $u=0$ on the lateral boundary; there are no end terms
+because of the support of $\eta$. The outward unit normal $n=\nabla r/|\nabla r|$ has quaternionic
+column $\nu=G(r)/|\nabla r|$, and $G(u)=\nu\partial_nu$ on the wall. Since $r$ is a smooth defining
+function, $u=r\rho$ near the wall with $\rho$ smooth, and $\rho\ge0$ there because $u\le0$; in
+particular $\partial_nu=\rho|\nabla r|$.
+
+For $X_0$ take $M=A$ in \eqref{eq:testeta} and change sign, since $X_0$ integrates $(-u)\mu$. The
+interior term is given by \eqref{eq:AHu}. On the wall the regulariser $C(H(r))$ has image
+perpendicular to $\nu$, so only $A_{\rm w}$ contributes, and substituting $\partial_nu=\rho|\nabla r|$
+and $dS=|\nabla r|\,\delta(r)\,dz\,d\zeta$ produces $\cB(z)$. This proves \eqref{eq:lapX}.
+
+For $E_z(u)$ take $M_\theta=C(H(B_0+\theta u))$, whose columns are conserved by Lemma
+\ref{lem:cofdiv}. Here the whole normal coefficient vanishes. Indeed \eqref{eq:levi}, applied to
+$\theta u=\theta\rho r$, gives on $r=0$
+\[
+H(B_0+\theta u)|_{\nu^\perp}=(B+\theta\rho H(r))|_{\nu^\perp}.
+\]
+The null line of $H(r)$ lies in $\nu^\perp$ and in $\ker B$ by Lemma \ref{lem:fibre}, so the
+compressed form has a kernel and is singular, and \eqref{eq:compress} yields
+$\nu^*M_\theta\nu=0$ whatever the sign of the full Hessian. The same formula in the direction
+$e_T$ gives $(M_\theta)_{TT}=\det D_{\theta u}$. Integrate \eqref{eq:testeta} in $\theta\in[0,1]$ and
+divide by $\lambda$. On the left we obtain $\int E_z(u)\Delta_z\eta\,dz$; on the right,
+$M_\theta:H(u)=\partial_\theta\det H(B_0+\theta u)$ by \eqref{eq:cofactor}, which integrates to the
+full determinant at $\theta=1$, since $\det B=0$ for the rank-one $B$ and $n+1\ge2$. This
+proves \eqref{eq:lapE}, hence the balance in the sense of distributions. The chart
+\eqref{eq:inverse} maps every fibre onto a fixed product of a torus and an ellipsoid, and $u$
+depends smoothly on $z$ up to the boundary; so the volume and surface integrals are smooth in
+$z$ and the balance holds pointwise.
+\end{proof}
+
+\subsection{Size of the energy on a fibre}\label{ssec:size}
+Fix $z$. The segment integral in \eqref{eq:energy} is a primitive of the spatial determinant: for
+a smooth variation $w$ with zero boundary values,
+\begin{align}
+dJ_z(v)[w]&=\int_{\Omega_z}w\,\bigl(\lambda^{-1}\det D_v-\mu\bigr)\,d\zeta,\label{eq:firstvar}\\
+d^2J_z(v)[w,w]&=-\lambda^{-1}\int_{\Omega_z}\Gfib(w)^*C(D_v)\Gfib(w)\,d\zeta .\label{eq:secondvar}
+\end{align}
+For \eqref{eq:firstvar}, differentiating under the integral in \eqref{eq:energy} produces, besides
+$\lambda^{-1}\int w\int_0^1\det D_{\theta v}\,d\theta$, the term
+$\lambda^{-1}\int v\int_0^1\theta\,C(D_{\theta v}):\Hfib(w)\,d\theta$. The spatial cofactor
+$C(D_{\theta v})$ has conserved columns by Lemma \ref{lem:cofdiv}, and $v,w$ vanish on the
+boundary, so \eqref{eq:green} lets us interchange $v$ and $w$ in this fibre integral. The
+integrand in $\theta$ becomes
+$w\bigl(\det D_{\theta v}+\theta C(D_{\theta v}):\Hfib(v)\bigr)=w\,\partial_\theta(\theta\det D_{\theta v})$,
+which integrates to $w\det D_v$. Differentiating \eqref{eq:firstvar} once more gives
+$\lambda^{-1}\int wC(D_v):\Hfib(w)$, and the integration by parts of \eqref{eq:green} gives
+\eqref{eq:secondvar}. It is strictly negative for $w\ne0$, since $C(D_v)>0$ by
+\eqref{eq:cofinv}. Hence the Dirichlet solution is the unique maximiser of $J_z$ on this convex
+class: it is the smooth determinant variational principle with a rank-one background. For zero
+background Wan proved the first variation and the variational characterisation in quaternionic
+finite energy classes \cite[\S4]{Wan20}.
+
+Since $u\le0$ and $D_{\theta u}=(1-\theta)B_{\rm fib}+\theta D_u\ge0$, the correction $E_z(u)$ is
+nonpositive. At a solution the linear term of $\F$ uses the determinant at $B_0+u$, so
+$\lambda\F$ has the form of Aubin's $J$-functional \cite[p.~145]{Aub84}, with $B_0+u$ as
+reference potential and $B_0$ as argument in the relative formula \cite[\S2.1]{BBGZ13}. The
+rank-one background lets us compute how much of $X_0$ remains in $\F=X_0+E_z(u)$.
+
+\begin{lemma}[Energy comparison \cite{OAI26}]\label{lem:comparison}
+On every spatial fibre,
+\begin{equation}\label{eq:comparison}
+\F=\frac{n-1}{n+1}X_0+\frac1{\lambda n(n+1)}\int_{\Omega_z}\Gfib(u)^*C(D_u)\Gfib(u)\,d\zeta .
+\end{equation}
+In particular $\frac{n-1}{n+1}X_0\le\F\le\frac n{n+1}X_0$.
+\end{lemma}
+
+\begin{proof}
+Write $B_{\rm fib}=\beta bb^*$ with $|b|=1$. By \eqref{eq:compress} applied to $\theta D_u$, whose
+cofactor is $\theta^{n-1}C(D_u)$, the determinant along the segment has two terms:
+\[
+\det D_{\theta u}=\theta^n\det D_u+(1-\theta)\theta^{n-1}C(D_u):B_{\rm fib}.
+\]
+Using $\int_0^1\theta^nd\theta=\frac1{n+1}$ and $\int_0^1(1-\theta)\theta^{n-1}d\theta=\frac1{n(n+1)}$, together with
+$I=\int_{\Omega_z}(-u)\,C(D_u):B_{\rm fib}\,d\zeta\ge0$ and $\det D_u=\lambda\mu$, we get
+\[
+E_z(u)=-\frac{X_0}{n+1}-\frac{I}{\lambda n(n+1)},\qquad
+\F=\frac n{n+1}X_0-\frac I{\lambda n(n+1)} ,
+\]
+in particular the upper bound. By homogeneity $C(D_u):D_u=n\det D_u$, so
+\[
+n\lambda X_0-I=\int_{\Omega_z}(-u)\,C(D_u):\Hfib(u)\,d\zeta=\int_{\Omega_z}\Gfib(u)^*C(D_u)\Gfib(u)\,d\zeta ;
+\]
+the last integration by parts uses \eqref{eq:green} and $u=0$ on the boundary. Substituting
+for $I$ proves \eqref{eq:comparison}, and the lower bound follows since $C(D_u)\ge0$.
+\end{proof}

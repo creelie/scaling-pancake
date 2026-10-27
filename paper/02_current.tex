@@ -1,0 +1,346 @@
+\section{The statements of Part I and a conserved current}\label{sec:current}
+
+Part I reproduces the proof by OpenAI \cite{OAI26} of Sogge's local smoothing conjecture and
+of its consequence for Bochner--Riesz means. Throughout Part I the spatial dimension is
+$n\ge2$, we put $d=n-1$, and
+\begin{gather*}
+U(T)=e^{-iT|D|},\qquad I=[1,2],\qquad J=(1-\Delta)^{1/2},\\
+s_+(p)=\max\Bigl\{0,\frac{n-1}{2}-\frac np\Bigr\},\qquad \pc=\frac{2n}{n-1}.
+\end{gather*}
+
+\begin{theorem}[Local smoothing \cite{OAI26}]\label{thm:ls}
+For $n\ge2$, $2\le p<\infty$ and $\eps>0$,
+\[
+\|U(T)f\|_{L^p(\R^n\times I)}\le C_{n,p,\eps}\|J^{s_+(p)+\eps}f\|_{L^p(\R^n)} .
+\]
+\end{theorem}
+
+The whole proof rests on one estimate at the exponent $\pc$, on a single frequency annulus.
+
+\begin{theorem}[Critical annular estimate \cite{OAI26}]\label{thm:annular}
+Let $n\ge2$, $\varphi\in C^\infty_c(\R^n\setminus\{0\})$ and $P_N=\varphi(D/N)$. For $N\ge2$,
+\[
+\|U(T)P_Nf\|_{L^{\pc}(\R^n\times I)}\le C_{n,\varphi}\,[\log(2+N)]^{2/\pc}\,\|f\|_{L^{\pc}(\R^n)} .
+\]
+\end{theorem}
+
+\subsection{The plan}\label{ssec:plan}
+Put $h=N^{-1}$ and $a=Kh$ with a large fixed $K$. Besides the time $T$ there will be two
+auxiliary real time variables $\tau\in\R^2$, which come from an imaginary displacement of
+the wave along light rays. For data $f$ on a fixed torus whose frequencies lie in one small
+cap of the annulus $|\xi|\asymp h^{-1}$ and with $\|f\|_2=1$, we build a nonnegative energy
+$\mathcal F(T,\tau)$ and prove, with $\mathcal H(T,s)$ the mean of $\mathcal F$ over
+$|\tau|=s$,
+\[
+\int_1^2\|U(T)f\|_{\pc}^{\pc}\,dT\lesssim a^{-2}\int_1^2\mathcal H(T,2a)\,dT
+\lesssim[\log(2/h)]^2a^{-2}\mathcal H(0,4a)\lesssim[\log(2/h)]^2\|f\|_{\pc}^{\pc}.
+\]
+The outer inequalities compare the energy with the wave (Section \ref{sec:fiber}); the middle
+one uses only the differential inequality $\Delta_{T,\tau}\mathcal F\le Cs^{-2}e^{-cs/h}\mathcal F$
+on $2a\le|\tau|\le3$ (Section \ref{sec:cylinder}).
+
+The energy is built as follows. A finite sum of plane waves whose directions lie in one cap
+is continued to complex spacetime. Translation by $-i\ell(1,\omega)$ along a light ray
+multiplies a mode of frequency $\xi$ by $\exp(-\ell|\xi||\omega-\xi/|\xi||^2/2)$, a Gaussian
+of angular width $(N\ell)^{-1/2}$. The fluxes of the symmetric first-order form of the wave
+equation produce such displacements, and two flows built from the continued wave give a
+positive semidefinite tensor with divergence-free columns whose time component still sees
+the wave on the cap (this section). On each spatial fibre, the time component $\mu$ of a
+regularised version of this tensor is used as the density of a quaternionic Monge--Amp\`ere
+equation $\det\Hfib(\lambda|\Phi|^2+u)=\lambda\mu$ with zero boundary values, where $\Phi$
+is a complex scalar constant along the current and $\lambda$ is large. The background
+$\lambda|\Phi|^2$ has a Hessian of rank one; adding $\alpha I$ to it changes its determinant to
+$(\beta+\alpha)\alpha^{n-1}$ with $\beta\asymp\lambda$. Hence a density $\mu\ge m$ on a ball
+forces the depth of $u$ at its centre to be at least a multiple of the squared radius times
+$m^{1/(n-1)}$, and $\int(-u)\mu$ detects $m^{n/(n-1)}$. Since $\mu$ is a square of the wave,
+the exponent is $2n/(n-1)=\pc$. A correction of Aubin--Mabuchi type makes the full determinant
+cancel in $\Delta_{T,\tau}$ of the energy, and the only positive contribution left is the
+wave flux through the side of the fibre, which carries a Gaussian factor $e^{-cs/h}$.
+
+\subsection{Null coordinates and modes}\label{ssec:modes}
+Choose an orthonormal frame $X=(x,b)\in\R^d\times\R$ of $\R^n$ and put
+\[
+t=(T+b)/\sqrt2,\qquad s_0=(b-T)/\sqrt2 .
+\]
+In these coordinates the wave operator $\partial_T^2-\Delta_X$ becomes, up to sign,
+$2\partial_t\partial_{s_0}+\Delta_x$. A plane wave with phase $X\cdot\xi-T|\xi|$ and
+$\xi_b+|\xi|>0$ is
+\begin{equation}\label{eq:mode}
+u_{\kappa,v}=c_{\kappa,v}\exp\Bigl(i\kappa\bigl(s_0+v\cdot x-\tfrac12|v|^2t\bigr)\Bigr),\qquad
+\kappa=\frac{\xi_b+|\xi|}{\sqrt2},\qquad v=\frac{\xi_x}{\kappa}.
+\end{equation}
+Indeed, the phase is $x\cdot\xi_x+s_0(\xi_b+|\xi|)/\sqrt2+t(\xi_b-|\xi|)/\sqrt2$, and
+$(\xi_b-|\xi|)/\sqrt2=-|\xi_x|^2/(2\kappa)=-\kappa|v|^2/2$. Throughout the construction
+$u_{\rm w}=\sum_{\kappa,v}u_{\kappa,v}$ is a finite sum with $\kappa>0$ and complex coefficients.
+
+Index the states by $0,\dots,d$, let $E_{ab}$ be the elementary $n\times n$ matrices, and
+in the real spacetime coordinates $\mathsf X=(t,x,s_0)$ put
+\[
+C^t=2E_{00},\qquad C^{x_j}=E_{0j}+E_{j0},\qquad C^{s_0}=-\sum_{j=1}^dE_{jj},\qquad
+\mathscr P=\sum_\mu C^\mu\partial_{\mathsf X_\mu}.
+\]
+For a scalar $\psi$ the vector $(\partial_{s_0}\psi,\nabla_x\psi)$ satisfies
+$\mathscr P(\partial_{s_0}\psi,\nabla_x\psi)^{\rm t}=((2\partial_t\partial_{s_0}+\Delta_x)\psi,0,\dots,0)^{\rm t}$:
+the first entry is $2\partial_t\partial_{s_0}\psi+\sum_j\partial_{x_j}\partial_{x_j}\psi$, and
+the $j$th entry is $\partial_{x_j}\partial_{s_0}\psi-\partial_{s_0}\partial_{x_j}\psi=0$. At the
+covector $p=\kappa(-|v|^2/2,v,1)$ of \eqref{eq:mode} the symbol $C(p)=\sum_\mu p_\mu C^\mu$
+satisfies
+\begin{equation}\label{eq:symbol}
+-C(p)=\kappa\begin{pmatrix}|v|^2&-v^{\rm t}\\-v&I_d\end{pmatrix},\qquad
+-w^{\rm t}C(p)w=\kappa|w'-vw_0|^2\quad(w=(w_0,w')\in\R^n).
+\end{equation}
+Its kernel is spanned by $E(v)=(1,v)^{\rm t}$, and
+$f_{\rm sys}=\sum_{\kappa,v}\kappa^{d/2}E(v)u_{\kappa,v}$ solves $\mathscr Pf_{\rm sys}=0$.
+
+\subsection{The Gaussian from an imaginary displacement}
+Translating $(T,X)$ by $-i\varrho(1,\omega)$ with $\varrho>0$ and $|\omega|=1$ multiplies a mode of
+frequency $\xi$ by
+\[
+e^{\varrho(\xi\cdot\omega-|\xi|)}=e^{-\varrho|\xi||\hat\xi-\omega|^2/2},\qquad\hat\xi=\xi/|\xi| ,
+\]
+since $|\hat\xi-\omega|^2=2-2\hat\xi\cdot\omega$. The system produces such light rays as quadratic
+fluxes. For a real state $w=(w_0,w')$ let $q(w)^\mu=w^{\rm t}C^\mu w/2$; in null coordinates
+$q(w)=(w_0^2,w_0w',-|w'|^2/2)$. Since $\partial_t=(\partial_T+\partial_b)/\sqrt2$ and
+$\partial_{s_0}=(\partial_b-\partial_T)/\sqrt2$, its physical components satisfy
+$q(w)^T=|q(w)^X|=(w_0^2+|w'|^2/2)/\sqrt2$, so $q(w)$ is a light ray; at $w=E(v)$ it is
+$(|\xi|,\xi)/\kappa$. We use the sum of the fluxes of two real states,
+\begin{equation}\label{eq:twoflux}
+q^\mu=q(w_1)^\mu+q(w_2)^\mu=\frac12\sum_{\ell=1}^2w_\ell^{\rm t}C^\mu w_\ell,\qquad w_1,w_2\in\R^n .
+\end{equation}
+At $\mathsf X-iq$ a mode acquires the factor $e^{p\cdot q}$. Introduce a second imaginary unit
+$\kk$, with $\kk^2=-1$, put $\Ck=\{\alpha+\kk\beta:\alpha,\beta\in\R\}$, and pair the two states
+into
+\[
+z=w_1+\kk w_2=(R,\zeta)\in\Ck\times\Ck^d .
+\]
+Then $q^\mu=z^*C^\mu z/2$, where $^*$ is the conjugate transpose, and adding the two real
+squares of \eqref{eq:symbol} gives
+\begin{equation}\label{eq:gauss}
+e^{p\cdot q}=\exp\Bigl(-\frac\kappa2|\zeta-vR|^2\Bigr).
+\end{equation}
+For each $R$ the square of $\kappa^{d/2}e^{p\cdot q}$ has integral $\pi^d$ in $\zeta$, which
+explains the factor $\kappa^{d/2}$ in $f_{\rm sys}$.
+
+\subsection{Two auxiliary flows}
+For constant real symmetric matrices $C^\mu$ the bilinear flux of two states is
+$j^\mu(a,b)=a^{\rm t}C^\mu b$, and its divergence for two fields is
+$(\mathscr Pa)^{\rm t}b+a^{\rm t}\mathscr Pb$; this is the conservation law of symmetric
+hyperbolic systems \cite{Fri54}. The derivative of $q^\mu$ in the direction $\delta w_\ell$ is
+$j^\mu(w_\ell,\delta w_\ell)$, and this suggests the following vector fields.
+
+\begin{lemma}[\cite{OAI26}]\label{lem:flows}
+Let $\mathscr P=\sum_\mu C^\mu\partial_{\mathsf X_\mu}$ have constant real symmetric
+coefficients, let $f_{\rm sys}$ be an entire solution of $\mathscr Pf_{\rm sys}=0$, and let $q$ be
+the displacement \eqref{eq:twoflux}. In the real coordinates $(\mathsf X,w_1,w_2)$ put
+\[
+G=\overline{f_{\rm sys}(\mathsf X-iq)},\quad V_{\ell a}=\sum_\mu(C^\mu w_\ell)_a\,\partial_{\mathsf X_\mu},\quad
+D_{\ell a}=\partial_{w_{\ell a}}+iV_{\ell a},\quad \mathcal Z_\ell=\sum_aG_aD_{\ell a}.
+\]
+Then the real tensor
+\begin{equation}\label{eq:B}
+B=\Re\sum_{\ell=1}^2\mathcal Z_\ell\otimes\overline{\mathcal Z_\ell}
+\end{equation}
+is symmetric and positive semidefinite, and each of its columns has zero divergence.
+\end{lemma}
+
+\begin{proof}
+The field $D_{\ell a}$ annihilates every component of $\mathsf X-iq$: it sends
+$\mathsf X_\mu-iq^\mu$ to $-i(C^\mu w_\ell)_a+i(C^\mu w_\ell)_a=0$. Since $f_{\rm sys}$ is
+holomorphic, $D_{\ell a}\overline G=0$, that is
+\[
+\partial_{w_{\ell a}}G=iV_{\ell a}G .
+\]
+The coefficients of $V_{\ell a}$ depend only on $w$, so $D_{\ell a}$ has zero divergence, and
+\[
+\operatorname{div}\mathcal Z_\ell=\sum_aD_{\ell a}G_a=\sum_a(\partial_{w_{\ell a}}G_a+iV_{\ell a}G_a)
+=2i\sum_aV_{\ell a}G_a=2i\,w_\ell^{\rm t}\,\overline{(\mathscr Pf_{\rm sys})(\mathsf X-iq)}=0 .
+\]
+For the flat connection the identity $D_{\ell a}\overline G=0$ shows that, in
+$\nabla_{\mathcal Z_\ell}\overline{\mathcal Z_m}=\sum_{a,b}G_a D_{\ell a}(\overline{G_b})\,\overline{D_{mb}}
++\sum_{a,b}G_a\overline{G_b}\,D_{\ell a}(\overline{D_{mb}})$, only the derivatives of the
+coefficients of $\overline{D_{mb}}=\partial_{w_{mb}}-iV_{mb}$ remain. These are
+$-i\,\delta_{\ell m}\sum_\mu (C^\mu)_{ba}\partial_{\mathsf X_\mu}$, so
+\[
+\nabla_{\mathcal Z_\ell}\overline{\mathcal Z_m}=-i\,\delta_{\ell m}\sum_\mu\bigl(G^{\rm t}C^\mu\overline G\bigr)\partial_{\mathsf X_\mu}.
+\]
+The vector on the right is real since the $C^\mu$ are real symmetric, so its product with $-i$ is
+purely imaginary. The column divergence of $\mathcal Z_\ell\otimes\overline{\mathcal Z_\ell}$ is
+$(\operatorname{div}\mathcal Z_\ell)\overline{\mathcal Z_\ell}+\nabla_{\mathcal Z_\ell}\overline{\mathcal Z_\ell}$,
+whose real part vanishes. Finally, if $\mathcal Z_\ell=A_\ell+iB_\ell$ with real fields, its
+contribution to \eqref{eq:B} is $A_\ell\otimes A_\ell+B_\ell\otimes B_\ell\ge0$.
+\end{proof}
+
+The imaginary part of the last identity at $m=\ell$ gives
+$[A_\ell,B_\ell]=\sum_\mu(G^{\rm t}C^\mu\overline G)\partial_{\mathsf X_\mu}$, which identifies the
+physical current inside the lifted variables. We now express the four real squares of $B$ in
+coordinates attached to spacetime.
+
+\subsection{Quaternionic coordinates adapted to the wave}\label{ssec:quat}
+The quaternions $\HH$ have units $\ii,\jj,\kk$ with $\ii^2=\jj^2=\kk^2=-1$, $\ii\jj=\kk$ and
+$\kk\ii=\jj$. The Fourier complex plane is identified with $\Ci=\R+\R\ii$; every quaternion is
+uniquely $\alpha+\kk\beta$ with $\alpha,\beta\in\Ci$, and the planes $\Ci$ and $\kk\Ci$ are
+orthogonal for $\ip uv=\Re(u\bar v)$. Columns carry scalars acting on the right, and $^*$
+denotes the quaternionic conjugate transpose. We look for one auxiliary pair for each of the
+$n+1$ real spacetime coordinates and write each triple as $\mathsf X_\mu+\omega_\mu\ii$ with
+$\omega_\mu\in\Ck$; these triples lie in $\mathcal D=\operatorname{span}_\R(1,\ii,\jj)$.
+
+For a quaternionic Hermitian matrix $A$ on spacetime indices put
+\begin{equation}\label{eq:AR}
+A^{\R}_{\mu\alpha,\nu\beta}=\Re(\overline{e_\alpha}A_{\mu\nu}e_\beta),\qquad(e_0,e_1,e_2)=(1,\ii,\jj).
+\end{equation}
+If $A=\chi\chi^*$ this real tensor is the Gram matrix of the rows $\overline{e_\alpha}\chi_\mu$,
+so the three rows over each $\mu$ are $Q,-\ii Q,-\jj Q$.
+
+In source coordinates write the four squares of \eqref{eq:B} as a Gram matrix by setting
+$Q_I=\mathcal Z_1^I+\kk\mathcal Z_2^I$ for each coordinate $I$. Orthogonality of $\Ci$ and
+$\kk\Ci$ gives $B^{IJ}=\Re(Q_I\overline{Q_J})$. With $M_{\mu a}=(C^\mu z)_a$ the rows in the
+real spacetime and in the state directions are
+\[
+Q_{\mathsf X_\mu}=\sum_aM_{\mu a}\,\ii\, G_a,\qquad(Q_{w_{1a}},Q_{w_{2a}})=(G_a,\kk G_a).
+\]
+For a holomorphic coordinate $\omega_\mu(z)$ let $L_{\mu a}=\partial_{z_a}\omega_\mu$.
+Multiplication by $c=c_1+\kk c_2$ on an auxiliary pair has real rows $(c_1,-c_2)$ and $(c_2,c_1)$,
+so it sends $(G_a,\kk G_a)$ to $(\bar cG_a,\kk\bar cG_a)$; the new pair over $\mu$ therefore
+starts with $\sum_a\overline{L_{\mu a}}G_a$. The choice $L=M$ gives exactly $-\ii Q_{\mathsf X_\mu}$,
+because $-\ii c\,\ii=\bar c$ for $c\in\Ck$, and its partner is $\kk(-\ii Q_{\mathsf X_\mu})=-\jj Q_{\mathsf X_\mu}$.
+
+\subsubsection*{The holomorphic flux map}
+By symmetry, $L_{\mu a}=(C^\mu z)_a$ integrates to the quadratic $z^{\rm t}C^\mu z/2$: the
+Hermitian square $z^*C^\mu z/2$ weights the modes, and the bilinear square moves their Gram
+rows. There are $n$ complex state coordinates and $n+1$ spacetime coordinates, so add a
+passive variable $\eta\in\Ck$ in whose two real directions the flows have no component. For
+a constant real symmetric system as in Lemma \ref{lem:flows} and a fixed $c\in\R^{n+1}$ set
+\[
+\Theta:(z,\eta)\longmapsto\omega,\qquad\omega_\mu=\tfrac12z^{\rm t}C^\mu z+c^\mu\eta .
+\]
+It fixes the real spacetime coordinates, and on a local inverse chart its real volume Jacobian
+is $J=|\det_{\C}[M,c]|^2$. Push $B$ forward as a density,
+\begin{equation}\label{eq:pushforward}
+\widetilde B\circ\Theta=J^{-1}\,D\Theta\,B\,D\Theta^{\rm t}.
+\end{equation}
+The differentials transform the Gram rows as described, and $J^{-1}$ converts source volume to
+target volume, so
+\begin{equation}\label{eq:chi-tilde}
+\widetilde B=(\widetilde\chi\widetilde\chi^*)^{\R},\qquad
+\widetilde\chi_\mu\circ\Theta=J^{-1/2}\sum_aM_{\mu a}\ii G_a .
+\end{equation}
+As a function of $\omega$, the passive coordinate satisfies $(\partial_\omega\eta)M=0$, because
+varying $z$ at fixed $\eta$ produces the columns of $M$; hence $(\partial_\omega\eta)\widetilde\chi=0$.
+
+The tensor $\widetilde B$ is again conserved. Test its $K$th column against the gradient of a
+real $\varphi$ with compact support in the target chart. Changing variables in
+\eqref{eq:pushforward}, the weak divergence becomes
+$-\sum_{I,L}\int B^{IL}(\partial_L\Theta^K)\partial_I(\varphi\circ\Theta)$, and integration by
+parts in the source gives
+\[
+J(\operatorname{div}\widetilde B)^K\circ\Theta=\sum_L(\partial_L\Theta^K)(\operatorname{div}B)^L
++\sum_{I,L}B^{IL}\partial_I\partial_L\Theta^K .
+\]
+The first sum vanishes by Lemma \ref{lem:flows}. In the second, the two diagonal state blocks
+of $B$ both equal $(\Re(G_a\overline{G_b}))_{ab}$ and the mixed state block vanishes, while each
+real component of the holomorphic map satisfies
+$\partial_{w_{1a}}\partial_{w_{1b}}\Theta^K+\partial_{w_{2a}}\partial_{w_{2b}}\Theta^K=0$. The other
+coordinates enter $\Theta$ affinely, so the second sum vanishes too.
+
+\subsubsection*{The wave in these coordinates}
+For the wave matrices add $\eta$ in the $s_0$ coordinate. In the null frame the flux map is
+\begin{equation}\label{eq:fluxmap}
+\Theta:(R,\zeta,\eta)\longmapsto(Y,P,S_1)=(R^2,R\zeta,\eta-\zeta\cdot\zeta/2).
+\end{equation}
+If $(\tau,P,Z)$ are the target auxiliary coordinates in the physical frame $(T,x,b)$, then
+$Y=(\tau+Z)/\sqrt2$ and $S_1=(Z-\tau)/\sqrt2$. On $Y\ne0$, inverting \eqref{eq:fluxmap} gives
+$R=\sqrt Y$ on a local branch and $\zeta=P/R$, and the single-valued coordinates are
+\begin{equation}\label{eq:WPhi}
+W=\frac PY=\frac\zeta R,\qquad\Phi=S_1+\frac{P\cdot P}{2Y}=\eta,\qquad y=|Y| .
+\end{equation}
+All dots between complex vectors are bilinear, and $|\cdot|$ is the Euclidean norm. The complex
+Jacobian determinant of $\Theta$ is $2R^{d+1}$, so
+\begin{equation}\label{eq:jacobian}
+J=4|R|^{2d+2}.
+\end{equation}
+Under $M$ a polarisation vector $E(v)$ maps to
+\begin{equation}\label{eq:Vv}
+ME(v)=(2R,\zeta+Rv,-\zeta\cdot v)^{\rm t}=2RV^v,\qquad V^v=\bigl(1,(v+W)/2,-W\cdot v/2\bigr)^{\rm t}.
+\end{equation}
+Put $\ell(w)=(-w\cdot w/2,w,1)$, so that $\kappa\ell(v)$ is the real phase covector; one checks
+$\ell(w)V^v=-(w-W)\cdot(w-v)/2$. The column $V^v$ thus lies in the kernels of both $\ell(v)$ and
+$\partial\Phi=\ell(W)$, and differentiating $W=P/Y$ gives the second identity in
+\begin{equation}\label{eq:tangency}
+(\partial\Phi)V^v=0,\qquad(\partial W)V^v=\frac{v-W}{2Y} .
+\end{equation}
+These are complex differentials in $(Y,P,S_1)$. The current stays on a level set of $\Phi$,
+and each mode moves $W$ in proportion to its angular mismatch $v-W$.
+
+For $e=Y/y$ put $\iota_e(\alpha+i\beta)=\alpha+e\ii\beta$. This embeds the Fourier complex
+numbers isometrically into $\HH$, since $\ii c=\bar c\ii$ for $c\in\Ck$ gives $(e\ii)^2=-1$.
+Define the positive weight
+\[
+m_{\kappa,v}=(\kappa/y)^{d/2}\exp\Bigl(-\frac{\kappa y}2|W-v|^2\Bigr);
+\]
+the factor $y^{-d/2}$ comes from the change of volume.
+
+\begin{proposition}[The wave current \cite{OAI26}]\label{prop:current}
+For a finite superposition of modes \eqref{eq:mode} set
+\begin{equation}\label{eq:chi}
+\chi=\sum_{\kappa,v}V^v\,\iota_e\bigl(\overline{u_{\kappa,v}}\bigr)\,m_{\kappa,v},\qquad A^0=\chi\chi^* .
+\end{equation}
+On $Y\ne0$ the matrix $A^0$ is smooth and positive semidefinite, $(\partial\Phi)A^0=0$, and each
+column of $(A^0)^{\R}$ has zero real divergence. The same holds after the orthogonal change
+from null to physical coordinates, and
+\[
+V^v_T=(1+W\cdot v/2)/\sqrt2,\qquad A^0_{TT}=|\chi_T|^2 .
+\]
+\end{proposition}
+
+\begin{proof}
+We identify the column \eqref{eq:chi-tilde} on one inverse chart. By \eqref{eq:gauss} and
+\eqref{eq:Vv} the contribution of a single mode to $\widetilde\chi$ is
+$V^v g\,\ii\,\overline{u_{\kappa,v}}\,m_{\kappa,v}$ with $g=R/|R|$, since
+$|\zeta-vR|^2=y|W-v|^2$ and $2|R|/\sqrt J=y^{-d/2}$. Multiplying every row on the right by the
+unit quaternion $(g\ii)^{-1}$ preserves the Gram matrix; conjugation by $g$ takes $\ii$ to
+$g^2\ii=e\ii$, and $\ii$ commutes with the Fourier amplitudes, so the column becomes
+\eqref{eq:chi}. This formula involves $Y$ itself, hence is smooth and independent of the
+branch of the square root. Positivity follows from the outer product form, tangency from
+\eqref{eq:tangency}, and conservation from the discussion of $\widetilde B$. The change to
+physical coordinates acts by the same real orthogonal matrix in each of the three coordinate
+slots, so it preserves column divergence and the pairing of rows and columns. Finally
+$T=(t-s_0)/\sqrt2$ gives $V^v_T$.
+\end{proof}
+
+For a single $\kappa$ and real $W$ the exponential in $m_{\kappa,v}$ is a Gaussian window in the
+transverse frequency $\kappa v$ centred at $\kappa W$, and since $V^v_t=1$ the null component
+$A^0_{tt}$ is, up to normalisation, the Husimi density of the scalar wave
+\cite{Hus40,KLO16}, a phase-space density of the kind also used for quantum states on
+symplectic manifolds \cite{Bha26a}. For the full wave, \eqref{eq:chi} sums the amplitudes
+over $\kappa$ before taking the square, which keeps the interference that produces a focus.
+
+\subsection{The time component on a frequency cap}\label{ssec:cap}
+At a fixed auxiliary point write $V^v_T=b_0+\kk b_1$, so that
+\[
+b_0=\frac{1+\Re(W)\cdot v/2}{\sqrt2},\qquad b_1=\frac{\Imk(W)\cdot v}{2\sqrt2},
+\qquad\Imk(\alpha+\kk\beta)=\beta .
+\]
+Let $S_\ell$ be the scalar spatial multiplier sending each mode of \eqref{eq:mode} to
+$b_\ell m_{\kappa,v}u_{\kappa,v}$ at this auxiliary point. By \eqref{eq:chi},
+\begin{equation}\label{eq:ATT}
+\chi_T=\iota_e\bigl(\overline{S_0u_{\rm w}}\bigr)+\kk\,\iota_e\bigl(\overline{S_1u_{\rm w}}\bigr),\qquad
+A^0_{TT}=|S_0u_{\rm w}|^2+|S_1u_{\rm w}|^2 ,
+\end{equation}
+because the two terms lie in the conjugates of the orthogonal planes $\Ci$ and $\kk\Ci$ by a
+square root of $e$ in $\Ck$. At $W=0$ the second multiplier vanishes and $2A^0_{TT}$ is exactly
+the squared modulus of the wave with weight $(\kappa/y)^{d/2}\exp(-\kappa y|v|^2/2)$ on each mode.
+
+For the estimates take $u_{\rm w}=e^{-iT|D|}f$ on the fixed torus $\T^n=\R^n/(100\Z)^n$, with the
+axis $b$ along the centre of a frequency cap; the torus itself is not rotated. For $0<h\le1$
+suppose $\hat f$ is supported in
+\[
+c_0/h\le|\xi|\le C_0/h,\qquad|v|\le\gamma,
+\]
+with fixed $0<c_0<C_0$ and a small aperture $\gamma>0$ independent of $h$. The identity
+$|\xi|=\kappa(1+|v|^2/2)/\sqrt2$ gives $\kappa\asymp h^{-1}$. At $y\asymp h$ and $|W|,|v|\le1/10$
+the Gaussian and $b_0$ are bounded below, so $h^dS_0$ has a symbol bounded above and below on
+the cap; for larger $y/h$ the cost of inverting $S_0$ depends on the mismatch $|W-v|$. There are
+$O(h^{-n})$ frequencies in the annulus, uniformly in the frame, so Cauchy--Schwarz and Parseval
+give $\sum_{\kappa,v}|c_{\kappa,v}|\lesssim h^{-n/2}\|f\|_2$. The formulas in null coordinates may
+be used on the covering space; the resulting current is periodic in the original spatial
+variables. Nonzero cap data are normalised by $\|f\|_2=1$ in the energy estimates.

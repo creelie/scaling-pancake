@@ -1,0 +1,59 @@
+name: check
+
+# Runs the checks of the algebraic identities (Python), the Lean 4 file and
+# the LaTeX build of the paper.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Checks
+        run: |
+          pip install sympy numpy
+          cd code
+          python3 -I check_algebra.py | tee check_run.txt
+          grep -q "22 checks passed, 0 failed" check_run.txt
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          sh elan-init.sh -y --default-toolchain "$(cat lean/lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Check the Lean file and its axioms
+        run: |
+          cd lean
+          lean BochnerRiesz.lean
+          cp BochnerRiesz.lean axioms_check.lean
+          for t in $(grep -oP "^theorem \K[\w']+" BochnerRiesz.lean); do
+            echo "#print axioms BochnerRiesz.$t" >> axioms_check.lean
+          done
+          lean axioms_check.lean | tee axioms_run.txt
+          test "$(grep -c 'depends on axioms' axioms_run.txt)" -eq 18
+          ! grep -q sorryAx axioms_run.txt
+  paper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science lmodern latexmk
+      - name: Compile
+        run: |
+          cd paper
+          latexmk -pdf -interaction=nonstopmode main.tex
+          ! grep -q "Overfull\|Underfull" main.log
+          ! grep -qi "undefined references\|multiply defined" main.log
