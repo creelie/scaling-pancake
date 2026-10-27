@@ -1,0 +1,23 @@
+[pass] 3x3 Moore determinant polynomial = product of real eigenvalues
+[pass] cofactor (det A) A^{-1} is the derivative of the Moore determinant
+[pass] rank-one update and compression formula for the cofactor
+[pass] Schur complement: det M = (det D) sigma, M - sigma e0 e0* >= 0
+[pass] Hessian calculus: Hermitian, trace = Laplacian, product rule
+[pass] Hessian of |F|^2 equals 4 J* J for holomorphic F
+[pass] cofactor of the Hessian has divergence-free rows (m = 2, three slots)
+[pass] cofactor of the Hessian has divergence-free rows (m = 3, three slots)
+[pass] plane mode solves 2 d_t d_s0 + Laplacian = 0
+[pass] frequency of a mode: |xi| = kappa(1+|v|^2/2)/sqrt2, xi_b + |xi| = sqrt2 kappa
+[pass] symbol of the wave system, its kernel E(v) and the quadratic form
+[pass] complex Jacobian of the flux map is 2 R^{d+1}
+[pass] M E(v) = 2 R V^v; (dPhi) V^v = 0; (dW) V^v = (v - W)/(2Y)
+[pass] l(w) V^v = -(w - W).(w - v)/2
+[pass] Gaussian weight in the flux coordinates
+[pass] energy comparison: F = (n-1)/(n+1) X0 + (1/(lam n(n+1))) int G* C G
+[pass] power counting: h^2 s^(2d) (hs)^(-dq) = (s/h)^(n-2), 2q = 2n/(n-1)
+[pass] rank-one background: det(B + alpha I) = (beta + alpha) alpha^(n-1)
+[pass] sharpness example for the radial comparison
+[pass] integral identity behind the radial comparison
+[pass] limit of r_*(p, p0, p0) as p0 -> 2d/(d+1); q_opt; weighted exponent
+[pass] q_*(p, p0, p0) decreases to q_opt as p0 increases
+22 checks passed, 0 failed

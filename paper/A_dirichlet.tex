@@ -1,0 +1,382 @@
+\section{The Dirichlet problem on a periodic fibre}\label{app:dirichlet}
+
+The energy argument of Section \ref{sec:energy} uses a potential that solves a quaternionic
+Monge--Amp\`ere equation on each spatial fibre, is smooth up to a boundary that moves with the
+parameters, and is compared with explicit functions on the fibre and on small balls inside it. This
+appendix proves the existence, comparison and smooth dependence that are needed; the quantitative
+bounds in the wavelength come from the comparison functions of Section \ref{sec:fiber}. The argument
+is that of \cite[Appendix A]{OAI26}, written out in full. Alesker solved the Dirichlet problem on
+quaternionic balls \cite[Theorem 1.4]{Ale03b} and Zhu on bounded domains of $\HH^m$ carrying a smooth
+subsolution \cite[Theorem 1.1]{Zhu16}. Our fibres have periodic real directions and only three real
+coordinates per variable; a fourth, periodic coordinate is adjoined to provide the quaternionic
+rotations used for the mixed derivatives at the boundary.
+
+\subsection{Setting and statement}
+Let $m\ge1$, let $\Lambda\subset\R^m$ be a lattice of rank $m$, let $V\subset\Ck^m\cong\R^{2m}$ be a bounded
+domain with smooth boundary, and put $\Omega=(\R^m/\Lambda)\times V$. In the notation of Section
+\ref{ssec:hessian} with three slots, $z_a=x_a+P_a\ii$, the periodic variables $x_a$ occupy the real
+slot and $P_a=p_a+\kk q_a\in\Ck$ the slots $\ii,\jj$; $H$ is the three-slot Hessian \eqref{eq:GH}. A
+function on $V$ is regarded as a function on $\Omega$ independent of $x$.
+
+\begin{theorem}[{\cite[Theorem A.1]{OAI26}}]\label{thm:dirichlet}
+Let $r$ be smooth on a neighbourhood of $\overline V$, with $r<0$ in $V$, $r=0$ and $dr\ne0$ on
+$\partial V$, and $H(r)>0$ on $\overline\Omega$. Let $B_0,g\in C^\infty(\overline\Omega)$ be real with
+\[
+H(B_0)\ge0,\qquad g>\det H(B_0)\qquad\text{on }\overline\Omega .
+\]
+Then there is a unique $u\in C^\infty(\overline\Omega)$ with
+\begin{equation}\label{eq:dirichletA}
+\det H(B_0+u)=g,\qquad H(B_0+u)>0\quad\text{on }\overline\Omega,\qquad u|_{\partial\Omega}=0,
+\end{equation}
+and there are constants $b\ge b'>0$ with
+\begin{equation}\label{eq:barrier}
+b\,r\le u\le b'\,r .
+\end{equation}
+If $r,B_0,g$ and the domain depend smoothly on finitely many parameters, the constants $b,b'$ can be
+chosen locally uniformly in the parameters, and the solution depends smoothly on the parameters up to
+the boundary after any smooth local identification of the domains with a fixed domain.
+\end{theorem}
+
+Here $C^\infty(\overline\Omega)$ denotes functions all of whose derivatives extend continuously to
+$\overline\Omega$, and similarly for the H\"older spaces $C^{k,\alpha}(\overline\Omega)$; $C^{k,\alpha}_0$ is
+the subspace of functions vanishing on $\partial\Omega$. The \emph{smooth dependence} means: if
+$\Theta_\tau:\overline V_{\tau_0}\to\overline V_\tau$ are diffeomorphisms depending smoothly on $(\tau,y)$, then
+$(\tau,x,y)\mapsto u_\tau(x,\Theta_\tau(y))$ is smooth up to the boundary.
+
+\subsection{Matrix facts}
+We use the following consequences of Lemma \ref{lem:moore}. Let $Q,Q_1,Q_2$ be positive definite
+Hermitian quaternionic $m\times m$ matrices and $B$ Hermitian.
+\begin{enumerate}[label=(M\arabic*)]
+\item If $A\ge0$ and $B\ge0$ then $A:B\ge0$. Indeed $A=UDU^*$ with $U$ unitary and $D\ge0$ diagonal, and
+$A:B=\Re\tr(D^{1/2}U^*BUD^{1/2})$ by cyclicity of $\Re\tr$, a sum of the nonnegative numbers
+$e_i^*D^{1/2}U^*BUD^{1/2}e_i$.
+\item $\frac{d}{ds}\log\det(Q+sB)|_{s=0}=Q^{-1}:B$, by \eqref{eq:cofactor} and \eqref{eq:cofinv}. Since
+$Q_\theta=(1-\theta)Q_2+\theta Q_1>0$ for $0\le\theta\le1$,
+\begin{equation}\label{eq:logdiff}
+\log\det Q_1-\log\det Q_2=\Bigl(\int_0^1Q_\theta^{-1}\,d\theta\Bigr):(Q_1-Q_2).
+\end{equation}
+\item Put $S=\Re\tr Q^{-1}$, the sum of the reciprocals of the eigenvalues of $Q$. By the
+arithmetic--geometric mean inequality $S\ge m(\det Q)^{-1/m}$. If $-\beta I\le B\le\beta I$ then
+$|Q^{-1}:B|\le\beta S$, by (M1) applied to $\beta I\pm B$.
+\item If $A\ge0$ and $P\ge cI$ with $c>0$, then $\det(A+P)>\det A$. Indeed the real representation
+\eqref{eq:realrep} turns $A$ and $A+P$ into symmetric real matrices with $(A+P)_{\R}\ge A_{\R}+cI$, so by the
+minimax characterisation each eigenvalue of $(A+P)_{\R}$ exceeds the corresponding eigenvalue of $A_{\R}$
+by at least $c$, and \eqref{eq:realrep} gives $\det(A+P)^4>\det(A)^4\ge0$.
+\end{enumerate}
+
+\subsection{The linearised operator and comparison}
+Work with $k\in\{3,4\}$ slots and $m$ coordinate indices; the real dimension is $N=km$, and $H$ is the
+$k$-slot Hessian. For a real covector $\xi\in\R^N$ write $\hat\xi=(\sum_\alpha e_\alpha\xi_{a\alpha})_a\in\HH^m$;
+then $|\hat\xi|=|\xi|$. For a real symmetric $N\times N$ matrix $M$ let $H(M)$ be the Hermitian matrix with
+$H(D^2v)=H(v)$; it is linear in $M$, and $H(\xi\xi^{\rm t})=\hat\xi\hat\xi^*$ by Lemma \ref{lem:hessian}. If
+$Q>0$ is a Hermitian matrix field, the operator
+\[
+L_Qw=Q^{-1}:H(w)
+\]
+is a real linear operator $\sum_{i,j}a^{ij}\partial_i\partial_jw$ with no lower-order terms, whose coefficient
+matrix is defined by $a:M=Q^{-1}:H(M)$. For $M=\xi\xi^{\rm t}$ this gives
+$a(\xi,\xi)=\hat\xi^*Q^{-1}\hat\xi$, so
+\begin{equation}\label{eq:ellipticity}
+\lambda_{\max}(Q)^{-1}|\xi|^2\le a(\xi,\xi)\le\lambda_{\min}(Q)^{-1}|\xi|^2 .
+\end{equation}
+If $\psi$ is a $C^2$ function with $Q=H(\psi)>0$ we write $L_\psi=L_{H(\psi)}$, the derivative of
+$\psi\mapsto\log\det H(\psi)$ by (M2).
+
+In what follows a \emph{periodic domain} is an open set $U\subset(\R^{m}/\Lambda)\times W$, where $W$ is
+bounded in the remaining real coordinates and $\Lambda$ is a lattice (possibly of lower rank, possibly
+acting on more coordinates), so that $\overline U$ is compact and at least one real coordinate $y$ is
+a bounded function on $U$. The domain $\Omega$, its four-slot extension below, and balls in a
+fibre are periodic domains.
+
+\begin{lemma}[Maximum principle]\label{lem:maxprinciple}
+Let $U$ be a periodic domain and $L=\sum a^{ij}\partial_i\partial_j$ with $a$ continuous and positive
+definite in $U$. If $f\in C^2(U)\cap C(\overline U)$ satisfies $Lf\ge0$ in $U$, then
+$\max_{\overline U}f=\max_{\partial U}f$.
+\end{lemma}
+
+\begin{proof}
+At an interior maximum $D^2f\le0$, so $Lf=a:D^2f\le0$; hence a function with $Lf>0$ has no interior
+maximum. Let $y$ be a bounded real coordinate and $h=e^{y}$. Then $Lh=a^{yy}e^y>0$, so
+for $\eps>0$ the function $f+\eps h$ satisfies $L(f+\eps h)>0$ and attains its maximum over the
+compact set $\overline U$ on $\partial U$. Letting $\eps\to0$ gives the claim.
+\end{proof}
+
+\begin{lemma}[Comparison]\label{lem:comparison2}
+Let $U$ be a periodic domain in $k$ slots, and $\psi_1,\psi_2\in C^2(U)\cap C(\overline U)$ with
+$H(\psi_i)>0$ in $U$. If $\det H(\psi_1)\ge\det H(\psi_2)$ in $U$ and $\psi_1\le\psi_2$ on $\partial U$,
+then $\psi_1\le\psi_2$ in $U$. In particular \eqref{eq:dirichletA} has at most one solution in
+$C^2(\Omega)\cap C(\overline\Omega)$.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:logdiff}, $0\le\log\det H(\psi_1)-\log\det H(\psi_2)=L_{\bar Q}(\psi_1-\psi_2)$ with
+$\bar Q^{-1}=\int_0^1Q_\theta^{-1}d\theta$, $Q_\theta=(1-\theta)H(\psi_2)+\theta H(\psi_1)$. The coefficients
+are continuous and positive definite in $U$ by \eqref{eq:ellipticity}, and Lemma \ref{lem:maxprinciple}
+gives $\psi_1-\psi_2\le\max_{\partial U}(\psi_1-\psi_2)\le0$. For uniqueness apply this twice with
+$\psi_i=B_0+u_i$.
+\end{proof}
+
+\subsection{The four-slot extension}
+Let $\tilde\Omega=\Omega\times(\R/\Z)^m$, with the new coordinates $z_{a3}$ in the $\kk$ slots, and extend
+$r,B_0,g$ to $\tilde\Omega$ as functions independent of them. For a function independent of the $\kk$
+slots the four-slot $G$ and $H$ of \eqref{eq:GH} agree with the three-slot ones, since every term
+containing $\partial_{a3}$ vanishes. Hence the hypotheses of Theorem \ref{thm:dirichlet} hold on
+$\tilde\Omega$, and a solution on $\Omega$ extends to a solution on $\tilde\Omega$. Conversely, suppose
+$\tilde u$ solves the four-slot problem on $\tilde\Omega$. For $c\in(\R/\Z)^m$ the translate
+$\tilde u(\cdot+c)$ in the $\kk$ slots solves the same problem, since the data are invariant and
+$H$ commutes with translations. By Lemma \ref{lem:comparison2} (with $k=4$), $\tilde u(\cdot+c)=\tilde u$,
+so $\tilde u$ is independent of the $\kk$ slots and restricts to a solution on $\Omega$. Therefore it
+suffices to prove Theorem \ref{thm:dirichlet} on $\tilde\Omega$, and the rest of the proof works there,
+with four slots and $N=4m$.
+
+The manifold $\overline{\tilde\Omega}$ is compact with smooth boundary
+$\partial\tilde\Omega=(\R^m/\Lambda)\times\partial V\times(\R/\Z)^m$ and a flat metric, and each point has a
+neighbourhood isometric to an open subset of $\R^{4m}$ in which the boundary is a smooth hypersurface.
+We call such a neighbourhood a \emph{flat chart}. By compactness $\overline{\tilde\Omega}$ is covered by
+finitely many flat charts of a fixed size. The local Schauder estimates \cite[Corollary 6.3 and Lemma
+6.5]{GT01}, their higher-order forms, and the local $L^2$ regularity \cite[Theorems 8.8 and 8.12]{GT01}
+are local statements and apply in such charts; summing over a finite cover gives the global estimates
+of \cite[Theorem 6.6]{GT01} and their higher-order analogues on $\overline{\tilde\Omega}$, exactly as in
+the proofs in \cite[Ch.~6]{GT01}.
+
+\subsection{The linear Dirichlet problem}
+\begin{lemma}\label{lem:lineardirichlet}
+Let $Q>0$ be a smooth Hermitian field on $\overline{\tilde\Omega}$, $k\ge0$ and $0<\alpha<1$. Then
+$L_Q:C^{k+2,\alpha}_0(\overline{\tilde\Omega})\to C^{k,\alpha}(\overline{\tilde\Omega})$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+For the Laplacian: by Poincar\'e's inequality along a bounded coordinate of $V$, the form
+$\int\nabla v\cdot\nabla w$ is coercive on $H^1_0(\tilde\Omega)$, so for $f\in C^\infty(\overline{\tilde\Omega})$ the
+Lax--Milgram theorem gives a weak solution $v\in H^1_0$ of $\Delta v=f$. The local regularity theorems,
+interior and at the flat boundary pieces, give $v\in H^j$ for every $j$, hence
+$v\in C^\infty(\overline{\tilde\Omega})$ by Sobolev embedding. For $f\in C^{k,\alpha}$ mollify in charts to get
+smooth $f_\ell$ bounded in $C^{k,\alpha}$ and converging in $C^{k,\beta}$, $\beta<\alpha$. The estimate
+below bounds the solutions $v_\ell$ in $C^{k+2,\alpha}$; they converge in $C^{k+2,\beta}$, and the limit
+lies in $C^{k+2,\alpha}_0$ and solves $\Delta v=f$. Uniqueness follows from Lemma \ref{lem:maxprinciple}.
+
+For $L_s=(1-s)\Delta+sL_Q$, $0\le s\le1$, the coefficients are smooth and uniformly elliptic,
+uniformly in $s$, since $\Delta=L_I$ by Lemma \ref{lem:hessian}. Since $H(r)\ge c_rI$ on
+$\overline{\tilde\Omega}$ for some $c_r>0$, (M1) gives $L_sr\ge c'>0$ uniformly in $s$. If
+$v\in C^2_0$ and $|L_sv|\le K$, then $L_s(\pm v+\frac K{c'}r)\ge0$ and Lemma \ref{lem:maxprinciple} gives
+$|v|\le\frac K{c'}|r|$. With the global Schauder estimate
+$\|v\|_{C^{k+2,\alpha}}\le C(\|v\|_{C^0}+\|L_sv\|_{C^{k,\alpha}})$ this gives
+$\|v\|_{C^{k+2,\alpha}}\le C\|L_sv\|_{C^{k,\alpha}}$ on $C^{k+2,\alpha}_0$, uniformly in $s$, and the method of
+continuity \cite[Theorem 5.2]{GT01} transfers invertibility from $L_0=\Delta$ to $L_1=L_Q$.
+\end{proof}
+
+\subsection{The continuity path}
+Write $\psi=B_0+u$, so that \eqref{eq:dirichletA} reads $\det H(\psi)=g$, $H(\psi)>0$,
+$\psi=B_0$ on $\partial\tilde\Omega$. For $0\le t\le1$ put
+\[
+g_t=(1-t)\det H(B_0+r)+tg .
+\]
+At $t=0$ the function $u=r$ is a solution: $H(B_0+r)\ge H(r)>0$ and $r=0$ on the boundary. By (M4),
+$\det H(B_0+r)>\det H(B_0)$, and $g>\det H(B_0)$ by hypothesis; by compactness there are
+$\delta,c_0,C_0>0$ with
+\begin{equation}\label{eq:gap}
+g_t\ge\det H(B_0)+\delta,\qquad c_0\le g_t\le C_0\qquad\text{on }\overline{\tilde\Omega},\ 0\le t\le1 .
+\end{equation}
+Let $T$ be the set of $t\in[0,1]$ for which \eqref{eq:dirichletA} with $g_t$ in place of $g$ has a
+solution $u_t\in C^\infty(\overline{\tilde\Omega})$. Then $0\in T$, and we show that $T$ is open and closed.
+
+\emph{Openness.} Let $t_0\in T$, fix $\alpha\in(0,1)$ and $k\ge0$, and consider
+\[
+\mathcal F(t,u)=\log\det H(B_0+u)-\log g_t
+\]
+on the open set of $u\in C^{k+2,\alpha}_0$ with $H(B_0+u)>0$ on $\overline{\tilde\Omega}$, with values in
+$C^{k,\alpha}$. It is a smooth map: $\log\det H(M)$ is a smooth function of the real Hessian $M$ on the
+open set $H(M)>0$, and composition with a smooth function is a smooth map of H\"older spaces. Its
+derivative in $u$ at $u_{t_0}$ is $L_{\psi_{t_0}}$, an isomorphism by Lemma
+\ref{lem:lineardirichlet}. The implicit function theorem gives, for $t$ near $t_0$, a solution
+$u_t\in C^{k+2,\alpha}_0$ depending smoothly on $t$. By Lemma \ref{lem:comparison2} the solutions obtained
+for different $k$ coincide, so $u_t\in C^\infty(\overline{\tilde\Omega})$ and $T$ is open.
+
+\emph{Closedness.} By the a priori estimates below, every $u_t$, $t\in T$, satisfies
+$\|u_t\|_{C^j(\overline{\tilde\Omega})}\le C_j$ for every $j$, and $H(B_0+u_t)\ge c\,I$, with $C_j,c$
+independent of $t$. If $t_\ell\in T$ and $t_\ell\to t$, the Arzel\`a--Ascoli theorem gives a subsequence of
+$u_{t_\ell}$ converging in every $C^j$ to some $u\in C^\infty(\overline{\tilde\Omega})$, which vanishes on the
+boundary, satisfies $H(B_0+u)\ge cI$ and $\det H(B_0+u)=g_t$. So $t\in T$.
+
+Hence $T=[0,1]$ and $u=u_1$ solves \eqref{eq:dirichletA}. It remains to prove the a priori estimates.
+For the rest of this appendix $u=u_t$ is a smooth solution for some $t\in T$, $\psi=B_0+u$,
+$Q=H(\psi)$, $L=L_\psi$, $S=\Re\tr Q^{-1}$, and $C$ denotes constants independent of $t$ and $u$.
+By (M3) and \eqref{eq:gap},
+\begin{equation}\label{eq:Slow}
+S\ge m\,g_t^{-1/m}\ge mC_0^{-1/m}=:s_0>0,\qquad Lr=Q^{-1}:H(r)\ge c_rS .
+\end{equation}
+
+\subsection{Barriers and the gradient}
+\emph{The barriers \eqref{eq:barrier}.} As $b'\downarrow0$, $\det H(B_0+b'r)\to\det H(B_0)$ uniformly, so
+by \eqref{eq:gap} we may fix $b'\in(0,1)$ with $\det H(B_0+b'r)<g_t$ for all $t$. Since
+$\det H(B_0+br)\ge\det(bH(r))\ge(bc_r)^m$ by (M4) and monotonicity, we may fix $b>1$ with
+$\det H(B_0+br)>C_0\ge g_t$. All three potentials $B_0+b'r$, $\psi$, $B_0+br$ equal $B_0$ on the boundary
+and have positive definite Hessians, so Lemma \ref{lem:comparison2} gives $B_0+br\le\psi\le B_0+b'r$,
+which is \eqref{eq:barrier}. Since $r$ is a defining function, near $\partial\tilde\Omega$ we can write
+$u=\rho\,r$ with $\rho$ smooth up to the boundary (Section \ref{ssec:divergence}). On the collar
+$r<0$, so \eqref{eq:barrier} gives $b'\le\rho\le b$, and by continuity also on the boundary. There
+$\nabla u=\rho\nabla r$, so
+\begin{equation}\label{eq:boundarygrad}
+|\nabla u|\le b\,|\nabla r|\qquad\text{on }\partial\tilde\Omega .
+\end{equation}
+
+\emph{First and second derivatives along constant directions.} For real symmetric $M$ with $H(M)>0$
+put $F(M)=\log\det H(M)$. It is concave, being the composition of the linear map $M\mapsto H(M)$ with
+the concave function $\log\det$ (Lemma \ref{lem:moore}), and $DF(M)[\dot M]=H(M)^{-1}:H(\dot M)$ by
+(M2). For a constant real unit vector $e$ write $\psi_e,\psi_{ee}$ for the directional derivatives.
+Differentiating $F(D^2\psi)=\log g_t$ once and twice along $e$ gives
+\begin{equation}\label{eq:diffeq}
+L\psi_e=(\log g_t)_e,\qquad L\psi_{ee}=(\log g_t)_{ee}-D^2F(D^2\psi)[D^2\psi_e,D^2\psi_e]\ge(\log g_t)_{ee}.
+\end{equation}
+By \eqref{eq:Slow}, $L(\pm\psi_e+Kr)\ge-C+Kc_rs_0>0$ for a large constant $K$, and Lemma
+\ref{lem:maxprinciple} gives $\pm\psi_e\le\max_{\partial\tilde\Omega}|\nabla\psi|+K|r|$. With
+\eqref{eq:boundarygrad} this bounds $|\nabla\psi|$, hence $|\nabla u|$, by a constant $C$. In the same
+way $L(\psi_{ee}+Kr)>0$ for large $K$, so
+\begin{equation}\label{eq:hessreduce}
+\psi_{ee}\le\max_{\partial\tilde\Omega}|D^2\psi|+C\qquad\text{in }\tilde\Omega,\ |e|=1 .
+\end{equation}
+It remains to bound $D^2\psi$ on the boundary; $B_0$ is smooth, so it suffices to bound $D^2u$ there.
+
+\subsection{Second derivatives at the boundary}
+Fix a boundary point and a flat chart centred at it, with coordinates $x\in\R^{4m}$, identified with
+$\HH^m$ through the slots, so that the real inner product is $\Re(v^*w)$. Let $\nu$ be the outward unit
+normal at $0$; then $\nabla r(0)=|\nabla r(0)|\nu$, since $r<0$ inside. All constants below are uniform
+over boundary points, by compactness.
+
+\emph{Tangential directions.} From $u=\rho r$,
+$D^2u=\rho D^2r+\nabla\rho\otimes\nabla r+\nabla r\otimes\nabla\rho+rD^2\rho$, and at $0$ the last three terms
+vanish on pairs of tangent vectors. Hence $|D^2u(0)(v,w)|=\rho|D^2r(0)(v,w)|\le C$ for unit tangent
+$v,w$.
+
+\emph{Mixed directions.} Fix a unit tangent vector $e$ at $0$. Let $P_{\rm tan}$ be the real orthogonal
+projection onto the tangent space and put
+\[
+v=\frac{P_{\rm tan}D^2r(0)e}{|\nabla r(0)|},\qquad A=v\nu^*-\nu v^*-\nu(\nu^*v)\nu^* ,
+\]
+with vectors read as quaternionic columns. Since $v$ is tangent, $\Re(\nu^*v)=0$, so the quaternion
+$\nu^*v$ satisfies $\overline{\nu^*v}=-\nu^*v$. Hence
+$A^*=\nu v^*-v\nu^*+\nu(\nu^*v)\nu^*=-A$, and, using $\nu^*\nu=1$ and $v^*\nu+\nu^*v=2\Re(\nu^*v)=0$,
+\[
+A\nu=v-\nu(v^*\nu)-\nu(\nu^*v)=v .
+\]
+Consider the affine vector field $X(x)=e+Ax$. Its flow is $\phi_s(x)=e^{sA}x+c_s$ with
+$c_s=\int_0^se^{\sigma A}e\,d\sigma$, and $U_s=e^{sA}$ is quaternionic unitary since $A^*=-A$.
+
+First, $Xr$ vanishes to second order along the boundary at $0$. Indeed $Xr(0)=\nabla r(0)\cdot e=0$, and
+for a tangent vector $w$,
+\begin{align*}
+\partial_w(Xr)(0)&=D^2r(0)(w,e)+\nabla r(0)\cdot(Aw)
+=|\nabla r(0)|\bigl(v\cdot w+\Re(\nu^*Aw)\bigr)\\
+&=|\nabla r(0)|\bigl(v\cdot w-\Re((A\nu)^*w)\bigr)=0,
+\end{align*}
+because $D^2r(0)(w,e)=w\cdot P_{\rm tan}D^2r(0)e$ and $\Re(\nu^*Aw)=\Re((A^*\nu)^*w)=-\Re((A\nu)^*w)$.
+So the restriction of $Xr$ to the boundary hypersurface vanishes at $0$ with its differential, and
+$|Xr(x)|\le C|x|^2$ for boundary points $x$ in the chart. On the boundary $Xu=\rho\,Xr+r\,X\rho=\rho\,Xr$,
+so
+\begin{equation}\label{eq:Xuboundary}
+|Xu(x)|\le C|x|^2\qquad(x\in\partial\tilde\Omega,\ |x|\le\varrho_0),
+\end{equation}
+for a fixed chart radius $\varrho_0$.
+
+Secondly, $L(X\psi)=X\log g_t$. By the covariance in Lemma \ref{lem:hessian} and its invariance under
+translations, $H(\psi\circ\phi_s)(x)=U_s^*H(\psi)(\phi_s(x))U_s$, and the Moore determinant is invariant
+under unitary conjugation, since the eigenvalues are. Hence
+$\log\det H(\psi\circ\phi_s)(x)=\log g_t(\phi_s(x))$ for $x$ in the chart and small $s$, and
+differentiation at $s=0$, using (M2) and $\frac d{ds}\psi\circ\phi_s|_{s=0}=X\psi$, gives
+$L(X\psi)=X\log g_t$. Since $X B_0$ is smooth with $|H(XB_0)|\le C$, (M3) and \eqref{eq:Slow} give
+\begin{equation}\label{eq:LXu}
+|L(Xu)|\le|X\log g_t|+|L(XB_0)|\le C+CS\le CS .
+\end{equation}
+
+Let $U=\{|x|<\varrho_0\}\cap\tilde\Omega$ and $w=K_1|x|^2-K_2r$. On the part of $\partial U$ in the
+boundary of $\tilde\Omega$, $w=K_1|x|^2\ge|Xu|$ by \eqref{eq:Xuboundary} once $K_1\ge C$. On the part
+where $|x|=\varrho_0$, $w\ge K_1\varrho_0^2\ge|X||\nabla u|\ge|Xu|$ once $K_1$ is large, by the gradient
+bound. In four slots $H(|x|^2)=8I$, since $|x|^2=\sum_{a,\alpha}z_{a\alpha}^2$ has real Hessian $2I$ and
+each diagonal entry collects $\sum_\alpha e_\alpha\overline{e_\alpha}\cdot2=8$. So by \eqref{eq:Slow} and
+\eqref{eq:LXu},
+\[
+L(w\pm Xu)\le8K_1S-K_2c_rS+CS\le0
+\]
+once $K_2$ is large. Lemma \ref{lem:maxprinciple} applied to $-(w\pm Xu)$ gives $|Xu|\le w$ in $U$.
+At $0$ both $w$ and $Xu=\rho Xr$ vanish. Along the inward normal, $x=-s\nu$ with small $s>0$, we get
+$|Xu(-s\nu)|\le K_1s^2-K_2r(-s\nu)\le Cs$, so $|\partial_\nu(Xu)(0)|\le C$. Now
+\[
+\partial_\nu(Xu)(0)=D^2u(0)(\nu,e)+\nabla u(0)\cdot(A\nu)=D^2u(0)(\nu,e),
+\]
+because $\nabla u(0)=\rho\nabla r(0)$ is normal and $A\nu=v$ is tangent. Hence $|D^2u(0)(\nu,e)|\le C$.
+
+\emph{The normal direction.} By \eqref{eq:levi} with $u=\rho r$, at $0$ the compression of $H(u)$ to the
+quaternionic orthogonal complement $\nu^\perp$ is $\rho H(r)|_{\nu^\perp}\ge b'c_rI$. Since $H(B_0)\ge0$,
+\begin{equation}\label{eq:Dlow}
+Q|_{\nu^\perp}\ge b'c_rI .
+\end{equation}
+Choose a real orthonormal basis $\eps_1=\nu,\eps_2,\dots,\eps_{4m}$ of $\R^{4m}$ and write
+$M=D^2\psi(0)=\sum_{i,j}M_{ij}\eps_i\eps_j^{\rm t}$. By linearity and polarisation of
+$H(\xi\xi^{\rm t})=\hat\xi\hat\xi^*$,
+\[
+Q=H(M)=M_{11}\nu\nu^*+R,\qquad R=\sum_{(i,j)\ne(1,1)}M_{ij}\,\tfrac12\bigl(\hat\eps_i\hat\eps_j^*+\hat\eps_j\hat\eps_i^*\bigr),
+\]
+and the entries $M_{ij}$ with $(i,j)\ne(1,1)$ are bounded by the two previous steps, so $|R|\le C$.
+Let $f_2,\dots,f_m$ be a quaternionic orthonormal basis of $\nu^\perp$. In the basis $\nu,f_2,\dots,f_m$,
+\[
+Q=\begin{pmatrix}q_{11}&z^*\\z&D\end{pmatrix},\qquad q_{11}=M_{11}+\nu^*R\nu,\quad
+z_i=f_i^*R\nu,\quad D=Q|_{\nu^\perp}=R|_{\nu^\perp},
+\]
+so $z$ and $D$ are bounded and $D\ge b'c_rI$ by \eqref{eq:Dlow}. If $m>1$, \eqref{eq:schur} gives
+$g_t=\det Q=(\det D)(q_{11}-z^*D^{-1}z)$, so
+\[
+0<q_{11}=\frac{g_t}{\det D}+z^*D^{-1}z\le\frac{C_0}{(b'c_r)^{m-1}}+\frac{|z|^2}{b'c_r}\le C;
+\]
+if $m=1$, $q_{11}=Q=g_t\le C_0$. In both cases $|M_{11}|\le|q_{11}|+|R|\le C$, so $|D^2\psi(0)|\le C$.
+
+\subsection{H\"older estimates and higher derivatives}
+By \eqref{eq:hessreduce} and the boundary bound, $\psi_{ee}\le C$ for every unit $e$. Since
+$\Delta\psi=\Re\tr Q>0$ by Lemma \ref{lem:hessian}, every eigenvalue of $D^2\psi$ is at least
+$-(4m-1)C$. So $|D^2\psi|\le C$ on $\overline{\tilde\Omega}$, hence $|Q|\le C$; with $\det Q=g_t\ge c_0$ every
+eigenvalue of $Q$ lies in an interval $[c,C]\subset(0,\infty)$. Thus $D^2\psi$ takes values in the compact
+convex set
+\[
+\mathcal K=\{M:|M|\le C,\ cI\le H(M)\le CI\},
+\]
+on which $F$ is smooth and concave, and by \eqref{eq:ellipticity}
+$DF(M)[\xi\xi^{\rm t}]=\hat\xi^*H(M)^{-1}\hat\xi\in[C^{-1}|\xi|^2,c^{-1}|\xi|^2]$ for $M\in\mathcal K$. Multiply $F$ by a
+smooth cut-off supported in $\{H(M)>0\}$ and equal to one near $\mathcal K$, and extend by zero; the
+equation $F(D^2\psi)=\log g_t$ is then a fully nonlinear, uniformly elliptic, concave equation on the
+range of $D^2\psi$, with smooth dependence on $x$ through $g_t$ and boundary values $B_0$. These are
+the hypotheses (i)$'$, (ii)$'$ of the interior and boundary estimates \cite[Theorems 17.14 and
+17.26$'$]{GT01}, which are due to Evans \cite{Evans82} and Krylov \cite{Kry83,Kry84} and are local; in
+the flat charts of a finite cover they give $\|\psi\|_{C^{2,\alpha}(\overline{\tilde\Omega})}\le C$ for some
+$\alpha\in(0,1)$.
+
+For higher derivatives we argue by induction: suppose $\|u\|_{C^{j+2,\alpha}}\le C_j$. In the interior,
+for each constant direction $e$, $\psi_e$ solves the linear equation \eqref{eq:diffeq} whose
+coefficients $Q^{-1}$ are bounded in $C^{j,\alpha}$ and uniformly elliptic; the interior Schauder
+estimates bound $\psi_e$ in $C^{j+2,\alpha}$ on compact subsets of the chart. Near the boundary, flatten
+it by a smooth change of coordinates $y=\Phi(x)$ with the boundary at $y_{4m}=0$. The equation becomes
+$\mathcal G(y,D_yv,D_y^2v)=0$ for $v=u\circ\Phi^{-1}$, with $\mathcal G$ smooth and
+$\partial\mathcal G/\partial v_{ij}$ uniformly elliptic on the range of the solution. For a tangential
+coordinate direction $y_\iota$, $\iota<4m$, the derivative $v_\iota$ vanishes on $y_{4m}=0$, because
+$v$ does, and solves the linear equation obtained by differentiating, with coefficients
+$\partial\mathcal G/\partial v_{ij},\partial\mathcal G/\partial v_i$ bounded in $C^{j,\alpha}$ and right-hand side
+$-\partial_{y_\iota}\mathcal G$ bounded in $C^{j,\alpha}$. The local boundary Schauder estimates bound
+$v_\iota$ in $C^{j+2,\alpha}$ near the boundary. This controls in $C^{j+1,\alpha}$ every second derivative
+$v_{il}$ except $v_{4m\,4m}$. Uniform ellipticity gives $\partial\mathcal G/\partial v_{4m\,4m}\ge c>0$, so
+by the implicit function theorem $v_{4m\,4m}=\Psi(y,D_yv,(v_{il})_{(i,l)\ne(4m,4m)})$ with $\Psi$
+smooth, and the right side is bounded in $C^{j+1,\alpha}$. Hence $\|u\|_{C^{j+3,\alpha}}\le C_{j+1}$. All
+constants are independent of $t$, which completes the a priori estimates and the existence proof.
+
+\subsection{Parameters}
+Let the data depend smoothly on a parameter $\tau$ in an open set of $\R^K$, and let
+$\Theta_\tau$ identify $\overline V_{\tau_0}$ with $\overline V_\tau$ as above. The gap \eqref{eq:gap} at
+$t=1$ and the bounds $c_r$, $C_0$ are locally uniform in $\tau$ by continuity, so $b,b'$ can be fixed
+locally uniformly. Pulling the equation back by $\mathrm{id}\times\Theta_\tau$ gives on the fixed domain
+$\tilde\Omega_{\tau_0}$ an equation $\mathcal F_\tau(v)=0$, $v\in C^{k+2,\alpha}_0$, depending smoothly on
+$(\tau,v)$. At $\tau_0$ its linearisation is $L_{\psi_{\tau_0}}$ conjugated by the pull-back, an
+isomorphism by Lemma \ref{lem:lineardirichlet}. The implicit function theorem gives solutions
+$v_\tau$ depending smoothly on $\tau$ with values in $C^{k+2,\alpha}_0$, for every $k$; by uniqueness they
+are the pull-backs of the solutions $u_\tau$. A map from parameters to $C^{k+2,\alpha}$ that is smooth for
+every $k$ is jointly smooth in $(\tau,x)$, which is the asserted dependence. The descent from
+$\tilde\Omega$ to $\Omega$ is compatible with all of this.
+
+Lemma \ref{lem:comparison2} also holds in three slots on subdomains of $\Omega$, in particular on the
+balls of the fibres used in Section \ref{sec:fiber}. \qed

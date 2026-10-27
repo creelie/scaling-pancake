@@ -1,0 +1,123 @@
+\section{Introduction}\label{sec:intro}
+
+For $n\ge 2$, $a>0$, $\lambda\ge 0$ and $t>0$ let
+\[
+R^\lambda_{a,t}f(x)=\frac{1}{(2\pi)^n}\int_{\R^n}\Bigl(1-\frac{|\xi|^a}{t^a}\Bigr)_+^\lambda
+\hat f(\xi)\,e^{i\ip{x}{\xi}}\,d\xi ,
+\]
+where $\hat f(\xi)=\int_{\R^n}f(y)e^{-i\ip{y}{\xi}}\,dy$.
+For $a=2$ these are the Bochner--Riesz means of the Fourier inversion integral, and for
+$a=1$ the Riesz means. For $1\le p<2n/(n+1)$ the number
+\begin{equation}\label{eq:critical}
+\lambda(p)=n\Bigl(\frac1p-\frac12\Bigr)-\frac12
+\end{equation}
+is the critical index: $R^\lambda_{a,t}$ is unbounded on $L^p(\R^n)$ for $\lambda\le\lambda(p)$,
+because its kernel decays like $|x|^{-(n+1)/2-\lambda}$ and fails to lie in $L^p$ when
+$\lambda\le\lambda(p)$ \cite{Ste93}. The Bochner--Riesz conjecture asserts boundedness on $L^p$ for
+every $\lambda>\lambda(p)$ when $1\le p<2n/(n+1)$. At the critical index itself the
+expected statement is the \emph{weak-type endpoint Bochner--Riesz conjecture}: for
+$1<p<2n/(n+1)$, the operators $R^{\lambda(p)}_{a,t}$ map $L^p(\R^n)$ to the Lorentz space
+$L^{p,\infty}(\R^n)$, uniformly in $t$. This is the title problem of Tao's paper \cite{Tao98}.
+
+The case $p=1$, with index $\lambda(1)=(n-1)/2$, is due to Christ \cite{Chr88}, and was
+extended by Vargas to $L^1(w)\to L^{1,\infty}(w)$ for every $A_1$ weight $w$ \cite{Var96}.
+For $p>1$, Christ proved the weak-type endpoint in the range $1<p<2(n+1)/(n+3)$
+\cite{Chr87}, Tao proved it at $p=2(n+1)/(n+3)$ \cite{Tao98}, and Seeger settled the plane \cite{See96}.
+Tao then showed that for $1<p<2n/(n+1)$ the weak-type endpoint follows from the strong-type
+Bochner--Riesz bounds for all $\lambda>\lambda(p)$, by an $\varepsilon$-removal argument
+\cite{Tao98}. In higher dimensions only partial ranges were known, since the Bochner--Riesz
+conjecture itself was open for $n\ge 3$.
+
+On 25 October 2026 OpenAI released a proof of Sogge's local smoothing conjecture for the
+Euclidean wave equation in every dimension \cite{OAI26}, and deduced from it the
+Bochner--Riesz conjecture for every $n\ge 2$ and every $1\le p\le\infty$. Combined with the
+conditional theorems of Tao \cite{Tao98} and of Beltran, Roos and Seeger \cite{BRS25,BRS23},
+this settles the endpoint questions below. The deductions are short; the length of this paper
+comes from reproducing in full the two inputs that have not been refereed, so that every
+step is checked here. Consequences of another OpenAI release, for weighted counting and exact
+optimisation, are derived in the same manner in the paper archived as \cite{Bha26b}.
+
+\subsection{Results}
+Write $\Sp(p,q)$ for the class of operators with a $(p,q)$ sparse bound (Definition
+\ref{def:sparse}); $A_1$ and $RH_\sigma$ are the Muckenhoupt and reverse H\"older classes
+(Section \ref{sec:weights}).
+
+\begin{theoremA}[Weak-type endpoint]
+Let $n\ge2$, $a>0$ and $1<p<2n/(n+1)$. Then
+\[
+\sup_{t>0}\bigl\|R^{\lambda(p)}_{a,t}f\bigr\|_{L^{p,\infty}(\R^n)}\le C_{n,a,p}\|f\|_{L^p(\R^n)},
+\]
+and $\|R^{\lambda(p)}_{a,t}f-f\|_{L^{p,\infty}}\to0$ as $t\to\infty$ for every $f\in L^p(\R^n)$.
+\end{theoremA}
+
+\begin{theoremB}[Sparse bounds]
+Let $n\ge2$, $a>0$, $1\le p<2n/(n+1)$ and
+\[
+q>q_{\rm opt}(p)=\frac{(n-1)p}{n+1-2p}.
+\]
+Then $R^{\lambda(p)}_{a,t}\in\Sp(p,q)$, with norm independent of $t$.
+\end{theoremB}
+
+For $\lambda=\lambda(p)$ the pairs $(1/p,1/q)$ of Theorem B fill the critical vertical side
+$P_1P_2$ of the trapezoid of exponents described in \cite[(1.5)]{BRS25}, except for its upper
+corner $P_2$, where $q=q_{\rm opt}(p)$. Sparse bounds fail outside the closed trapezoid
+\cite{BBL17}, so Theorem B is sharp except at the single point $P_2$, which remains open.
+
+\begin{theoremC}[Weights]
+Let $n\ge 2$, $a>0$, and let $w\in A_1$ belong to $RH_{\sigma}$ for some $\sigma>1$. Put
+\[
+p_1(w)=1+\frac{n-1}{n+1}\Bigl(1-\frac1{\sigma}\Bigr).
+\]
+Then for $1<p<p_1(w)$ the operators $R^{\lambda(p)}_{a,t}$ map $L^p(w)$ to $L^{p,\infty}(w)$
+uniformly in $t$, and $R^{\lambda(p)}_{a,t}f\to f$ in $L^{p,\infty}(w)$ for every $f\in L^p(w)$.
+\end{theoremC}
+
+Every $A_1$ weight lies in some $RH_\sigma$ with $\sigma>1$, so Theorem C gives a range
+$p>1$ for every $A_1$ weight, as in \cite[Theorem 1.1]{BRS25}. The difference lies in the
+size of the range. In \cite[\S9]{BRS25} the reverse H\"older exponent had to be capped at
+$(n+3)/2$, which limits the range to $p<2(n+1)/(n+3)$; here no cap is needed, and as
+$\sigma\to\infty$ the range fills the whole interval $1<p<2n/(n+1)$. The constant weight,
+which lies in $RH_\sigma$ for every $\sigma$, recovers Theorem A.
+
+For $n=2$ the Bochner--Riesz conjecture is due to Carleson and Sj\"olin \cite{CS72}, and Theorems A--C
+were proved in \cite{See96,BRS25}; the new content is $n\ge3$.
+
+\subsection{What is borrowed and what is reproduced}
+Theorems A--C are obtained from three ingredients.
+\begin{enumerate}[label=(\roman*)]
+\item The Bochner--Riesz conjecture, proved by OpenAI \cite{OAI26} through local smoothing.
+\item The off-diagonal $\varepsilon$-removal of Tao \cite{Tao98}, in the vector-valued form of
+Beltran, Roos and Seeger \cite{BRS23}: non-endpoint bounds imply the multi-scale
+inequalities $\VBR(p,r)$ of Definition \ref{def:vbr}.
+\item The sparse domination theorem of Beltran, Roos and Seeger \cite[Theorem 2.3]{BRS25}, which
+turns $\VBR(p,r)$ into sparse bounds, and the weighted theorem of Frey and Nieraeth
+\cite[Theorem 1.4]{FN19}, which turns sparse bounds into weighted weak-type bounds.
+\end{enumerate}
+Items (iii) are refereed and are cited. Items (i) and (ii) are a preprint and an Oberwolfach
+preprint, and are reproduced here with complete proofs: Part I gives OpenAI's proof of the
+critical annular estimate, of local smoothing and of the Bochner--Riesz conjecture, with the
+Dirichlet problem it uses in Appendix \ref{app:dirichlet}; Part II gives the
+$\varepsilon$-removal. The arguments are those of \cite{OAI26} and \cite{BRS23}; we follow
+them closely, specialise them to the round sphere, which is all that is needed, and supply
+some intermediate computations. Part III proves Theorems A--C.
+
+We searched arXiv, the OpenAI release repository and Zenodo up to
+27 October 2026 and found no statement of Theorems A--C for $n\ge3$. They are corollaries of
+\cite{OAI26} and the conditional theorems above, which is how we present them.
+
+\subsection{Organisation}
+Sections \ref{sec:current}--\ref{sec:euclid} form Part I. Section \ref{sec:current} builds a
+positive conserved current from a wave; Section \ref{sec:hessian} develops the quaternionic
+Hessian and its cofactor; Section \ref{sec:energy} defines a determinant energy on spatial
+fibres; Section \ref{sec:fiber} estimates it; Section \ref{sec:cylinder} compares two circles in
+the auxiliary time plane; Section \ref{sec:euclid} removes the period and proves local
+smoothing and the Bochner--Riesz conjecture. Section \ref{sec:vbr} is Part II. Section
+\ref{sec:endpoint} proves Theorems A--C, and Section \ref{sec:open} lists what remains open.
+Exact-arithmetic checks of the algebraic identities and of the exponent computations are
+available with the sources \cite{Bha26arch}; no statement depends on them.
+
+\subsection{Notation}
+In Part I the spatial dimension is $n\ge2$ and $d=n-1$; in Parts II and III the dimension is
+again $n$, and $d$ is not used. We write $A\lesssim B$ when $A\le CB$ with a constant
+depending only on fixed parameters, and $A\asymp B$ when both $A\lesssim B$ and $B\lesssim A$.
+The Fourier multiplier with symbol $m$ is $m(D)$.

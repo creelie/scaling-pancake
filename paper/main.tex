@@ -1,0 +1,109 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[kerning=true]{microtype}
+\usepackage{enumitem,booktabs,graphicx,xcolor}
+\usepackage[margin=1.12in]{geometry}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
+urlcolor=blue!55!black]{hyperref}
+\hypersetup{pdftitle={Weak-Type Endpoint Bounds for Bochner-Riesz Means in Every Dimension},pdfauthor={Deep Bhattacharjee}}
+\emergencystretch=2em
+\numberwithin{equation}{section}
+\raggedbottom
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theoremA}{Theorem A}
+\newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
+\newtheorem*{theoremD}{Theorem D}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Imk}{Im_{\mathbf k}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Ck}{\C_{\mathbf k}}
+\newcommand{\Ci}{\C_{\mathbf i}}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\kk}{\mathbf k}
+\newcommand{\D}{\mathcal D}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Y}{\mathcal Y}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cQ}{\mathcal Q}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\pc}{p_{\mathrm c}}
+\newcommand{\Hfib}{H_{\mathrm{fib}}}
+\newcommand{\Gfib}{G_{\mathrm{fib}}}
+\newcommand{\VBR}{\mathrm{VBR}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\fint}{\mathop{\mathchoice{\textstyle\int\mkern-14.5mu-}{\int\mkern-12.5mu-}%
+{\int\mkern-9mu-}{\int\mkern-7.5mu-}}\nolimits}
+\newcommand{\releaseline}{, release v1.0.0}
+\newcommand{\archiveline}{, release v1.0.0 (2026)}
+
+\title[Endpoint Bochner--Riesz bounds]{Weak-Type Endpoint Bounds for Bochner--Riesz Means in Every Dimension}
+\author{Deep Bhattacharjee}
+\address{Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL),
+Bhubaneswar, Odisha 751030, India}
+\address{Formerly, University of Calcutta (Heramba Chandra College), 23/49 Gariahat Road,
+Golpark, Kolkata 700029, West Bengal, India}
+\email{d.bhattacharjee@erl-forschung.de}
+\email{itsdeep@live.com}
+\email{egspl@proton.me}
+\urladdr{https://orcid.org/0000-0003-0466-750X}
+\subjclass[2020]{Primary 42B15; Secondary 42B20, 42B25, 35L05}
+\keywords{Bochner--Riesz means, weak-type endpoint, sparse domination, local smoothing}
+\date{27 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+\emph{At the critical index, the Bochner--Riesz means of every dimension $n\ge 2$ are of
+weak type $(p,p)$ for $1<p<2n/(n+1)$, uniformly in the radius, and converge in the weak
+$L^p$ norm. They also satisfy sparse bounds that are sharp except at one endpoint, and
+weighted weak-type bounds for every $A_1$ weight with a range of $p$ governed by its
+reverse H\"older exponent. The proof reproduces the recent proof of the local smoothing
+conjecture by OpenAI and the $\varepsilon$-removal of Tao in the form of Beltran, Roos and
+Seeger.}
+\end{abstract}
+
+\maketitle
+
+\input{01_intro}
+\part*{Part I. Local smoothing and the Bochner--Riesz conjecture}
+\input{02_current}
+\input{03_hessian}
+\input{04_energy}
+\input{05_fiber}
+\input{06_cylinder}
+\input{07_euclid}
+\part*{Part II. Removal of the $\varepsilon$-loss}
+\input{08_vbr}
+\part*{Part III. Endpoint bounds}
+\input{09_endpoint}
+\input{10_open}
+\appendix
+\input{A_dirichlet}
+\input{declarations}
+\input{bibliography}
+\end{document}

@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.synctex.gz
+paper/main.pdf
+__pycache__/
+code/check_run.txt
+lean/axioms_check.lean
+lean/axioms_run.txt
